@@ -1,0 +1,59 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.0-createQuestionsTable
+      author: aelshin
+      changes:
+        - createTable:
+            tableName: question
+            remarks: Вопросы тестов
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: question_id_pkey
+                  name: id
+                  type: VARCHAR(36)
+                  remarks: Идентификатор
+              - column:
+                  constraints:
+                    nullable: false
+                    foreignKeyName: test_id_fk
+                    references: test(id)
+                  name: test_id
+                  type: VARCHAR(36)
+                  remarks: Тест
+              - column:
+                  constraints:
+                    nullable: true
+                  name: parent_id
+                  type: VARCHAR(36)
+                  remarks: Родительский вопрос
+              - column:
+                  constraints:
+                    nullable: false
+                    foreignKeyName: question_answer_type_id_fk
+                    references: question_answer_type(id)
+                  name: question_answer_type_id
+                  type: VARCHAR(36)
+                  remarks: Тип вопроса
+              - column:
+                  constraints:
+                    nullable: true
+                    foreignKeyName: question_answer_position_id_fk
+                    references: question_answer_position(id)
+                  name: question_answer_position_id
+                  type: VARCHAR(36)
+                  remarks: Позиция ответа
+              - column:
+                  constraints:
+                    nullable: true
+                  name: number
+                  type: int
+                  remarks: Номер вопроса
+              - column:
+                  constraints:
+                    nullable: false
+                  name: task
+                  type: VARCHAR(1024)
+                  remarks: Текст вопроса

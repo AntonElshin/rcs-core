@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - include:
+      file: liquibase/changes/addClass.yaml
+  - include:
+      file: liquibase/changes/addSubject.yaml
+  - include:
+      file: liquibase/changes/addTest.yaml
+  - include:
+      file: liquibase/changes/addImage.yaml
+  - include:
+      file: liquibase/changes/addQuestionAnswerType.yaml
+  - include:
+      file: liquibase/changes/addQuestionAnswerPosition.yaml
+  - include:
+      file: liquibase/changes/addQuestion.yaml
+  - include:
+      file: liquibase/changes/addQuestionHeader.yaml
+  - include:
+      file: liquibase/changes/addQuestionReadText.yaml
+  - include:
+      file: liquibase/changes/addQuestionImage.yaml
+  - include:
+      file: liquibase/changes/addQuestionProposedAnswer.yaml
+  - include:
+      file: liquibase/changes/addQuestionCorrectTypingAnswer.yaml
+  - include:
+      file: liquibase/changes/addQuestionCorrectChooseAnswer.yaml

@@ -1,0 +1,246 @@
+openapi: 3.0.0
+info:
+  title: Russian Classical School Core API
+  version: 1.0.0
+  description: 'Русская классическая школа'
+  contact:
+    name: Anton Elshin
+    email: anton.elshin@mail.ru
+    url: https://vk.com/russianclassicalschool_yaroslavl
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /classes:
+    parameters: [ ]
+    get:
+      summary: Получение списка классов по параметрам
+      operationId: findClassesByParams
+      description: Получение списка авторов по параметрам
+      tags:
+        - classes
+      parameters:
+        - $ref: '#/components/parameters/classSystemName'
+        - $ref: '#/components/parameters/className'
+      responses:
+        '200':
+          description: OK
+          headers: { }
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ClassDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 1
+                      systemName: string
+                      name: string
+                      description: string
+  '/class/{classId}':
+    parameters:
+      - $ref: '#/components/parameters/classId'
+    get:
+      summary: Получение класса по идентификатору.
+      operationId: getClassById
+      description: Получение класса по идентификатору.
+      tags:
+        - class
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    put:
+      summary: Метод изменяет класс
+      operationId: modifyClass
+      description: Метод изменяет класс
+      tags:
+        - class
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassDTO'
+            examples:
+              example-1:
+                value:
+                  id: 1
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    delete:
+      summary: Удаление класса по идентификатору
+      operationId: removeClass
+      description: Удаление класса по идентификатору
+      tags:
+        - class
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  /class:
+    parameters: []
+    post:
+      summary: Создание класса
+      operationId: addClass
+      description: Создание класса
+      tags:
+        - role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassDTO'
+            examples:
+              example-1:
+                value:
+                  id: 1
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+components:
+  schemas:
+    ErrorDTO:
+      title: ErrorDTO
+      type: object
+      additionalProperties: false
+      description: Объект ошибки
+      x-examples:
+        example-1:
+          code: 1
+          message: string
+      properties:
+        code:
+          type: integer
+          format: int64
+          description: Код ошибки
+          minimum: 0
+          maximum: 2147483647
+        message:
+          type: string
+          description: Текст ошибки
+          maxLength: 256
+    ClassDTO:
+      title: ClassDTO
+      type: object
+      additionalProperties: false
+      description: Класс
+      x-examples:
+        example-1:
+          id: 1
+          systemName: string
+          name: string
+          description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        systemName:
+          type: string
+          description: Системное имя
+          maxLength: 50
+        name:
+          type: string
+          description: Имя
+          maxLength: 50
+        description:
+          type: string
+          description: Описание
+          maxLength: 255
+      required:
+        - systemName
+        - name
+  parameters:
+    classSystemName:
+      name: classSystemName
+      in: query
+      schema:
+        type: string
+        maxLength: 50
+      description: Поиск по системному названию класса
+    className:
+      name: className
+      in: query
+      schema:
+        type: string
+        maxLength: 50
+      description: Поиск по названию класса
+    classId:
+      name: classId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор класса
+tags:
+  - name: classes
+  - name: class
