@@ -10,17 +10,16 @@ info:
 servers:
   - url: 'http://localhost:8080'
 paths:
-  /classes:
+  /school-classes:
     parameters: [ ]
     get:
       summary: Получение списка классов по параметрам
-      operationId: findClassesByParams
-      description: Получение списка авторов по параметрам
+      operationId: find
+      description: Получение списка классов
       tags:
-        - classes
+        - school-classes
       parameters:
-        - $ref: '#/components/parameters/classSystemName'
-        - $ref: '#/components/parameters/className'
+        - $ref: '#/components/parameters/search'
       responses:
         '200':
           description: OK
@@ -28,8 +27,9 @@ paths:
           content:
             application/json:
               schema:
+                type: array
                 items:
-                  $ref: '#/components/schemas/ClassDTO'
+                  $ref: '#/components/schemas/SchoolClassDTO'
               examples:
                 example-1:
                   value:
@@ -37,22 +37,22 @@ paths:
                       systemName: string
                       name: string
                       description: string
-  '/class/{classId}':
+  '/school-class/{schoolClassId}':
     parameters:
-      - $ref: '#/components/parameters/classId'
+      - $ref: '#/components/parameters/schoolClassId'
     get:
       summary: Получение класса по идентификатору.
-      operationId: getClassById
+      operationId: getById
       description: Получение класса по идентификатору.
       tags:
-        - class
+        - school-class
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClassDTO'
+                $ref: '#/components/schemas/SchoolClassDTO'
               examples:
                 example-1:
                   value:
@@ -70,16 +70,16 @@ paths:
           description: Unprocessable Entity (WebDAV)
     put:
       summary: Метод изменяет класс
-      operationId: modifyClass
+      operationId: modify
       description: Метод изменяет класс
       tags:
-        - class
+        - school-class
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClassDTO'
+              $ref: '#/components/schemas/SchoolClassDTO'
             examples:
               example-1:
                 value:
@@ -93,7 +93,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClassDTO'
+                $ref: '#/components/schemas/SchoolClassDTO'
               examples:
                 example-1:
                   value:
@@ -107,10 +107,10 @@ paths:
           description: Unprocessable Entity (WebDAV)
     delete:
       summary: Удаление класса по идентификатору
-      operationId: removeClass
+      operationId: remove
       description: Удаление класса по идентификатору
       tags:
-        - class
+        - school-class
       responses:
         '200':
           description: OK
@@ -122,20 +122,20 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
         '422':
           description: Unprocessable Entity (WebDAV)
-  /class:
+  /school-class:
     parameters: []
     post:
       summary: Создание класса
-      operationId: addClass
+      operationId: add
       description: Создание класса
       tags:
-        - role
+        - school-class
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClassDTO'
+              $ref: '#/components/schemas/SchoolClassDTO'
             examples:
               example-1:
                 value:
@@ -149,7 +149,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClassDTO'
+                $ref: '#/components/schemas/SchoolClassDTO'
               examples:
                 example-1:
                   value:
@@ -187,8 +187,8 @@ components:
           type: string
           description: Текст ошибки
           maxLength: 256
-    ClassDTO:
-      title: ClassDTO
+    SchoolClassDTO:
+      title: SchoolClassDTO
       type: object
       additionalProperties: false
       description: Класс
@@ -219,22 +219,15 @@ components:
         - systemName
         - name
   parameters:
-    classSystemName:
-      name: classSystemName
+    search:
+      name: search
       in: query
       schema:
         type: string
         maxLength: 50
-      description: Поиск по системному названию класса
-    className:
-      name: className
-      in: query
-      schema:
-        type: string
-        maxLength: 50
-      description: Поиск по названию класса
-    classId:
-      name: classId
+      description: Строка для поиска
+    schoolClassId:
+      name: schoolClassId
       in: path
       required: true
       schema:
@@ -242,5 +235,5 @@ components:
         format: uuid
       description: Идентификатор класса
 tags:
-  - name: classes
-  - name: class
+  - name: school-classes
+  - name: school-class

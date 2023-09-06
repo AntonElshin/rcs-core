@@ -1,6 +1,6 @@
 databaseChangeLog:
   - include:
-      file: liquibase/changes/addClass.yaml
+      file: liquibase/changes/addSchoolClass.yaml
   - include:
       file: liquibase/changes/addSubject.yaml
   - include:
