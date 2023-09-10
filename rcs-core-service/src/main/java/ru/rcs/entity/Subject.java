@@ -33,7 +33,7 @@ public class Subject {
   @NotNull
   @GeneratedValue(generator = "system-uuid")
   @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-  private UUID id;
+  private String id;
 
   /**
    * Системное название

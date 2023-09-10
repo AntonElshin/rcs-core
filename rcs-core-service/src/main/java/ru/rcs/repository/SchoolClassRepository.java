@@ -10,8 +10,8 @@ import ru.rcs.entity.SchoolClass;
 public interface SchoolClassRepository extends JpaRepository<SchoolClass, String> {
 
   @Query("select sc from SchoolClass sc where "
-       + "lower(sc.name) like concat('%', upper(:search), '%') "
-       + "or lower(sc.systemName) like concat('%', upper(:search), '%')")
+       + "lower(sc.name) like %:search% "
+       + "or lower(sc.systemName) like %:search%")
   List<SchoolClass> find(String search);
 
   List<SchoolClass> findAll();

@@ -19,34 +19,51 @@ public class SubjectServiceImpl implements SubjectService {
   
   @Override
   public List<SubjectDTO> find(String search) {
-    List<Subject> subjects = subjectRepository.find(search);
+    List<Subject> subjects;
+    if(search != null && !search.isEmpty()) {
+      subjects = subjectRepository.find(search);
+    }
+    else {
+      subjects = subjectRepository.findAll();
+    }
     return subjectMapper.toListDto(subjects);
   }
 
   @Override
   public SubjectDTO getById(UUID subjectId) {
-    Subject Subject = subjectRepository.getById(String.valueOf(subjectId));
-    return subjectMapper.toDto(Subject);
+    Subject subject = subjectRepository.getById(String.valueOf(subjectId));
+    return subjectMapper.toDto(subject);
   }
 
   @Override
   public SubjectDTO add(SubjectDTO subjectDTO) {
-    Subject Subject = subjectMapper.fromDto(subjectDTO);
-    Subject addedSubject = subjectRepository.save(Subject);
+    Subject subject = subjectMapper.fromDto(subjectDTO);
+    Subject addedSubject = subjectRepository.save(subject);
     return subjectMapper.toDto(addedSubject);
   }
 
   @Override
   public SubjectDTO modify(UUID subjectId, SubjectDTO subjectDTO) {
-    Subject Subject = subjectMapper.fromDto(subjectDTO);
-    Subject.setId(subjectId);
-    Subject modifiedSubject = subjectRepository.save(Subject);
+    Subject foundSubject = subjectRepository.getById(String.valueOf(subjectId));
+
+    if(subjectDTO.getSystemName() != null) {
+      foundSubject.setSystemName(subjectDTO.getSystemName());
+    }
+    if(subjectDTO.getName() != null) {
+      foundSubject.setName(subjectDTO.getName());
+    }
+    if(subjectDTO.getDescription() != null) {
+      foundSubject.setDescription(subjectDTO.getDescription());
+    }
+
+
+    Subject modifiedSubject = subjectRepository.save(foundSubject);
     return subjectMapper.toDto(modifiedSubject);
   }
 
   @Override
   public void remove(UUID subjectId) {
-    Subject Subject = subjectRepository.getById(String.valueOf(subjectId));
-    subjectRepository.delete(Subject);
+    Subject subject = subjectRepository.getById(String.valueOf(subjectId));
+    subjectRepository.delete(subject);
   }
 }

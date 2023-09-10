@@ -32,6 +32,6 @@ public class SubjectController implements SubjectApi {
 
   @Override
   public ResponseEntity<SubjectDTO> addSubject(SubjectDTO subjectDTO) {
-    return null;
+    return ResponseEntity.ok(subjectService.add(subjectDTO));
   }
 }

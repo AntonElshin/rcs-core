@@ -49,9 +49,19 @@ public class SchoolClassServiceImpl implements SchoolClassService {
   @Override
   @Transactional
   public SchoolClassDTO modify(UUID schoolClassId, SchoolClassDTO schoolClassDTO) {
-    SchoolClass schoolClass = schoolClassMapper.fromDto(schoolClassDTO);
-    schoolClass.setId(schoolClassId);
-    SchoolClass modifiedSchoolClass = schoolClassRepository.save(schoolClass);
+    SchoolClass foundSchoolClass = schoolClassRepository.getById(String.valueOf(schoolClassId));
+
+    if(schoolClassDTO.getSystemName() != null) {
+      foundSchoolClass.setSystemName(schoolClassDTO.getSystemName());
+    }
+    if(schoolClassDTO.getName() != null) {
+      foundSchoolClass.setName(schoolClassDTO.getName());
+    }
+    if(schoolClassDTO.getDescription() != null) {
+      foundSchoolClass.setDescription(schoolClassDTO.getDescription());
+    }
+
+    SchoolClass modifiedSchoolClass = schoolClassRepository.save(foundSchoolClass);
     return schoolClassMapper.toDto(modifiedSchoolClass);
   }
 
