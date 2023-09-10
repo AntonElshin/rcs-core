@@ -14,7 +14,7 @@ paths:
     parameters: [ ]
     get:
       summary: Получение списка классов по параметрам
-      operationId: find
+      operationId: findSchoolClasses
       description: Получение списка классов
       tags:
         - school-classes
@@ -42,7 +42,7 @@ paths:
       - $ref: '#/components/parameters/schoolClassId'
     get:
       summary: Получение класса по идентификатору.
-      operationId: getById
+      operationId: getSchoolClassById
       description: Получение класса по идентификатору.
       tags:
         - school-class
@@ -70,7 +70,7 @@ paths:
           description: Unprocessable Entity (WebDAV)
     put:
       summary: Метод изменяет класс
-      operationId: modify
+      operationId: modifySchoolClass
       description: Метод изменяет класс
       tags:
         - school-class
@@ -107,7 +107,7 @@ paths:
           description: Unprocessable Entity (WebDAV)
     delete:
       summary: Удаление класса по идентификатору
-      operationId: remove
+      operationId: removeSchoolClass
       description: Удаление класса по идентификатору
       tags:
         - school-class
@@ -126,7 +126,7 @@ paths:
     parameters: []
     post:
       summary: Создание класса
-      operationId: add
+      operationId: addSchoolClass
       description: Создание класса
       tags:
         - school-class
@@ -150,6 +150,161 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SchoolClassDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  /subjects:
+    parameters: [ ]
+    get:
+      summary: Получение списка предметов по параметрам
+      operationId: findSubjects
+      description: Получение списка предметов
+      tags:
+        - subjects
+      parameters:
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: OK
+          headers: { }
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SubjectDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 1
+                      systemName: string
+                      name: string
+                      description: string
+  '/subject/{subjectId}':
+    parameters:
+      - $ref: '#/components/parameters/subjectId'
+    get:
+      summary: Получение предмета по идентификатору.
+      operationId: getSubjectById
+      description: Получение предмета по идентификатору.
+      tags:
+        - subject
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubjectDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    put:
+      summary: Метод изменяет предмет
+      operationId: modifySubject
+      description: Метод изменяет предмет
+      tags:
+        - subject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubjectDTO'
+            examples:
+              example-1:
+                value:
+                  id: 1
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubjectDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 1
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    delete:
+      summary: Удаление предмета по идентификатору
+      operationId: removeSubject
+      description: Удаление предмета по идентификатору
+      tags:
+        - subject
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  /subject:
+    parameters: []
+    post:
+      summary: Создание предмета
+      operationId: addSubject
+      description: Создание предмета
+      tags:
+        - subject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubjectDTO'
+            examples:
+              example-1:
+                value:
+                  id: 1
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubjectDTO'
               examples:
                 example-1:
                   value:
@@ -218,6 +373,37 @@ components:
       required:
         - systemName
         - name
+    SubjectDTO:
+      title: SubjectDTO
+      type: object
+      additionalProperties: false
+      description: Класс
+      x-examples:
+        example-1:
+          id: 1
+          systemName: string
+          name: string
+          description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        systemName:
+          type: string
+          description: Системное имя
+          maxLength: 50
+        name:
+          type: string
+          description: Имя
+          maxLength: 50
+        description:
+          type: string
+          description: Описание
+          maxLength: 255
+      required:
+        - systemName
+        - name
   parameters:
     search:
       name: search
@@ -234,6 +420,16 @@ components:
         type: string
         format: uuid
       description: Идентификатор класса
+    subjectId:
+      name: subjectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор предмета
 tags:
   - name: school-classes
   - name: school-class
+  - name: subjects
+  - name: subject

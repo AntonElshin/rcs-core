@@ -15,24 +15,24 @@ public class SchoolClassController implements SchoolClassApi {
   private final SchoolClassService schoolClassService;
 
   @Override
-  public ResponseEntity<SchoolClassDTO> getById(UUID schoolClassId) {
+  public ResponseEntity<SchoolClassDTO> getSchoolClassById(UUID schoolClassId) {
     return ResponseEntity.ok(schoolClassService.getById(schoolClassId));
   }
 
   @Override
-  public ResponseEntity<SchoolClassDTO> add(SchoolClassDTO schoolClassDTO) {
-    return ResponseEntity.ok(schoolClassService.add(schoolClassDTO));
-  }
-
-  @Override
-  public ResponseEntity<SchoolClassDTO> modify(UUID schoolClassId,
+  public ResponseEntity<SchoolClassDTO> modifySchoolClass(UUID schoolClassId,
       SchoolClassDTO schoolClassDTO) {
     return ResponseEntity.ok(schoolClassService.modify(schoolClassId, schoolClassDTO));
   }
 
   @Override
-  public ResponseEntity<Void> remove(UUID schoolClassId) {
+  public ResponseEntity<Void> removeSchoolClass(UUID schoolClassId) {
     schoolClassService.remove(schoolClassId);
     return ResponseEntity.ok(null);
+  }
+
+  @Override
+  public ResponseEntity<SchoolClassDTO> addSchoolClass(SchoolClassDTO schoolClassDTO) {
+    return ResponseEntity.ok(schoolClassService.add(schoolClassDTO));
   }
 }

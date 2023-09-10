@@ -15,7 +15,7 @@ public class SchoolClassesController implements SchoolClassesApi {
   private final SchoolClassService schoolClassService;
 
   @Override
-  public ResponseEntity<List<SchoolClassDTO>> find(String search) {
-    return null;
+  public ResponseEntity<List<SchoolClassDTO>> findSchoolClasses(String search) {
+    return ResponseEntity.ok(schoolClassService.find(search));
   }
 }
