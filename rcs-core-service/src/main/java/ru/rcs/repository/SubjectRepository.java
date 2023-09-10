@@ -14,4 +14,6 @@ public interface SubjectRepository extends JpaRepository<Subject, String> {
       + "or lower(sc.systemName) like concat('%', upper(:search), '%')")
   List<Subject> find(String search);
 
+  List<Subject> findAll();
+
 }

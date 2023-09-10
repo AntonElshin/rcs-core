@@ -14,4 +14,6 @@ public interface SchoolClassRepository extends JpaRepository<SchoolClass, String
        + "or lower(sc.systemName) like concat('%', upper(:search), '%')")
   List<SchoolClass> find(String search);
 
+  List<SchoolClass> findAll();
+
 }

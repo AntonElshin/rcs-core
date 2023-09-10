@@ -1,5 +1,6 @@
 package ru.rcs.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,13 @@ public class SchoolClassServiceImpl implements SchoolClassService {
 
   @Override
   public List<SchoolClassDTO> find(String search) {
-    List<SchoolClass> schoolClasses = schoolClassRepository.find(search);
+    List<SchoolClass> schoolClasses;
+    if(search != null && !search.isEmpty()) {
+      schoolClasses = schoolClassRepository.find(search);
+    }
+    else {
+      schoolClasses = schoolClassRepository.findAll();
+    }
     return schoolClassMapper.toListDto(schoolClasses);
   }
 
