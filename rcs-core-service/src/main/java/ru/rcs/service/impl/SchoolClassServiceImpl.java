@@ -43,7 +43,7 @@ public class SchoolClassServiceImpl implements SchoolClassService {
   @Transactional
   public SchoolClassDTO modify(UUID schoolClassId, SchoolClassDTO schoolClassDTO) {
     SchoolClass schoolClass = schoolClassMapper.fromDto(schoolClassDTO);
-    schoolClass.setId(schoolClassId.toString());
+    schoolClass.setId(schoolClassId);
     SchoolClass modifiedSchoolClass = schoolClassRepository.save(schoolClass);
     return schoolClassMapper.toDto(modifiedSchoolClass);
   }

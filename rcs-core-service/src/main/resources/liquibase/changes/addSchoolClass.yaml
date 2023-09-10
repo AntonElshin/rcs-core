@@ -4,7 +4,7 @@ databaseChangeLog:
       author: aelshin
       changes:
         - createTable:
-            tableName: class
+            tableName: school_class
             remarks: Предмет
             columns:
               - column:

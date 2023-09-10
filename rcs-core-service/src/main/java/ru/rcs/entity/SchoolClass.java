@@ -1,5 +1,6 @@
 package ru.rcs.entity;
 
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class SchoolClass {
   @NotNull
   @GeneratedValue(generator = "system-uuid")
   @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-  private String id;
+  private UUID id;
 
   /**
    * Системное название

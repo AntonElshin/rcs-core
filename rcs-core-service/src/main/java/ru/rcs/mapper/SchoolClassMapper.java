@@ -7,7 +7,7 @@ import org.mapstruct.NullValueMappingStrategy;
 import ru.rcs.dto.SchoolClassDTO;
 import ru.rcs.entity.SchoolClass;
 
-@Mapper(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL, imports = {LocalDateTime.class})
+@Mapper(componentModel = "spring", nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL, imports = {LocalDateTime.class})
 public interface SchoolClassMapper {
 
   SchoolClass fromDto(SchoolClassDTO schoolClassDTO);
