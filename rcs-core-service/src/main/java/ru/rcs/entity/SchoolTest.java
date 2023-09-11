@@ -1,10 +1,11 @@
 package ru.rcs.entity;
 
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * Предметы
+ * Тесты
  */
 @Getter
 @Setter
@@ -23,11 +24,11 @@ import org.hibernate.annotations.GenericGenerator;
 @ToString
 @Accessors(chain = true)
 @RequiredArgsConstructor
-@Table(name = "subject")
-public class Subject {
+@Table(name = "school_test")
+public class SchoolTest {
 
   /**
-   * Идентификатор предмета
+   * Идентификатор теста
    */
   @Id
   @NotNull
@@ -36,24 +37,26 @@ public class Subject {
   private String id;
 
   /**
-   * Системное название
+   * ID Школьного класса
    */
   @NotNull
-  @Column(name = "system_name")
-  private String systemName;
+  @OneToOne
+  @JoinColumn(name = "school_class_id")
+  private SchoolClass schoolClass;
 
   /**
-   * Название
+   * ID Предмета
    */
   @NotNull
-  @Column(name = "name")
-  private String name;
+  @OneToOne
+  @JoinColumn(name = "subject_id")
+  private Subject subject;
 
   /**
-   * Описание
+   * Отображаемое имя
    */
   @NotNull
-  @Column(name = "description")
-  private String description;
+  @Column(name = "display_name")
+  private String displayName;
 
 }

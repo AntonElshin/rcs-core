@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: 1.0.0-createTestTable
+      id: 1.0.0-createSchoolTestTable
       author: aelshin
       changes:
         - createTable:
-            tableName: test
+            tableName: school_test
             remarks: Тест
             columns:
               - column:
@@ -20,7 +20,7 @@ databaseChangeLog:
                     nullable: false
                     foreignKeyName: school_class_id_fk
                     references: school_class(id)
-                  name: class_id
+                  name: school_class_id
                   type: VARCHAR(36)
                   remarks: Класс
               - column:

@@ -15,7 +15,7 @@ paths:
     get:
       summary: Получение списка классов по параметрам
       operationId: findSchoolClasses
-      description: Получение списка классов
+      description: Получение списка классов по параметрам
       tags:
         - school-classes
       parameters:
@@ -33,7 +33,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: 1
+                    - id: b06e7544-a62a-42a3-b937-73508dae48c7
                       systemName: string
                       name: string
                       description: string
@@ -41,9 +41,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/schoolClassId'
     get:
-      summary: Получение класса по идентификатору.
+      summary: Получение класса по идентификатору
       operationId: getSchoolClassById
-      description: Получение класса по идентификатору.
+      description: Получение класса по идентификатору
       tags:
         - school-class
       responses:
@@ -56,7 +56,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 1
+                    id: b06e7544-a62a-42a3-b937-73508dae48c7
                     systemName: string
                     name: string
                     description: string
@@ -83,7 +83,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: 1
+                  id: b06e7544-a62a-42a3-b937-73508dae48c7
                   systemName: string
                   name: string
                   description: string
@@ -97,7 +97,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 1
+                    id: b06e7544-a62a-42a3-b937-73508dae48c7
                     systemName: string
                     name: string
                     description: string
@@ -139,7 +139,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: 1
+                  id: b06e7544-a62a-42a3-b937-73508dae48c7
                   systemName: string
                   name: string
                   description: string
@@ -153,7 +153,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 1
+                    id: b06e7544-a62a-42a3-b937-73508dae48c7
                     systemName: string
                     name: string
                     description: string
@@ -170,7 +170,7 @@ paths:
     get:
       summary: Получение списка предметов по параметрам
       operationId: findSubjects
-      description: Получение списка предметов
+      description: Получение списка предметов по параметрам
       tags:
         - subjects
       parameters:
@@ -188,7 +188,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: 1
+                    - id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
                       systemName: string
                       name: string
                       description: string
@@ -196,9 +196,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/subjectId'
     get:
-      summary: Получение предмета по идентификатору.
+      summary: Получение предмета по идентификатору
       operationId: getSubjectById
-      description: Получение предмета по идентификатору.
+      description: Получение предмета по идентификатору
       tags:
         - subject
       responses:
@@ -211,7 +211,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 1
+                    id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
                     systemName: string
                     name: string
                     description: string
@@ -238,7 +238,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: 1
+                  id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
                   systemName: string
                   name: string
                   description: string
@@ -252,7 +252,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 1
+                    id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
                     systemName: string
                     name: string
                     description: string
@@ -308,10 +308,198 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 1
+                    id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
                     systemName: string
                     name: string
                     description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  /school-tests:
+    parameters: [ ]
+    get:
+      summary: Получение списка школьных тестов по параметрам
+      operationId: findSchoolTests
+      description: Получение списка школьных тестов по параметрам
+      tags:
+        - school-tests
+      parameters:
+        - $ref: '#/components/parameters/schoolTestClassId'
+        - $ref: '#/components/parameters/schoolTestSubjectId'
+      responses:
+        '200':
+          description: OK
+          headers: { }
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SchoolTestResDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+                      schoolClass:
+                        id: b06e7544-a62a-42a3-b937-73508dae48c7
+                        systemName: string
+                        name: string
+                        description: string
+                      subject:
+                        id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                        systemName: string
+                        name: string
+                        description: string
+                      displayName: string
+  '/school-test/{schoolTestId}':
+    parameters:
+      - $ref: '#/components/parameters/schoolTestId'
+    get:
+      summary: Получение школьного теста по идентификатору
+      operationId: getSchoolTestById
+      description: Получение школьного теста по идентификатору
+      tags:
+        - school-test
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolTestResDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+                      schoolClass:
+                        id: b06e7544-a62a-42a3-b937-73508dae48c7
+                        systemName: string
+                        name: string
+                        description: string
+                      subject:
+                        id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                        systemName: string
+                        name: string
+                        description: string
+                      displayName: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    put:
+      summary: Метод изменяет школьный тест
+      operationId: modifySchoolTest
+      description: Метод изменяет школьный тест
+      tags:
+        - school-test
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchoolTestReqDTO'
+            examples:
+              example-1:
+                value:
+                  id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                  schoolClassId: string
+                  subjectId: string
+                  displayName: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolTestResDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+                      schoolClass:
+                        id: b06e7544-a62a-42a3-b937-73508dae48c7
+                        systemName: string
+                        name: string
+                        description: string
+                      subject:
+                        id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                        systemName: string
+                        name: string
+                        description: string
+                      displayName: string
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    delete:
+      summary: Удаление школьного теста по идентификатору
+      operationId: removeSchoolTest
+      description: Удаление школьного теста по идентификатору
+      tags:
+        - test
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  /school-test:
+    parameters: []
+    post:
+      summary: Создание школьного теста
+      operationId: addSchoolTest
+      description: Создание школьного теста
+      tags:
+        - test
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchoolTestReqDTO'
+            examples:
+              example-1:
+                value:
+                  id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                  schoolClassId: string
+                  subjectId: string
+                  displayName: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolTestResDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+                      schoolClass:
+                        id: b06e7544-a62a-42a3-b937-73508dae48c7
+                        systemName: string
+                        name: string
+                        description: string
+                      subject:
+                        id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                        systemName: string
+                        name: string
+                        description: string
+                      displayName: string
         '400':
           description: Bad Request
           content:
@@ -349,7 +537,7 @@ components:
       description: Класс
       x-examples:
         example-1:
-          id: 1
+          id: b06e7544-a62a-42a3-b937-73508dae48c7
           systemName: string
           name: string
           description: string
@@ -380,7 +568,7 @@ components:
       description: Класс
       x-examples:
         example-1:
-          id: 1
+          id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
           systemName: string
           name: string
           description: string
@@ -404,6 +592,69 @@ components:
       required:
         - systemName
         - name
+    SchoolTestReqDTO:
+      title: SchoolTestReqDTO
+      type: object
+      additionalProperties: false
+      description: Входящий объект с информацией по школьному тесту
+      x-examples:
+        example-1:
+          id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+          schoolClassId: b06e7544-a62a-42a3-b937-73508dae48c7
+          subjectId: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+          displayName: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор теста
+          format: uuid
+        schoolClassId:
+          type: string
+          description: Уникальный идентификатор класса
+          format: uuid
+        subjectId:
+          type: string
+          description: Уникальный идентификатор предмет
+          format: uuid
+        description:
+          type: string
+          description: Отображаемое имя
+          maxLength: 255
+      required:
+        - schoolClassId
+        - subjectId
+    SchoolTestResDTO:
+      title: SchoolTestResDTO
+      type: object
+      additionalProperties: false
+      description: Исходящий объект с информацией по школьному тесту
+      x-examples:
+        example-1:
+          id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+          schoolClass:
+            id: b06e7544-a62a-42a3-b937-73508dae48c7
+            systemName: string
+            name: string
+            description: string
+          subject:
+            id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+            systemName: string
+            name: string
+            description: string
+          displayName: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        schoolClass:
+          $ref: '#/components/schemas/SchoolClassDTO'
+        subject:
+          $ref: '#/components/schemas/SubjectDTO'
+        displayName:
+          type: string
+          description: Отображаемое название
+          maxLength: 255
   parameters:
     search:
       name: search
@@ -412,6 +663,22 @@ components:
         type: string
         maxLength: 50
       description: Строка для поиска
+    schoolTestClassId:
+      name: schoolTestClassId
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор класса
+    schoolTestSubjectId:
+      name: schoolTestSubjectId
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор предмета
     schoolClassId:
       name: schoolClassId
       in: path
@@ -428,8 +695,18 @@ components:
         type: string
         format: uuid
       description: Идентификатор предмета
+    schoolTestId:
+      name: schoolTestId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор теста
 tags:
   - name: school-classes
   - name: school-class
   - name: subjects
   - name: subject
+  - name: school-tests
+  - name: school-test

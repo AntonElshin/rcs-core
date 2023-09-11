@@ -17,6 +17,10 @@ spring:
     generate-ddl: false
   liquibase:
     change-log: classpath:liquibase/changelog.yaml
+  messages:
+    basename: i18n/messages
 
 security:
   enabled: false
+
+language-tag: "ru-RU"
