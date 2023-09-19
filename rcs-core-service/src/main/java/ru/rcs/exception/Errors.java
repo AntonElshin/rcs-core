@@ -12,7 +12,10 @@ public enum Errors {
     SUBJECT_NOT_FOUND_BY_ID(141, "%s"),
 
     MISSING_REQUIRED_PARAM_SCHOOL_TEST_ID(160, "Missing required param school test id"),
-    SCHOOL_TEST_FOUND_BY_ID(161, "%s");
+    SCHOOL_TEST_FOUND_BY_ID(161, "%s"),
+
+    OBJECT_SERIALIZATION_ERROR(1001, "%s"),
+    OBJECT_DESERIALIZATION_ERROR(1002, "%s");
 
     private final Integer code;
     private final String message;
