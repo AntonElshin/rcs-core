@@ -1,5 +1,6 @@
 package ru.rcs.web;
 
+import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,13 @@ public class SubjectController implements SubjectApi {
   private final SubjectService subjectService;
 
   @Override
-  public ResponseEntity<SubjectDTO> getSubjectById(UUID subjectId) {
-    return ResponseEntity.ok(subjectService.getById(subjectId));
+  public ResponseEntity<List<SubjectDTO>> findSubjects(String search) {
+    return ResponseEntity.ok(subjectService.find(search));
+  }
+
+  @Override
+  public ResponseEntity<SubjectDTO> findSubjectById(UUID subjectId) {
+    return ResponseEntity.ok(subjectService.findById(subjectId));
   }
 
   @Override

@@ -1,5 +1,6 @@
 package ru.rcs.web;
 
+import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,13 @@ public class SchoolClassController implements SchoolClassApi {
   private final SchoolClassService schoolClassService;
 
   @Override
-  public ResponseEntity<SchoolClassDTO> getSchoolClassById(UUID schoolClassId) {
-    return ResponseEntity.ok(schoolClassService.getById(schoolClassId));
+  public ResponseEntity<List<SchoolClassDTO>> findSchoolClasses(String search) {
+    return ResponseEntity.ok(schoolClassService.find(search));
+  }
+
+  @Override
+  public ResponseEntity<SchoolClassDTO> findSchoolClassById(UUID schoolClassId) {
+    return ResponseEntity.ok(schoolClassService.findById(schoolClassId));
   }
 
   @Override

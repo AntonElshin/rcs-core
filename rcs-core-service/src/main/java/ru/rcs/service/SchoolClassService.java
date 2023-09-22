@@ -6,7 +6,7 @@ import ru.rcs.dto.SchoolClassDTO;
 
 public interface SchoolClassService {
   List<SchoolClassDTO> find(String search);
-  SchoolClassDTO getById(UUID schoolClassId);
+  SchoolClassDTO findById(UUID schoolClassId);
   SchoolClassDTO add(SchoolClassDTO schoolClassDTO);
   SchoolClassDTO modify(UUID schoolClassId, SchoolClassDTO schoolClassDTO);
   void remove(UUID schoolClassId);

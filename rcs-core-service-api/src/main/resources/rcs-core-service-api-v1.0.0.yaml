@@ -10,14 +10,14 @@ info:
 servers:
   - url: 'http://localhost:8080'
 paths:
-  /school-classes:
-    parameters: [ ]
+  /school-class:
+    parameters: []
     get:
       summary: Получение списка классов по параметрам
       operationId: findSchoolClasses
       description: Получение списка классов по параметрам
       tags:
-        - school-classes
+        - school-class
       parameters:
         - $ref: '#/components/parameters/search'
       responses:
@@ -37,12 +37,53 @@ paths:
                       systemName: string
                       name: string
                       description: string
+    post:
+      summary: Создание класса
+      operationId: addSchoolClass
+      description: Создание класса
+      tags:
+        - school-class
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchoolClassDTO'
+            examples:
+              example-1:
+                value:
+                  id: b06e7544-a62a-42a3-b937-73508dae48c7
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolClassDTO'
+              examples:
+                example-1:
+                  value:
+                    id: b06e7544-a62a-42a3-b937-73508dae48c7
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
   '/school-class/{schoolClassId}':
     parameters:
       - $ref: '#/components/parameters/schoolClassId'
     get:
       summary: Получение класса по идентификатору
-      operationId: getSchoolClassById
+      operationId: findSchoolClassById
       description: Получение класса по идентификатору
       tags:
         - school-class
@@ -122,57 +163,14 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
         '422':
           description: Unprocessable Entity (WebDAV)
-  /school-class:
+  /subject:
     parameters: []
-    post:
-      summary: Создание класса
-      operationId: addSchoolClass
-      description: Создание класса
-      tags:
-        - school-class
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SchoolClassDTO'
-            examples:
-              example-1:
-                value:
-                  id: b06e7544-a62a-42a3-b937-73508dae48c7
-                  systemName: string
-                  name: string
-                  description: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SchoolClassDTO'
-              examples:
-                example-1:
-                  value:
-                    id: b06e7544-a62a-42a3-b937-73508dae48c7
-                    systemName: string
-                    name: string
-                    description: string
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorDTO'
-        '422':
-          description: Unprocessable Entity (WebDAV)
-  /subjects:
-    parameters: [ ]
     get:
       summary: Получение списка предметов по параметрам
       operationId: findSubjects
       description: Получение списка предметов по параметрам
       tags:
-        - subjects
+        - subject
       parameters:
         - $ref: '#/components/parameters/search'
       responses:
@@ -192,12 +190,53 @@ paths:
                       systemName: string
                       name: string
                       description: string
+    post:
+      summary: Создание предмета
+      operationId: addSubject
+      description: Создание предмета
+      tags:
+        - subject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubjectDTO'
+            examples:
+              example-1:
+                value:
+                  id: 1
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubjectDTO'
+              examples:
+                example-1:
+                  value:
+                    id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
   '/subject/{subjectId}':
     parameters:
       - $ref: '#/components/parameters/subjectId'
     get:
       summary: Получение предмета по идентификатору
-      operationId: getSubjectById
+      operationId: findSubjectById
       description: Получение предмета по идентификатору
       tags:
         - subject
@@ -277,57 +316,14 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
         '422':
           description: Unprocessable Entity (WebDAV)
-  /subject:
+  /school-test:
     parameters: []
-    post:
-      summary: Создание предмета
-      operationId: addSubject
-      description: Создание предмета
-      tags:
-        - subject
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SubjectDTO'
-            examples:
-              example-1:
-                value:
-                  id: 1
-                  systemName: string
-                  name: string
-                  description: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SubjectDTO'
-              examples:
-                example-1:
-                  value:
-                    id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
-                    systemName: string
-                    name: string
-                    description: string
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorDTO'
-        '422':
-          description: Unprocessable Entity (WebDAV)
-  /school-tests:
-    parameters: [ ]
     get:
       summary: Получение списка школьных тестов по параметрам
       operationId: findSchoolTests
       description: Получение списка школьных тестов по параметрам
       tags:
-        - school-tests
+        - school-test
       parameters:
         - $ref: '#/components/parameters/schoolTestClassId'
         - $ref: '#/components/parameters/schoolTestSubjectId'
@@ -356,12 +352,61 @@ paths:
                         name: string
                         description: string
                       displayName: string
+    post:
+      summary: Создание школьного теста
+      operationId: addSchoolTest
+      description: Создание школьного теста
+      tags:
+        - school-test
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchoolTestReqDTO'
+            examples:
+              example-1:
+                value:
+                  id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                  schoolClassId: string
+                  subjectId: string
+                  displayName: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolTestResDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+                      schoolClass:
+                        id: b06e7544-a62a-42a3-b937-73508dae48c7
+                        systemName: string
+                        name: string
+                        description: string
+                      subject:
+                        id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                        systemName: string
+                        name: string
+                        description: string
+                      displayName: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
   '/school-test/{schoolTestId}':
     parameters:
       - $ref: '#/components/parameters/schoolTestId'
     get:
       summary: Получение школьного теста по идентификатору
-      operationId: getSchoolTestById
+      operationId: findSchoolTestById
       description: Получение школьного теста по идентификатору
       tags:
         - school-test
@@ -445,61 +490,10 @@ paths:
       operationId: removeSchoolTest
       description: Удаление школьного теста по идентификатору
       tags:
-        - test
+        - school-test
       responses:
         '200':
           description: OK
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorDTO'
-        '422':
-          description: Unprocessable Entity (WebDAV)
-  /school-test:
-    parameters: []
-    post:
-      summary: Создание школьного теста
-      operationId: addSchoolTest
-      description: Создание школьного теста
-      tags:
-        - test
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SchoolTestReqDTO'
-            examples:
-              example-1:
-                value:
-                  id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
-                  schoolClassId: string
-                  subjectId: string
-                  displayName: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SchoolTestResDTO'
-              examples:
-                example-1:
-                  value:
-                    - id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
-                      schoolClass:
-                        id: b06e7544-a62a-42a3-b937-73508dae48c7
-                        systemName: string
-                        name: string
-                        description: string
-                      subject:
-                        id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
-                        systemName: string
-                        name: string
-                        description: string
-                      displayName: string
         '400':
           description: Bad Request
           content:
@@ -616,7 +610,7 @@ components:
           type: string
           description: Уникальный идентификатор предмет
           format: uuid
-        description:
+        displayName:
           type: string
           description: Отображаемое имя
           maxLength: 255

@@ -7,9 +7,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.rcs.dto.SchoolClassDTO;
+import ru.rcs.entity.QSchoolTest;
 import ru.rcs.entity.SchoolClass;
+import ru.rcs.entity.SchoolTest;
+import ru.rcs.exception.BusinessException;
+import ru.rcs.exception.Errors;
 import ru.rcs.mapper.SchoolClassMapper;
 import ru.rcs.repository.SchoolClassRepository;
+import ru.rcs.repository.SchoolTestRepository;
 import ru.rcs.service.SchoolClassService;
 
 @Service
@@ -18,8 +23,10 @@ public class SchoolClassServiceImpl implements SchoolClassService {
 
   private final SchoolClassRepository schoolClassRepository;
   private final SchoolClassMapper schoolClassMapper;
+  private final SchoolTestRepository schoolTestRepository;
 
   @Override
+  @Transactional(readOnly = true)
   public List<SchoolClassDTO> find(String search) {
     List<SchoolClass> schoolClasses;
     if(search != null && !search.isEmpty()) {
@@ -32,8 +39,8 @@ public class SchoolClassServiceImpl implements SchoolClassService {
   }
 
   @Override
-  @Transactional
-  public SchoolClassDTO getById(UUID schoolClassId) {
+  @Transactional(readOnly = true)
+  public SchoolClassDTO findById(UUID schoolClassId) {
     SchoolClass schoolClass = schoolClassRepository.getById(String.valueOf(schoolClassId));
     return schoolClassMapper.toDto(schoolClass);
   }
@@ -42,33 +49,35 @@ public class SchoolClassServiceImpl implements SchoolClassService {
   @Transactional
   public SchoolClassDTO add(SchoolClassDTO schoolClassDTO) {
     SchoolClass schoolClass = schoolClassMapper.fromDto(schoolClassDTO);
-    SchoolClass addedSchoolClass = schoolClassRepository.save(schoolClass);
-    return schoolClassMapper.toDto(addedSchoolClass);
+    schoolClass = schoolClassRepository.save(schoolClass);
+    return schoolClassMapper.toDto(schoolClass);
   }
 
   @Override
   @Transactional
   public SchoolClassDTO modify(UUID schoolClassId, SchoolClassDTO schoolClassDTO) {
-    SchoolClass foundSchoolClass = schoolClassRepository.getById(String.valueOf(schoolClassId));
+    SchoolClass schoolClass = schoolClassRepository.getById(String.valueOf(schoolClassId));
 
-    if(schoolClassDTO.getSystemName() != null) {
-      foundSchoolClass.setSystemName(schoolClassDTO.getSystemName());
-    }
-    if(schoolClassDTO.getName() != null) {
-      foundSchoolClass.setName(schoolClassDTO.getName());
-    }
-    if(schoolClassDTO.getDescription() != null) {
-      foundSchoolClass.setDescription(schoolClassDTO.getDescription());
-    }
+    schoolClass.setSystemName(schoolClassDTO.getSystemName());
+    schoolClass.setName(schoolClassDTO.getName());
+    schoolClass.setDescription(schoolClassDTO.getDescription());
 
-    SchoolClass modifiedSchoolClass = schoolClassRepository.save(foundSchoolClass);
-    return schoolClassMapper.toDto(modifiedSchoolClass);
+    schoolClass = schoolClassRepository.save(schoolClass);
+    return schoolClassMapper.toDto(schoolClass);
   }
 
   @Override
   @Transactional
   public void remove(UUID schoolClassId) {
     SchoolClass schoolClass = schoolClassRepository.getById(String.valueOf(schoolClassId));
+
+    //TODO: можно проверять по констрейнту в БД
+    List<SchoolTest> schoolTests = schoolTestRepository.findAll(QSchoolTest.schoolTest.schoolClass.id.eq(String.valueOf(schoolClassId)));
+
+    if(schoolTests.size() > 0) {
+      throw new BusinessException(Errors.SCHOOL_CLASS_HAS_LINKED_TESTS, schoolClassId);
+    }
+
     schoolClassRepository.delete(schoolClass);
   }
 }
