@@ -8,20 +8,22 @@ databaseChangeLog:
   - include:
       file: liquibase/changes/addImage.yaml
   - include:
-      file: liquibase/changes/addQuestionAnswerType.yaml
+      file: liquibase/changes/addAnswerType.yaml
   - include:
-      file: liquibase/changes/addQuestionAnswerPosition.yaml
+      file: liquibase/changes/addAnswerPosition.yaml
   - include:
-      file: liquibase/changes/addQuestion.yaml
+      file: liquibase/changes/addTask.yaml
   - include:
-      file: liquibase/changes/addQuestionHeader.yaml
+      file: liquibase/changes/addTaskText.yaml
   - include:
-      file: liquibase/changes/addQuestionReadText.yaml
+      file: liquibase/changes/addTaskImage.yaml
   - include:
-      file: liquibase/changes/addQuestionImage.yaml
+      file: liquibase/changes/addTaskProposedAnswer.yaml
   - include:
-      file: liquibase/changes/addQuestionProposedAnswer.yaml
+      file: liquibase/changes/addTaskCorrectTypingAnswer.yaml
   - include:
-      file: liquibase/changes/addQuestionCorrectTypingAnswer.yaml
+      file: liquibase/changes/addTaskQuestion.yaml
   - include:
-      file: liquibase/changes/addQuestionCorrectChooseAnswer.yaml
+      file: liquibase/changes/addTaskQuestionImage.yaml
+  - include:
+      file: liquibase/changes/addTaskQuestionCorrectTypingAnswer.yaml
