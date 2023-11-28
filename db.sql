@@ -1,3 +1,5 @@
+-- https://rcs-ui-8ae61.firebaseapp.com
+
 -- Классы
 select * from school_class;
 
