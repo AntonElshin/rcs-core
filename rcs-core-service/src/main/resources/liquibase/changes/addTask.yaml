@@ -20,7 +20,7 @@ databaseChangeLog:
                     nullable: false
                     foreignKeyName: school_test_id_fk
                     references: school_test(id)
-                  name: test_id
+                  name: school_test_id
                   type: VARCHAR(36)
                   remarks: Тест
               - column:
@@ -39,15 +39,13 @@ databaseChangeLog:
                   remarks: Тип ответа на задание
               - column:
                   constraints:
-                    nullable: true
-                    foreignKeyName: answer_position_id_fk
-                    references: answer_position(id)
-                  name: answer_position_id
-                  type: VARCHAR(36)
-                  remarks: Позиция ответа
+                    nullable: false
+                  name: task_statement
+                  type: VARCHAR(1024)
+                  remarks: Формулировка задания
               - column:
                   constraints:
-                    nullable: false
-                  name: task_header
+                    nullable: true
+                  name: task_hint
                   type: VARCHAR(1024)
-                  remarks: Заголовок задания
+                  remarks: Подсказка задания

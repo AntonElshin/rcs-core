@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.0-createTaskAnswerTypingFormatTable
+      author: aelshin
+      changes:
+        - createTable:
+            tableName: task_answer_typing_format
+            remarks: Формат ответов на задания с типом typing
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: task_answer_typing_format_id_pkey
+                  name: id
+                  type: VARCHAR(36)
+                  remarks: Идентификатор
+              - column:
+                  constraints:
+                    nullable: false
+                    foreignKeyName: task_id_fk
+                    references: task(id)
+                  name: task_id
+                  type: VARCHAR(36)
+                  remarks: Задания
+              - column:
+                  constraints:
+                    nullable: true
+                    foreignKeyName: answer_typing_format_id_fk
+                    references: answer_typing_format(id)
+                  name: answer_typing_format_id
+                  type: VARCHAR(36)
+                  remarks: Формат ответа на задание

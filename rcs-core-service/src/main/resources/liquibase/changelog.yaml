@@ -12,9 +12,17 @@ databaseChangeLog:
   - include:
       file: liquibase/changes/addAnswerPosition.yaml
   - include:
+      file: liquibase/changes/addAnswerChooseType.yaml
+  - include:
+      file: liquibase/changes/addAnswerChooseColor.yaml
+  - include:
+      file: liquibase/changes/addAnswerTypingFormat.yaml
+  - include:
       file: liquibase/changes/addTask.yaml
   - include:
       file: liquibase/changes/addTaskText.yaml
+  - include:
+      file: liquibase/changes/addTaskAnswerPosition.yaml
   - include:
       file: liquibase/changes/addTaskImage.yaml
   - include:
@@ -26,4 +34,10 @@ databaseChangeLog:
   - include:
       file: liquibase/changes/addTaskQuestionImage.yaml
   - include:
+      file: liquibase/changes/addTaskAnswerTypingFormat.yaml
+  - include:
       file: liquibase/changes/addTaskQuestionCorrectTypingAnswer.yaml
+  - include:
+      file: liquibase/changes/addTaskAnswerChooseType.yaml
+  - include:
+      file: liquibase/changes/addTaskAnswerChooseColor.yaml
