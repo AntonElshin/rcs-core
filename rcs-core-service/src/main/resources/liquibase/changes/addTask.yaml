@@ -49,3 +49,9 @@ databaseChangeLog:
                   name: task_hint
                   type: VARCHAR(1024)
                   remarks: Подсказка задания
+              - column:
+                  constraints:
+                    nullable: true
+                  name: task_question_answer_quantity
+                  type: NUMBER(2)
+                  remarks: Количество ответов на вопрос
