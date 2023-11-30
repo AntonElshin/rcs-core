@@ -1,13 +1,16 @@
 package ru.rcs;
 
+import java.util.UUID;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 class RcsCoreServiceApplicationTests {
 
   @Test
-  void contextLoads() {
+  void generateUUID() {
+    UUID uuid = UUID.randomUUID();
+    String uuidAsString = uuid.toString();
+
+    System.out.println("Your UUID is: " + uuidAsString);
   }
 
 }

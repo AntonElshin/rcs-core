@@ -70,51 +70,95 @@ insert into view_type values ('a6871068-80db-4cd6-9f2c-d526e5edcc03', 'table', '
 -- Задания тестов
 select * from task;
 
+/*
+'c98d26b4-2f09-4b40-a020-72f2e3f877d8', 'read'
+'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'typing'
+'402375b9-ffa6-42dd-ac57-8e5415f0b821', 'choose'
+ */
+
 insert into task values ('6c552069-874a-4335-94b7-62cb7fb32a75', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 1, 'c98d26b4-2f09-4b40-a020-72f2e3f877d8', 'Прочитай внимательно текст', null, null);
 insert into task values ('c5638830-dd2c-49b0-8fb1-8b06b1ae97b2', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 2, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Ответь на вопросы', null, 1);
 insert into task values ('de18553e-2002-416e-9b93-b57bcb830007', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 3, '402375b9-ffa6-42dd-ac57-8e5415f0b821', 'Найди предложения к картинке и подчеркни его', null, null);
 insert into task values ('75ac4db2-52d5-40dd-ab5c-d7ae8edf5a96', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 4, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Пронумеруй по порядку предложения', null, 1);
 insert into task values ('3e47544f-b9bb-4d63-b1b3-b4910b4c550d', '9d565bdd-b1fb-44eb-af50-7490555b5708', 1, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Подпиши части тела мальчика.', null, 1);
 insert into task values ('2a035365-566a-45d5-b3e9-524758d2ca94', '9d565bdd-b1fb-44eb-af50-7490555b5708', 2, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Прочитай слова. Запиши ответы в таблицу цифрой.', '1) осязание 2) обоняние 3) вкус 4) слух 5) зрение', 1);
+insert into task values ('7a8bf3f0-9f84-4b07-a5d0-58c8404af5ef', '9d565bdd-b1fb-44eb-af50-7490555b5708', 3, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Раздели птиц на две группы:', 'курица, голубь, ворона, петух, воробей, индюк, дрозды.', 7);
 
 -- Тексты заданий с типом ответа read
 select * from task_text;
+select * from task;
 
 insert into task_text values ('93d41e1e-ef67-435a-87a0-2394b7cbef0d', '6c552069-874a-4335-94b7-62cb7fb32a75', 'Встреча', 'Илья катался на лыжах. Он заехал далеко в лес. Тут мальчик заметил большую рыжую кошку. Она лежала на дереве. У кошки были зелёные глаза и кисточки на ушах. Сильные лапы впились в ствол. Это была рысь. Рысь прыгнула в снег. Илья затих. Рысь удалилась в лес.');
 
 -- Позиции ответов заданий с типами typing и choose
 select * from task_answer_position;
+select * from task;
+
+/*
+'2b9ade7e-f3b6-4d23-83f8-8c2f10170e0f', 'right'
+'ea5f9f92-4378-435d-bdce-8af8b8c9aa12', 'left'
+'d573ca82-eec8-4192-838a-26b66e57c5dc', 'below'
+ */
 
 insert into task_answer_position values ('70de5ddf-d74e-4c5e-8ce0-e091015c4445', 'c5638830-dd2c-49b0-8fb1-8b06b1ae97b2', '2b9ade7e-f3b6-4d23-83f8-8c2f10170e0f');
 insert into task_answer_position values ('9e8c2a19-a13d-4d0a-87fe-60313c808c2b', 'de18553e-2002-416e-9b93-b57bcb830007', 'd573ca82-eec8-4192-838a-26b66e57c5dc');
 insert into task_answer_position values ('a26386ca-50ff-4b19-b2d9-499cd06073ee', '75ac4db2-52d5-40dd-ab5c-d7ae8edf5a96', 'ea5f9f92-4378-435d-bdce-8af8b8c9aa12');
 insert into task_answer_position values ('1ef09e8f-f288-4551-8d99-cf7a54446532', '3e47544f-b9bb-4d63-b1b3-b4910b4c550d', '2b9ade7e-f3b6-4d23-83f8-8c2f10170e0f');
+insert into task_answer_position values ('d87b04b2-e4c7-43e7-8599-c753a80cddb2', '2a035365-566a-45d5-b3e9-524758d2ca94', 'd573ca82-eec8-4192-838a-26b66e57c5dc');
+insert into task_answer_position values ('897b9fff-5af4-45da-8920-26ddd4eb887c', '7a8bf3f0-9f84-4b07-a5d0-58c8404af5ef', 'd573ca82-eec8-4192-838a-26b66e57c5dc');
 
 -- Картинки заданий
 select * from task_image;
+select * from task;
+
+/*
+'c053f99d-ba1c-453a-af4d-e3fe0031c400', '\src\shared\assets\images\boy_skiing.jpg'
+'3765d6e3-f311-4969-86de-1d94f99a7494', '\src\shared\assets\images\boy_body_parts.jpg'
+ */
 
 insert into task_image values ('fbc06aab-5a3c-476d-9c49-d3313eead109', 'de18553e-2002-416e-9b93-b57bcb830007', 'c053f99d-ba1c-453a-af4d-e3fe0031c400');
 insert into task_image values ('87cfb1ae-ab1b-49bb-832a-fb2146269976', '3e47544f-b9bb-4d63-b1b3-b4910b4c550d', '3765d6e3-f311-4969-86de-1d94f99a7494');
 
 -- Форматы ответов на задания с типом typing
 select * from task_answer_typing_format;
+select * from task;
+
+/*
+'37b35df1-f6f5-4fd0-8b28-494502c6912c', 'text'
+'b016a6e4-3a51-4552-9be9-44ba2a98b876', 'digit'
+ */
 
 insert into task_answer_typing_format values ('e5a563d0-bc44-4b41-92c8-27abef7af29b', 'c5638830-dd2c-49b0-8fb1-8b06b1ae97b2', '37b35df1-f6f5-4fd0-8b28-494502c6912c');
 insert into task_answer_typing_format values ('2fb83afb-a0ce-41c4-b54b-cdd11825c4e2', '75ac4db2-52d5-40dd-ab5c-d7ae8edf5a96', 'b016a6e4-3a51-4552-9be9-44ba2a98b876');
 insert into task_answer_typing_format values ('a88c89a0-aca0-4fcd-b5dc-9beb0e6431df', '3e47544f-b9bb-4d63-b1b3-b4910b4c550d', '37b35df1-f6f5-4fd0-8b28-494502c6912c');
+insert into task_answer_typing_format values ('a60cc175-c574-4810-a51b-ab812c927a8e', '7a8bf3f0-9f84-4b07-a5d0-58c8404af5ef', '37b35df1-f6f5-4fd0-8b28-494502c6912c');
 
 -- Способы ответов на задания с типом choose
 select * from task_answer_choose_type;
+select * from task;
+
+/*
+'93be22dc-2b74-4a61-9f6a-678d3169c43b', 'underline'
+'eeee40a3-ccf6-4c34-9fb4-25374fd732de', 'check'
+ */
 
 insert into task_answer_choose_type values ('b037657a-b0ee-4c1d-a083-a49c6c6f9d2f', 'de18553e-2002-416e-9b93-b57bcb830007', '93be22dc-2b74-4a61-9f6a-678d3169c43b');
 
 -- Цвета для ответа на задания с типом choose
 select * from task_answer_choose_color;
+select * from task;
 
-insert into task_answer_choose_color values ('fdc09b87-5afe-45d1-a07e-9393a19bf248', 'de18553e-2002-416e-9b93-b57bcb830007','5fb1318d-d60b-482b-b71a-1cad8f1c3054' );
+/*
+'5fb1318d-d60b-482b-b71a-1cad8f1c3054', 'grey'
+'eddf320f-f587-43f3-9858-62361fcee034', 'red'
+'9f902817-5d6c-48fd-a5f6-a039d3f5b407', 'blue'
+ */
+
+insert into task_answer_choose_color values ('fdc09b87-5afe-45d1-a07e-9393a19bf248', 'de18553e-2002-416e-9b93-b57bcb830007','5fb1318d-d60b-482b-b71a-1cad8f1c3054');
 
 -- Предложенные ответы заданий с типом choose
 select * from task_proposed_answer;
+select * from task;
 
 insert into task_proposed_answer values ('f96ca457-6044-4dff-9d52-2b6bcee61dbc', 'de18553e-2002-416e-9b93-b57bcb830007', 'Илья катался на лыжах. Он заехал далеко в лес', true);
 insert into task_proposed_answer values ('c31f7836-4489-4aef-a0cf-bf18e4fe6a45', 'de18553e-2002-416e-9b93-b57bcb830007', 'Тут мальчик заметил большую рыжую кошку. Она лежала на дереве', false);
@@ -126,15 +170,23 @@ select * from task_correct_typing_answer;
 
 -- Типы отображения заданий
 select * from task_view_type;
+select * from task;
+
+/*
+'cc3efb92-7149-473b-b6d6-618fb380a584', 'rows'
+'a6871068-80db-4cd6-9f2c-d526e5edcc03', 'table'
+ */
 
 insert into task_view_type values ('d3f9d2ad-0519-4ed9-b4c0-87031ada246c', 'c5638830-dd2c-49b0-8fb1-8b06b1ae97b2', 'cc3efb92-7149-473b-b6d6-618fb380a584');
 insert into task_view_type values ('385ea72c-eaaf-4e36-8730-525f9f5b156d', 'de18553e-2002-416e-9b93-b57bcb830007', 'cc3efb92-7149-473b-b6d6-618fb380a584');
 insert into task_view_type values ('d373897a-32e4-4c76-87b7-983b0ce2ca68', '75ac4db2-52d5-40dd-ab5c-d7ae8edf5a96', 'cc3efb92-7149-473b-b6d6-618fb380a584');
 insert into task_view_type values ('104e5569-61c2-4dd2-9b9e-8b1a999e7f8d', '3e47544f-b9bb-4d63-b1b3-b4910b4c550d', 'cc3efb92-7149-473b-b6d6-618fb380a584');
 insert into task_view_type values ('51683539-93ca-46c3-9de1-76de13722f15', '2a035365-566a-45d5-b3e9-524758d2ca94', 'a6871068-80db-4cd6-9f2c-d526e5edcc03');
+insert into task_view_type values ('1b7a5fe3-753b-43f5-b953-797629810a8a', '7a8bf3f0-9f84-4b07-a5d0-58c8404af5ef', 'a6871068-80db-4cd6-9f2c-d526e5edcc03');
 
 -- Вопросы заданий с типом typing
 select * from task_question;
+select * from task;
 
 insert into task_question values ('813defb9-3e0b-4b50-8a83-f3663f92deae', 'c5638830-dd2c-49b0-8fb1-8b06b1ae97b2', 1, 'Как звали мальчика?');
 insert into task_question values ('055e03a3-d85d-4964-a6ea-8e6a30770b58', 'c5638830-dd2c-49b0-8fb1-8b06b1ae97b2', 2, 'Где он катался на лыжах?');
@@ -150,9 +202,17 @@ insert into task_question values ('133fccd7-e941-4a8f-9890-c246a4e42cb7', '3e475
 insert into task_question values ('6fb8d351-6050-4791-9e58-d8eee89911d5', '3e47544f-b9bb-4d63-b1b3-b4910b4c550d', 2, null);
 insert into task_question values ('55ae789a-f118-4416-8f77-aa631254aec2', '3e47544f-b9bb-4d63-b1b3-b4910b4c550d', 3, null);
 insert into task_question values ('8fe567fb-6937-4ef5-9a54-97300fa09b7b', '3e47544f-b9bb-4d63-b1b3-b4910b4c550d', 4, null);
+insert into task_question values ('c86c8ad6-11e4-4856-a246-a5b41bf503c5', '2a035365-566a-45d5-b3e9-524758d2ca94', null, 'нос');
+insert into task_question values ('dba1149b-d134-4729-b98e-fdb84a4830d3', '2a035365-566a-45d5-b3e9-524758d2ca94', null, 'глаза');
+insert into task_question values ('622dad2f-6bb4-4dc0-b386-0043f84478f0', '2a035365-566a-45d5-b3e9-524758d2ca94', null, 'кожа');
+insert into task_question values ('25deef36-85a4-4c6f-943a-4058574a94e5', '2a035365-566a-45d5-b3e9-524758d2ca94', null, 'язык');
+insert into task_question values ('c0649777-8333-4026-9788-2510ec210de8', '2a035365-566a-45d5-b3e9-524758d2ca94', null, 'уши');
+insert into task_question values ('2d88712c-821f-455e-89ba-a4852ad70632', '7a8bf3f0-9f84-4b07-a5d0-58c8404af5ef', null, 'Дикие');
+insert into task_question values ('acdead10-5012-43eb-9cbd-ea98b10a5eb6', '7a8bf3f0-9f84-4b07-a5d0-58c8404af5ef', null, 'Домашние');
 
 -- Правильные ответы заданий с типом typing
 select * from task_question_correct_typing_answer;
+select * from task_question;
 
 insert into task_question_correct_typing_answer values ('3367c7f0-fda9-4170-812f-49c92b51a4f7', '813defb9-3e0b-4b50-8a83-f3663f92deae', 'Илья');
 insert into task_question_correct_typing_answer values ('e0b23298-feb1-4495-b5f4-d32206434f22', '055e03a3-d85d-4964-a6ea-8e6a30770b58', 'В лесу');
@@ -168,6 +228,18 @@ insert into task_question_correct_typing_answer values ('4e51fe17-469b-4f2f-ad03
 insert into task_question_correct_typing_answer values ('d4014173-b201-46c7-9847-42f56e5a3347', '6fb8d351-6050-4791-9e58-d8eee89911d5', 'Шея');
 insert into task_question_correct_typing_answer values ('b2de48bb-930b-42f3-98ff-a59fd96e5cc4', '55ae789a-f118-4416-8f77-aa631254aec2', 'Рука');
 insert into task_question_correct_typing_answer values ('7eba53bd-25fd-4818-a41d-5de7d2769499', '8fe567fb-6937-4ef5-9a54-97300fa09b7b', 'Нога');
+insert into task_question_correct_typing_answer values ('4d302671-d405-48ed-9384-5c6dc3d1ab0f', 'c86c8ad6-11e4-4856-a246-a5b41bf503c5', 'обоняние');
+insert into task_question_correct_typing_answer values ('586b6a17-2677-4d9b-b1b2-185d0e45d7fc', 'dba1149b-d134-4729-b98e-fdb84a4830d3', 'зрение');
+insert into task_question_correct_typing_answer values ('1de839fc-a1dc-4941-ae43-a4cd9fa5f6e9', '622dad2f-6bb4-4dc0-b386-0043f84478f0', 'осязание');
+insert into task_question_correct_typing_answer values ('eca13ff8-824a-4afa-a6fa-3f4ed338fa61', '25deef36-85a4-4c6f-943a-4058574a94e5', 'вкус');
+insert into task_question_correct_typing_answer values ('55aaff8a-ad83-434f-a90a-1615ad96cdde', 'c0649777-8333-4026-9788-2510ec210de8', 'слух');
+insert into task_question_correct_typing_answer values ('1428304a-732e-416e-896d-ba79d5db31c7', '2d88712c-821f-455e-89ba-a4852ad70632', 'голубь');
+insert into task_question_correct_typing_answer values ('e9550f2b-e845-4141-9550-58fc4a783cf1', '2d88712c-821f-455e-89ba-a4852ad70632', 'ворона');
+insert into task_question_correct_typing_answer values ('164ab184-6356-491c-8eb0-e4c0a0563087', '2d88712c-821f-455e-89ba-a4852ad70632', 'воробей');
+insert into task_question_correct_typing_answer values ('f47022d3-1806-40c9-82d3-101c46e12239', '2d88712c-821f-455e-89ba-a4852ad70632', 'дрозды');
+insert into task_question_correct_typing_answer values ('db7da9d3-a535-4eca-a0b4-1d3c92f5d0dc', 'acdead10-5012-43eb-9cbd-ea98b10a5eb6', 'курица');
+insert into task_question_correct_typing_answer values ('ec7d18e5-7cb7-4dd4-be1a-ccf110078ab6', 'acdead10-5012-43eb-9cbd-ea98b10a5eb6', 'петух');
+insert into task_question_correct_typing_answer values ('2858db39-72ce-45cf-bca2-3b332480f708', 'acdead10-5012-43eb-9cbd-ea98b10a5eb6', 'индюк');
 
 -- Задания тестов
 select
@@ -182,7 +254,9 @@ select
   ap.system_name as answer_position_name,
   at.system_name as answer_type_name,
   atf.system_name as answer_typing_format_name,
-  act.system_name as answer_choose_type_name
+  act.system_name as answer_choose_type_name,
+  vt.system_name as task_view_type,
+  t.task_question_answer_quantity
 from
   task t
 inner join school_test st on
@@ -209,6 +283,10 @@ left join task_image ti on
   ti.task_id = t.id
 left join image i on
   i.id = ti.image_id
+left join task_view_type tvt on
+  tvt.task_id = t.id
+left join view_type vt on
+  vt.id = tvt.view_type_id
 order by
   t.number
 ;
@@ -227,6 +305,8 @@ inner join task t on
 left join task_question_correct_typing_answer tqcta on
   tqcta.task_question_id = tq.id
 order by
+  t.school_test_id,
+  t.id,
   t.number,
   tq.number
 ;
