@@ -35,3 +35,9 @@ databaseChangeLog:
                   name: text
                   type: VARCHAR(1024)
                   remarks: Текст вопроса
+              - column:
+                  constraints:
+                    nullable: true
+                  name: prefilled_answer
+                  type: VARCHAR(1024)
+                  remarks: Предзаполненный ответ
