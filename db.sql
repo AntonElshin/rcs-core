@@ -31,6 +31,11 @@ insert into image values ('15a93112-5f59-4a19-ad46-7ec7cdffeec1', '\src\shared\a
 insert into image values ('3eb4fb79-6ad2-49a4-a5d8-15532319c2b1', '\src\shared\assets\images\autumn.jpg');
 insert into image values ('2e0ea931-2cbe-40f0-8e41-591c2a1461a1', '\src\shared\assets\images\spring.jpg');
 insert into image values ('f12b229a-3b09-4d9a-93f1-8cfcc22b553e', '\src\shared\assets\images\winter.jpg');
+insert into image values ('852fb095-2278-45f6-8ca3-439b18bb19c2', '\src\shared\assets\images\tree_1.jpg');
+insert into image values ('8bf71dad-712e-4ef7-a97b-ebeec2917745', '\src\shared\assets\images\tree_2.jpg');
+insert into image values ('a1d1a88a-d624-43c1-9a53-b8419b2b4b0c', '\src\shared\assets\images\tree_3.jpg');
+insert into image values ('8ed867f7-3116-4cf7-82a5-40ce749ea6e6', '\src\shared\assets\images\tree_4.jpg');
+insert into image values ('1d52db69-05b1-455e-b0d8-865ae3c2b6ae', '\src\shared\assets\images\tree_5.jpg');
 
 -- Доступные типы ответов
 select * from answer_type;
@@ -89,6 +94,7 @@ insert into task values ('2a035365-566a-45d5-b3e9-524758d2ca94', '9d565bdd-b1fb-
 insert into task values ('7a8bf3f0-9f84-4b07-a5d0-58c8404af5ef', '9d565bdd-b1fb-44eb-af50-7490555b5708', 3, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Раздели птиц на две группы:', 'курица, голубь, ворона, петух, воробей, индюк, дрозды.', 7);
 insert into task values ('a6ceda33-3f0c-454a-bf22-be8ec81ea554', '9d565bdd-b1fb-44eb-af50-7490555b5708', 4, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Расставь по порядку.', 'цифра 1 уже стоит.', 1);
 insert into task values ('1452ed08-a73d-4c20-975a-bb6f5839a907', '9d565bdd-b1fb-44eb-af50-7490555b5708', 5, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Подпиши времена года нарисованные на картинках.', null, 1);
+insert into task values ('6fa0d664-ff68-4ac1-8c7c-6a10d8acc775', '9d565bdd-b1fb-44eb-af50-7490555b5708', 6, '402375b9-ffa6-42dd-ac57-8e5415f0b821', 'На каком рисунке изображен лист дуба?', null, null);
 
 -- Тексты заданий с типом ответа read
 select * from task_text;
@@ -113,7 +119,8 @@ insert into task_answer_position values ('1ef09e8f-f288-4551-8d99-cf7a54446532',
 insert into task_answer_position values ('d87b04b2-e4c7-43e7-8599-c753a80cddb2', '2a035365-566a-45d5-b3e9-524758d2ca94', 'd573ca82-eec8-4192-838a-26b66e57c5dc');
 insert into task_answer_position values ('897b9fff-5af4-45da-8920-26ddd4eb887c', '7a8bf3f0-9f84-4b07-a5d0-58c8404af5ef', 'd573ca82-eec8-4192-838a-26b66e57c5dc');
 insert into task_answer_position values ('34364913-414c-4dc4-ba98-245cdadfc5bf', 'a6ceda33-3f0c-454a-bf22-be8ec81ea554', 'd573ca82-eec8-4192-838a-26b66e57c5dc');
-insert into task_answer_position values ('23edf1d4-fd3f-434c-9d10-76e9b6436052', '1452ed08-a73d-4c20-975a-bb6f5839a907', 'd573ca82-eec8-4192-838a-26b66e57c5dc');
+insert into task_answer_position values ('23edf1d4-fd3f-434c-9d10-76e9b6436052', '1452ed08-a73d-4c20-975a-bb6f5839a907', '2b9ade7e-f3b6-4d23-83f8-8c2f10170e0f');
+insert into task_answer_position values ('1e6562ab-a09e-4bb3-b199-f305e8c31803', '6fa0d664-ff68-4ac1-8c7c-6a10d8acc775', 'd573ca82-eec8-4192-838a-26b66e57c5dc');
 
 -- Картинки заданий
 select * from task_image;
@@ -149,6 +156,7 @@ select * from task;
  */
 
 insert into task_answer_choose_type values ('b037657a-b0ee-4c1d-a083-a49c6c6f9d2f', 'de18553e-2002-416e-9b93-b57bcb830007', '93be22dc-2b74-4a61-9f6a-678d3169c43b');
+insert into task_answer_choose_type values ('c8cf4e11-7a18-48ed-bc86-c5f891fd25bb', '6fa0d664-ff68-4ac1-8c7c-6a10d8acc775', '93be22dc-2b74-4a61-9f6a-678d3169c43b');
 
 -- Цвета для ответа на задания с типом choose
 select * from task_answer_choose_color;
@@ -161,6 +169,7 @@ select * from task;
  */
 
 insert into task_answer_choose_color values ('fdc09b87-5afe-45d1-a07e-9393a19bf248', 'de18553e-2002-416e-9b93-b57bcb830007','5fb1318d-d60b-482b-b71a-1cad8f1c3054');
+insert into task_answer_choose_color values ('9ce0cf59-6485-4f4a-8167-a9c4029a3af6', '6fa0d664-ff68-4ac1-8c7c-6a10d8acc775','5fb1318d-d60b-482b-b71a-1cad8f1c3054');
 
 -- Предложенные ответы заданий с типом choose
 select * from task_proposed_answer;
