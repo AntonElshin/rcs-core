@@ -30,6 +30,8 @@ databaseChangeLog:
   - include:
       file: liquibase/changes/addTaskProposedAnswer.yaml
   - include:
+      file: liquibase/changes/addTaskProposedAnswerImage.yaml
+  - include:
       file: liquibase/changes/addTaskCorrectTypingAnswer.yaml
   - include:
       file: liquibase/changes/addTaskQuestion.yaml

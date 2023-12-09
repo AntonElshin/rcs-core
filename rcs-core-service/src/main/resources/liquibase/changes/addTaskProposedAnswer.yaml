@@ -25,13 +25,21 @@ databaseChangeLog:
                   remarks: Задание
               - column:
                   constraints:
-                    nullable: false
+                    nullable: true
                   name: proposed_answer
                   type: VARCHAR(1024)
                   remarks: Предложенный ответ
               - column:
                   constraints:
-                    nullable: false
+                    nullable: true
                   name: is_correct
                   type: BOOLEAN
                   remarks: Признак правильного ответа
+              - column:
+                  constraints:
+                    nullable: false
+                    foreignKeyName: answer_choose_color_id_fk
+                    references: answer_choose_color(id)
+                  name: correct_answer_choose_color_id
+                  type: VARCHAR(36)
+                  remarks: Цвет правильного ответа
