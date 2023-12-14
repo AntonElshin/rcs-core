@@ -37,7 +37,7 @@ databaseChangeLog:
                   remarks: Признак правильного ответа
               - column:
                   constraints:
-                    nullable: false
+                    nullable: true
                     foreignKeyName: answer_choose_color_id_fk
                     references: answer_choose_color(id)
                   name: correct_answer_choose_color_id
