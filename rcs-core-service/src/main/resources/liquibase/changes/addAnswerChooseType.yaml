@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: answer_choose_type
-            remarks: Способ выбора ответа
+            remarks: Справочник способов выбора ответа на задания с типом choose
             columns:
               - column:
                   constraints:

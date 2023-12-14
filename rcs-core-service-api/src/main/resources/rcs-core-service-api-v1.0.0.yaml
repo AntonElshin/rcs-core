@@ -10,6 +10,9 @@ info:
 servers:
   - url: 'http://localhost:8080'
 paths:
+  #  Справочники
+
+  #  Школьные классы
   /school-class:
     parameters: []
     get:
@@ -163,6 +166,7 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
         '422':
           description: Unprocessable Entity (WebDAV)
+  #  Предметы
   /subject:
     parameters: []
     get:
@@ -316,6 +320,7 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
         '422':
           description: Unprocessable Entity (WebDAV)
+  #  Школьные тесты
   /school-test:
     parameters: []
     get:
@@ -325,8 +330,8 @@ paths:
       tags:
         - school-test
       parameters:
-        - $ref: '#/components/parameters/schoolTestClassId'
-        - $ref: '#/components/parameters/schoolTestSubjectId'
+        - $ref: '#/components/parameters/searchSchoolClassId'
+        - $ref: '#/components/parameters/searchSubjectId'
       responses:
         '200':
           description: OK
@@ -502,6 +507,7 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
         '422':
           description: Unprocessable Entity (WebDAV)
+
 components:
   schemas:
     ErrorDTO:
@@ -559,10 +565,196 @@ components:
       title: SubjectDTO
       type: object
       additionalProperties: false
-      description: Класс
+      description: Предмет
       x-examples:
         example-1:
           id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+          systemName: string
+          name: string
+          description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        systemName:
+          type: string
+          description: Системное имя
+          maxLength: 50
+        name:
+          type: string
+          description: Имя
+          maxLength: 50
+        description:
+          type: string
+          description: Описание
+          maxLength: 255
+      required:
+        - systemName
+        - name
+    AnswerTypeDTO:
+      title: AnswerTypeDTO
+      type: object
+      additionalProperties: false
+      description: Тип ответа
+      x-examples:
+        example-1:
+          id: 39347391-0a0f-4834-821b-c26b7a0970c2
+          systemName: string
+          name: string
+          description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        systemName:
+          type: string
+          description: Системное имя
+          maxLength: 50
+        name:
+          type: string
+          description: Имя
+          maxLength: 50
+        description:
+          type: string
+          description: Описание
+          maxLength: 255
+      required:
+        - systemName
+        - name
+    AnswerPositionDTO:
+      title: AnswerPositionDTO
+      type: object
+      additionalProperties: false
+      description: Позиция ответа
+      x-examples:
+        example-1:
+          id: de564cf7-92b3-4078-a0b4-9e66dbe523b4
+          systemName: string
+          name: string
+          description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        systemName:
+          type: string
+          description: Системное имя
+          maxLength: 50
+        name:
+          type: string
+          description: Имя
+          maxLength: 50
+        description:
+          type: string
+          description: Описание
+          maxLength: 255
+      required:
+        - systemName
+        - name
+    AnswerTypingFormatDTO:
+      title: AnswerTypingFormatDTO
+      type: object
+      additionalProperties: false
+      description: Формат ответа на задания с типом typing
+      x-examples:
+        example-1:
+          id: f6989c2f-64b1-454d-93a7-e0ea16bd04b7
+          systemName: string
+          name: string
+          description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        systemName:
+          type: string
+          description: Системное имя
+          maxLength: 50
+        name:
+          type: string
+          description: Имя
+          maxLength: 50
+        description:
+          type: string
+          description: Описание
+          maxLength: 255
+      required:
+        - systemName
+        - name
+    AnswerChooseTypeDTO:
+      title: AnswerChooseTypeDTO
+      type: object
+      additionalProperties: false
+      description: Способ выбора ответа на задания с типом choose
+      x-examples:
+        example-1:
+          id: a719360b-e4c1-4dbb-b7ce-9a283a9a1232
+          systemName: string
+          name: string
+          description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        systemName:
+          type: string
+          description: Системное имя
+          maxLength: 50
+        name:
+          type: string
+          description: Имя
+          maxLength: 50
+        description:
+          type: string
+          description: Описание
+          maxLength: 255
+      required:
+        - systemName
+        - name
+    AnswerChooseColorDTO:
+      title: AnswerChooseColorDTO
+      type: object
+      additionalProperties: false
+      description: Цвет выбора ответа на задания с типом choose
+      x-examples:
+        example-1:
+          id: aa80130b-f296-4131-89b1-6ef3008b081d
+          systemName: string
+          name: string
+          description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        systemName:
+          type: string
+          description: Системное имя
+          maxLength: 50
+        name:
+          type: string
+          description: Имя
+          maxLength: 50
+        description:
+          type: string
+          description: Описание
+          maxLength: 255
+      required:
+        - systemName
+        - name
+    ViewTypeDTO:
+      title: ViewTypeDTO
+      type: object
+      additionalProperties: false
+      description: Тип отображения задания
+      x-examples:
+        example-1:
+          id: ed9b32be-1c36-4ae6-a4cc-c9494d53fca0
           systemName: string
           name: string
           description: string
@@ -657,22 +849,70 @@ components:
         type: string
         maxLength: 50
       description: Строка для поиска
-    schoolTestClassId:
-      name: schoolTestClassId
+    searchSchoolClassId:
+      name: searchSchoolClassId
       in: query
       required: true
       schema:
         type: string
         format: uuid
       description: Идентификатор класса
-    schoolTestSubjectId:
-      name: schoolTestSubjectId
+    searchSubjectId:
+      name: searchSubjectId
       in: query
       required: true
       schema:
         type: string
         format: uuid
       description: Идентификатор предмета
+    searchAnswerTypeId:
+      name: searchAnswerTypeId
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор типа ответа
+    searchAnswerPositionId:
+      name: searchAnswerPositionId
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор позиции ответа
+    searchAnswerTypingFormatId:
+      name: searchAnswerTypingFormatId
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор формата ответа на задание с типом typing
+    searchAnswerChooseTypeId:
+      name: searchAnswerChooseTypeId
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор способа выбора ответа на задание с типом choose
+    searchAnswerChooseColorId:
+      name: searchAnswerChooseColorId
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор цвета выбора ответа на задание с типом choose
+    searchViewTypeId:
+      name: searchViewTypeId
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор типа отображения задания
     schoolClassId:
       name: schoolClassId
       in: path
@@ -689,6 +929,54 @@ components:
         type: string
         format: uuid
       description: Идентификатор предмета
+    answerTypeId:
+      name: answerTypeId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор типа ответа
+    answerPositionId:
+      name: answerPositionId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор позиции ответа
+    answerTypingFormatId:
+      name: answerTypingFormatId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор формата ответа на задание с типом typing
+    answerChooseTypeId:
+      name: answerChooseTypeId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор способа выбора ответа на задание с типом choose
+    answerChooseColorId:
+      name: answerChooseColorId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор цвета выбора ответа на задание с типом choose
+    viewTypeId:
+      name: viewTypeId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор типа отображения задания
     schoolTestId:
       name: schoolTestId
       in: path

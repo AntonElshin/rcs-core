@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: view_type
-            remarks: Типы отображения
+            remarks: Справочник типов отображения заданий
             columns:
               - column:
                   constraints:

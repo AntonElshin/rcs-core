@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: answer_position
-            remarks: Позиция ответа
+            remarks: Справочник позиций ответа
             columns:
               - column:
                   constraints:

@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: answer_type
-            remarks: Типы ответов на задания
+            remarks: Справочник типов ответов
             columns:
               - column:
                   constraints:
