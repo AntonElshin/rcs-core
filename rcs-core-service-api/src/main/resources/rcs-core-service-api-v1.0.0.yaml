@@ -16,9 +16,9 @@ paths:
   /school-class:
     parameters: []
     get:
-      summary: Получение списка классов по параметрам
+      summary: Получение списка школьных классов по параметрам
       operationId: findSchoolClasses
-      description: Получение списка классов по параметрам
+      description: Получение списка школьных классов по параметрам
       tags:
         - school-class
       parameters:
@@ -41,9 +41,9 @@ paths:
                       name: string
                       description: string
     post:
-      summary: Создание класса
+      summary: Создание школьного класса
       operationId: addSchoolClass
-      description: Создание класса
+      description: Создание школьного класса
       tags:
         - school-class
       requestBody:
@@ -55,7 +55,6 @@ paths:
             examples:
               example-1:
                 value:
-                  id: b06e7544-a62a-42a3-b937-73508dae48c7
                   systemName: string
                   name: string
                   description: string
@@ -85,9 +84,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/schoolClassId'
     get:
-      summary: Получение класса по идентификатору
+      summary: Получение школьного класса по идентификатору
       operationId: findSchoolClassById
-      description: Получение класса по идентификатору
+      description: Получение школьного класса по идентификатору
       tags:
         - school-class
       responses:
@@ -113,9 +112,9 @@ paths:
         '422':
           description: Unprocessable Entity (WebDAV)
     put:
-      summary: Метод изменяет класс
+      summary: Изменения школьного класса
       operationId: modifySchoolClass
-      description: Метод изменяет класс
+      description: Изменения школьного класса
       tags:
         - school-class
       requestBody:
@@ -150,9 +149,9 @@ paths:
         '422':
           description: Unprocessable Entity (WebDAV)
     delete:
-      summary: Удаление класса по идентификатору
+      summary: Удаление школьного класса по идентификатору
       operationId: removeSchoolClass
-      description: Удаление класса по идентификатору
+      description: Удаление школьного класса по идентификатору
       tags:
         - school-class
       responses:
@@ -209,7 +208,6 @@ paths:
             examples:
               example-1:
                 value:
-                  id: 1
                   systemName: string
                   name: string
                   description: string
@@ -267,9 +265,9 @@ paths:
         '422':
           description: Unprocessable Entity (WebDAV)
     put:
-      summary: Метод изменяет предмет
+      summary: Изменение предмета
       operationId: modifySubject
-      description: Метод изменяет предмет
+      description: Изменение предмета
       tags:
         - subject
       requestBody:
@@ -309,6 +307,159 @@ paths:
       description: Удаление предмета по идентификатору
       tags:
         - subject
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  #  Типы ответов
+  /answer-type:
+    parameters: []
+    get:
+      summary: Получение списка типов ответов по параметрам
+      operationId: findAnswerType
+      description: Получение списка типов ответов по параметрам
+      tags:
+        - answer-type
+      parameters:
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: OK
+          headers: { }
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnswerTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 39347391-0a0f-4834-821b-c26b7a0970c2
+                      systemName: string
+                      name: string
+                      description: string
+    post:
+      summary: Создание типа ответа
+      operationId: addAnswerType
+      description: Создание типа ответа
+      tags:
+        - answer-type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnswerTypeDTO'
+            examples:
+              example-1:
+                value:
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 39347391-0a0f-4834-821b-c26b7a0970c2
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  '/answer-type/{answerTypeId}':
+    parameters:
+      - $ref: '#/components/parameters/answerTypeId'
+    get:
+      summary: Получение типа ответа по идентификатору
+      operationId: findAnswerType
+      description: Получение типа ответа по идентификатору
+      tags:
+        - answer-type
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 39347391-0a0f-4834-821b-c26b7a0970c2
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    put:
+      summary: Изменение типа ответа
+      operationId: modifyAnswerType
+      description: Изменение типа ответа
+      tags:
+        - answer-type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnswerTypeDTO'
+            examples:
+              example-1:
+                value:
+                  id: 39347391-0a0f-4834-821b-c26b7a0970c2
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 39347391-0a0f-4834-821b-c26b7a0970c2
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    delete:
+      summary: Удаление типа ответа по идентификатору
+      operationId: removeAnswerType
+      description: Удаление типа ответа по идентификатору
+      tags:
+        - answer-type
       responses:
         '200':
           description: OK
@@ -986,9 +1137,7 @@ components:
         format: uuid
       description: Идентификатор теста
 tags:
-  - name: school-classes
   - name: school-class
-  - name: subjects
   - name: subject
-  - name: school-tests
   - name: school-test
+  - name: answer-type
