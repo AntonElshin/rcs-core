@@ -81,6 +81,7 @@ select * from view_type;
 
 insert into view_type values ('cc3efb92-7149-473b-b6d6-618fb380a584', 'rows', 'Строки', null);
 insert into view_type values ('a6871068-80db-4cd6-9f2c-d526e5edcc03', 'table', 'Таблица', null);
+insert into view_type values ('549d06a4-b2e2-4db0-ba56-c590e103fd83', 'columns', 'Колонки', null);
 
 -- Задания тестов
 select * from task;
