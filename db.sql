@@ -195,7 +195,7 @@ insert into task_answer_choose_color values ('9ce0cf59-6485-4f4a-8167-a9c4029a3a
 insert into task_answer_choose_color values ('dade06eb-f536-4e74-b0cd-e47dceee617e', '16c59680-dcc8-46de-ae41-9f1728346c06', '5fb1318d-d60b-482b-b71a-1cad8f1c3054');
 insert into task_answer_choose_color values ('2461bbab-ff22-459e-ac47-7e84d39896c8', '383e7536-c178-4542-9b32-5105a70a0221', 'eddf320f-f587-43f3-9858-62361fcee034');
 insert into task_answer_choose_color values ('129b1dcc-e3e9-4c39-8d65-8006da2118d8', '383e7536-c178-4542-9b32-5105a70a0221', '9f902817-5d6c-48fd-a5f6-a039d3f5b407');
-insert into task_answer_choose_color values ('dade06eb-f536-4e74-b0cd-e47dceee617e', '16c59680-dcc8-46de-ae41-9f1728346c06', '5fb1318d-d60b-482b-b71a-1cad8f1c3054');
+insert into task_answer_choose_color values ('0f0eb8b6-07b2-447c-ace0-4818aeb47821', '16c59680-dcc8-46de-ae41-9f1728346c06', '5fb1318d-d60b-482b-b71a-1cad8f1c3054');
 
 -- Предложенные ответы заданий с типом choose
 select * from task_proposed_answer;
