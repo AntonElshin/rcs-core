@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: answer_typing_format
-            remarks: Справочник форматов ответов на задания с типом typing
+            remarks: Справочник форматов ввода ответов на задания с типом typing
             columns:
               - column:
                   constraints:

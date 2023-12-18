@@ -6,7 +6,7 @@ import ru.rcs.dto.SchoolTestReqDTO;
 import ru.rcs.dto.SchoolTestResDTO;
 
 public interface SchoolTestService {
-  List<SchoolTestResDTO> find(UUID schoolTestClassId, UUID schoolTestSubjectId);
+  List<SchoolTestResDTO> find(UUID searchSchoolClassId, UUID searchSubjectId);
   SchoolTestResDTO findById(UUID schoolTestId);
   SchoolTestResDTO add(SchoolTestReqDTO schoolTestReqDTO);
   SchoolTestResDTO modify(UUID schoolTestId, SchoolTestReqDTO schoolTestReqDTO);

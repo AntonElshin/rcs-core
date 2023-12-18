@@ -31,15 +31,15 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   private final SchoolTestMapper schoolTestMapper;
 
   @Override
-  public List<SchoolTestResDTO> find(UUID schoolTestClassId, UUID schoolTestSubjectId) {
+  public List<SchoolTestResDTO> find(UUID searchSchoolClassId, UUID searchSubjectId) {
 
     List<BooleanExpression> predicates = new ArrayList<>();
 
-    if(schoolTestClassId != null) {
-      predicates.add(QSchoolTest.schoolTest.schoolClass.id.eq(String.valueOf(schoolTestClassId)));
+    if(searchSchoolClassId != null) {
+      predicates.add(QSchoolTest.schoolTest.schoolClass.id.eq(String.valueOf(searchSchoolClassId)));
     }
-    if(schoolTestSubjectId != null) {
-      predicates.add(QSchoolTest.schoolTest.subject.id.eq(String.valueOf(schoolTestSubjectId)));
+    if(searchSubjectId != null) {
+      predicates.add(QSchoolTest.schoolTest.subject.id.eq(String.valueOf(searchSubjectId)));
     }
 
     List<SchoolTest> schoolTests;

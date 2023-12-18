@@ -391,7 +391,7 @@ paths:
       - $ref: '#/components/parameters/answerTypeId'
     get:
       summary: Получение типа ответа по идентификатору
-      operationId: findAnswerType
+      operationId: findAnswerTypeById
       description: Получение типа ответа по идентификатору
       tags:
         - answer-type
@@ -458,6 +458,771 @@ paths:
       summary: Удаление типа ответа по идентификатору
       operationId: removeAnswerType
       description: Удаление типа ответа по идентификатору
+      tags:
+        - answer-type
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  #  Позиции ответов
+  /answer-position:
+    parameters: []
+    get:
+      summary: Получение списка позиций ответов по параметрам
+      operationId: findAnswerType
+      description: Получение списка позиций ответов по параметрам
+      tags:
+        - answer-position
+      parameters:
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: OK
+          headers: { }
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnswerPositionDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: c7f66519-4541-4162-bf0e-2423ccce4056
+                      systemName: string
+                      name: string
+                      description: string
+    post:
+      summary: Создание позиции ответа
+      operationId: addAnswerPosition
+      description: Создание позиции ответа
+      tags:
+        - answer-position
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnswerPositionDTO'
+            examples:
+              example-1:
+                value:
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerPositionDTO'
+              examples:
+                example-1:
+                  value:
+                    id: c7f66519-4541-4162-bf0e-2423ccce4056
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  '/answer-position/{answerPositionId}':
+    parameters:
+      - $ref: '#/components/parameters/answerPositionId'
+    get:
+      summary: Получение позиции ответа по идентификатору
+      operationId: findAnswerPositionById
+      description: Получение позиции ответа по идентификатору
+      tags:
+        - answer-position
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerPositionDTO'
+              examples:
+                example-1:
+                  value:
+                    id: c7f66519-4541-4162-bf0e-2423ccce4056
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    put:
+      summary: Изменение позиции ответа
+      operationId: modifyAnswerPosition
+      description: Изменение позиции ответа
+      tags:
+        - answer-position
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnswerPositionDTO'
+            examples:
+              example-1:
+                value:
+                  id: c7f66519-4541-4162-bf0e-2423ccce4056
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerPositionDTO'
+              examples:
+                example-1:
+                  value:
+                    id: c7f66519-4541-4162-bf0e-2423ccce4056
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    delete:
+      summary: Удаление позиции ответа по идентификатору
+      operationId: removeAnswerPosition
+      description: Удаление позиции ответа по идентификатору
+      tags:
+        - answer-position
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  #  Форматы ввода ответов на задания с типом typing
+  /answer-typing-format:
+    parameters: [ ]
+    get:
+      summary: Получение списка форматов ввода ответов по параметрам
+      operationId: findAnswerTypingFormat
+      description: Получение списка форматов ввода ответов по параметрам
+      tags:
+        - answer-typing-format
+      parameters:
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: OK
+          headers: { }
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnswerTypingFormatDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: fcb7dd16-aebd-45cd-b159-e4c4af0d5fe9
+                      systemName: string
+                      name: string
+                      description: string
+    post:
+      summary: Создание формата ввода ответа
+      operationId: addAnswerTypingFormat
+      description: Создание формата ввода ответа
+      tags:
+        - answer-typing-format
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnswerTypingFormatDTO'
+            examples:
+              example-1:
+                value:
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerTypingFormatDTO'
+              examples:
+                example-1:
+                  value:
+                    id: fcb7dd16-aebd-45cd-b159-e4c4af0d5fe9
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  '/answer-typing-format/{answerTypingFormatId}':
+    parameters:
+      - $ref: '#/components/parameters/answerTypingFormatId'
+    get:
+      summary: Получение форматов ввода ответа по идентификатору
+      operationId: findAnswerTypingFormatById
+      description: Получение форматов ввода ответа по идентификатору
+      tags:
+        - answer-typing-format
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerTypingFormatDTO'
+              examples:
+                example-1:
+                  value:
+                    id: fcb7dd16-aebd-45cd-b159-e4c4af0d5fe9
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    put:
+      summary: Изменение формата ввода ответа
+      operationId: modifyAnswerTypingFormat
+      description: Изменение формата ввода ответа
+      tags:
+        - answer-typing-format
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnswerTypingFormatDTO'
+            examples:
+              example-1:
+                value:
+                  id: fcb7dd16-aebd-45cd-b159-e4c4af0d5fe9
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerTypingFormatDTO'
+              examples:
+                example-1:
+                  value:
+                    id: c7f66519-4541-4162-bf0e-2423ccce4056
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    delete:
+      summary: Удаление формата ввода ответа по идентификатору
+      operationId: removeAnswerTypingFormat
+      description: Удаление формата ввода ответа по идентификатору
+      tags:
+        - answer-typing-format
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  #  Способы выбора ответов на задания с типом choose
+  /answer-choose-type:
+    parameters: [ ]
+    get:
+      summary: Получение списка способов выбора ответов по параметрам
+      operationId: findAnswerChooseType
+      description: Получение списка способов выбора ответов по параметрам
+      tags:
+        - answer-choose-type
+      parameters:
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: OK
+          headers: { }
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnswerChooseTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 85073860-1414-4307-a455-65cb3956b407
+                      systemName: string
+                      name: string
+                      description: string
+    post:
+      summary: Создание способа выбора ответа
+      operationId: addAnswerChooseType
+      description: Создание способа выбора ответа
+      tags:
+        - answer-choose-type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnswerChooseTypeDTO'
+            examples:
+              example-1:
+                value:
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerChooseTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 85073860-1414-4307-a455-65cb3956b407
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  '/answer-choose-type/{answerChooseTypeId}':
+    parameters:
+      - $ref: '#/components/parameters/answerChooseTypeId'
+    get:
+      summary: Получение способа выбора ответа по идентификатору
+      operationId: findAnswerChooseTypeById
+      description: Получение способа выбора ответа по идентификатору
+      tags:
+        - answer-choose-type
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerChooseTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 85073860-1414-4307-a455-65cb3956b407
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    put:
+      summary: Изменение способа выбора ответа
+      operationId: modifyAnswerChooseType
+      description: Изменение способа выбора ответа
+      tags:
+        - answer-choose-type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnswerChooseTypeDTO'
+            examples:
+              example-1:
+                value:
+                  id: 85073860-1414-4307-a455-65cb3956b407
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerChooseTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    id: 85073860-1414-4307-a455-65cb3956b407
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    delete:
+      summary: Удаление способа выбора ответа по идентификатору
+      operationId: removeAnswerChooseType
+      description: Удаление способа выбора ответа по идентификатору
+      tags:
+        - answer-choose-type
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  #  Цвет выбора ответов на задания с типом choose
+  /answer-choose-color:
+    parameters: [ ]
+    get:
+      summary: Получение списка цветов выбора ответов по параметрам
+      operationId: findAnswerChooseColor
+      description: Получение списка цветов выбора ответов по параметрам
+      tags:
+        - answer-choose-color
+      parameters:
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: OK
+          headers: { }
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnswerChooseColorDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: d90ee033-7e00-4a9e-9b74-f4265ff407d6
+                      systemName: string
+                      name: string
+                      description: string
+    post:
+      summary: Создание цвета выбора ответа
+      operationId: addAnswerChooseColor
+      description: Создание цвета выбора ответа
+      tags:
+        - answer-choose-color
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnswerChooseColorDTO'
+            examples:
+              example-1:
+                value:
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerChooseColorDTO'
+              examples:
+                example-1:
+                  value:
+                    id: d90ee033-7e00-4a9e-9b74-f4265ff407d6
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  '/answer-choose-color/{answerChooseColorId}':
+    parameters:
+      - $ref: '#/components/parameters/answerChooseColorId'
+    get:
+      summary: Получение цвета выбора ответа по идентификатору
+      operationId: findAnswerChooseColorById
+      description: Получение цвета выбора ответа по идентификатору
+      tags:
+        - answer-choose-color
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerChooseColorDTO'
+              examples:
+                example-1:
+                  value:
+                    id: d90ee033-7e00-4a9e-9b74-f4265ff407d6
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    put:
+      summary: Изменение цвета выбора ответа
+      operationId: modifyAnswerChooseColor
+      description: Изменение цвета выбора ответа
+      tags:
+        - answer-choose-color
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnswerChooseColorDTO'
+            examples:
+              example-1:
+                value:
+                  id: d90ee033-7e00-4a9e-9b74-f4265ff407d6
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerChooseColorDTO'
+              examples:
+                example-1:
+                  value:
+                    id: d90ee033-7e00-4a9e-9b74-f4265ff407d6
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    delete:
+      summary: Удаление цвета выбора ответа по идентификатору
+      operationId: removeAnswerChooseType
+      description: Удаление цвета выбора ответа по идентификатору
+      tags:
+        - answer-choose-color
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  #  Типы отображения
+  /view-type:
+    parameters: [ ]
+    get:
+      summary: Получение списка типов отображения по параметрам
+      operationId: findViewType
+      description: Получение списка типов отображения по параметрам
+      tags:
+        - view-type
+      parameters:
+        - $ref: '#/components/parameters/search'
+      responses:
+        '200':
+          description: OK
+          headers: { }
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ViewTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: dd4857fe-6771-4a21-8b29-482d0b6131ef
+                      systemName: string
+                      name: string
+                      description: string
+    post:
+      summary: Создание типа отображения
+      operationId: addViewType
+      description: Создание типа отображения
+      tags:
+        - view-type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewTypeDTO'
+            examples:
+              example-1:
+                value:
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    id: dd4857fe-6771-4a21-8b29-482d0b6131ef
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  '/view-type/{viewTypeId}':
+    parameters:
+      - $ref: '#/components/parameters/viewTypeId'
+    get:
+      summary: Получение типа отображения по идентификатору
+      operationId: findViewTypeById
+      description: Получение типа отображения по идентификатору
+      tags:
+        - answer-type
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    id: dd4857fe-6771-4a21-8b29-482d0b6131ef
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    put:
+      summary: Изменение типа отображения
+      operationId: modifyViewType
+      description: Изменение типа отображения
+      tags:
+        - answer-type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewTypeDTO'
+            examples:
+              example-1:
+                value:
+                  id: dd4857fe-6771-4a21-8b29-482d0b6131ef
+                  systemName: string
+                  name: string
+                  description: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewTypeDTO'
+              examples:
+                example-1:
+                  value:
+                    id: dd4857fe-6771-4a21-8b29-482d0b6131ef
+                    systemName: string
+                    name: string
+                    description: string
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    delete:
+      summary: Удаление типа отображения по идентификатору
+      operationId: removeViewType
+      description: Удаление типа отображения по идентификатору
       tags:
         - answer-type
       responses:
@@ -1139,5 +1904,10 @@ components:
 tags:
   - name: school-class
   - name: subject
-  - name: school-test
   - name: answer-type
+  - name: answer-position
+  - name: answer-typing-format
+  - name: answer-choose-type
+  - name: answer-choose-color
+  - name: view-type
+  - name: school-test
