@@ -36,7 +36,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: b06e7544-a62a-42a3-b937-73508dae48c7
+                    - id: string
                       systemName: string
                       name: string
                       description: string
@@ -68,7 +68,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: b06e7544-a62a-42a3-b937-73508dae48c7
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -99,7 +99,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: b06e7544-a62a-42a3-b937-73508dae48c7
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -126,7 +126,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: b06e7544-a62a-42a3-b937-73508dae48c7
+                  id: string
                   systemName: string
                   name: string
                   description: string
@@ -140,7 +140,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: b06e7544-a62a-42a3-b937-73508dae48c7
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -189,7 +189,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                    - id: string
                       systemName: string
                       name: string
                       description: string
@@ -221,7 +221,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -252,7 +252,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -279,7 +279,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                  id: string
                   systemName: string
                   name: string
                   description: string
@@ -293,7 +293,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -342,7 +342,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: 39347391-0a0f-4834-821b-c26b7a0970c2
+                    - id: string
                       systemName: string
                       name: string
                       description: string
@@ -374,7 +374,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 39347391-0a0f-4834-821b-c26b7a0970c2
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -405,7 +405,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 39347391-0a0f-4834-821b-c26b7a0970c2
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -432,7 +432,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: 39347391-0a0f-4834-821b-c26b7a0970c2
+                  id: string
                   systemName: string
                   name: string
                   description: string
@@ -446,7 +446,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 39347391-0a0f-4834-821b-c26b7a0970c2
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -495,7 +495,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: c7f66519-4541-4162-bf0e-2423ccce4056
+                    - id: string
                       systemName: string
                       name: string
                       description: string
@@ -527,7 +527,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: c7f66519-4541-4162-bf0e-2423ccce4056
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -558,7 +558,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: c7f66519-4541-4162-bf0e-2423ccce4056
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -585,7 +585,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: c7f66519-4541-4162-bf0e-2423ccce4056
+                  id: string
                   systemName: string
                   name: string
                   description: string
@@ -599,7 +599,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: c7f66519-4541-4162-bf0e-2423ccce4056
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -648,7 +648,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: fcb7dd16-aebd-45cd-b159-e4c4af0d5fe9
+                    - id: string
                       systemName: string
                       name: string
                       description: string
@@ -680,7 +680,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: fcb7dd16-aebd-45cd-b159-e4c4af0d5fe9
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -711,7 +711,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: fcb7dd16-aebd-45cd-b159-e4c4af0d5fe9
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -738,7 +738,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: fcb7dd16-aebd-45cd-b159-e4c4af0d5fe9
+                  id: string
                   systemName: string
                   name: string
                   description: string
@@ -752,7 +752,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: c7f66519-4541-4162-bf0e-2423ccce4056
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -801,7 +801,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: 85073860-1414-4307-a455-65cb3956b407
+                    - id: string
                       systemName: string
                       name: string
                       description: string
@@ -833,7 +833,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 85073860-1414-4307-a455-65cb3956b407
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -864,7 +864,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 85073860-1414-4307-a455-65cb3956b407
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -891,7 +891,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: 85073860-1414-4307-a455-65cb3956b407
+                  id: string
                   systemName: string
                   name: string
                   description: string
@@ -905,7 +905,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: 85073860-1414-4307-a455-65cb3956b407
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -954,7 +954,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: d90ee033-7e00-4a9e-9b74-f4265ff407d6
+                    - id: string
                       systemName: string
                       name: string
                       description: string
@@ -986,7 +986,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: d90ee033-7e00-4a9e-9b74-f4265ff407d6
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -1017,7 +1017,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: d90ee033-7e00-4a9e-9b74-f4265ff407d6
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -1044,7 +1044,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: d90ee033-7e00-4a9e-9b74-f4265ff407d6
+                  id: string
                   systemName: string
                   name: string
                   description: string
@@ -1058,7 +1058,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: d90ee033-7e00-4a9e-9b74-f4265ff407d6
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -1107,7 +1107,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: dd4857fe-6771-4a21-8b29-482d0b6131ef
+                    - id: string
                       systemName: string
                       name: string
                       description: string
@@ -1139,7 +1139,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: dd4857fe-6771-4a21-8b29-482d0b6131ef
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -1170,7 +1170,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: dd4857fe-6771-4a21-8b29-482d0b6131ef
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -1197,7 +1197,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: dd4857fe-6771-4a21-8b29-482d0b6131ef
+                  id: string
                   systemName: string
                   name: string
                   description: string
@@ -1211,7 +1211,7 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: dd4857fe-6771-4a21-8b29-482d0b6131ef
+                    id: string
                     systemName: string
                     name: string
                     description: string
@@ -1261,14 +1261,14 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+                    - id: string
                       schoolClass:
-                        id: b06e7544-a62a-42a3-b937-73508dae48c7
+                        id: string
                         systemName: string
                         name: string
                         description: string
                       subject:
-                        id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                        id: string
                         systemName: string
                         name: string
                         description: string
@@ -1288,7 +1288,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                  id: string
                   schoolClassId: string
                   subjectId: string
                   displayName: string
@@ -1302,14 +1302,14 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+                    - id: string
                       schoolClass:
-                        id: b06e7544-a62a-42a3-b937-73508dae48c7
+                        id: string
                         systemName: string
                         name: string
                         description: string
                       subject:
-                        id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                        id: string
                         systemName: string
                         name: string
                         description: string
@@ -1341,14 +1341,14 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+                    - id: string
                       schoolClass:
-                        id: b06e7544-a62a-42a3-b937-73508dae48c7
+                        id: string
                         systemName: string
                         name: string
                         description: string
                       subject:
-                        id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                        id: string
                         systemName: string
                         name: string
                         description: string
@@ -1376,7 +1376,7 @@ paths:
             examples:
               example-1:
                 value:
-                  id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                  id: string
                   schoolClassId: string
                   subjectId: string
                   displayName: string
@@ -1390,14 +1390,14 @@ paths:
               examples:
                 example-1:
                   value:
-                    - id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+                    - id: string
                       schoolClass:
-                        id: b06e7544-a62a-42a3-b937-73508dae48c7
+                        id: string
                         systemName: string
                         name: string
                         description: string
                       subject:
-                        id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+                        id: string
                         systemName: string
                         name: string
                         description: string
@@ -1453,7 +1453,7 @@ components:
       description: Класс
       x-examples:
         example-1:
-          id: b06e7544-a62a-42a3-b937-73508dae48c7
+          id: string
           systemName: string
           name: string
           description: string
@@ -1484,7 +1484,7 @@ components:
       description: Предмет
       x-examples:
         example-1:
-          id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+          id: string
           systemName: string
           name: string
           description: string
@@ -1515,7 +1515,7 @@ components:
       description: Тип ответа
       x-examples:
         example-1:
-          id: 39347391-0a0f-4834-821b-c26b7a0970c2
+          id: string
           systemName: string
           name: string
           description: string
@@ -1546,7 +1546,7 @@ components:
       description: Позиция ответа
       x-examples:
         example-1:
-          id: de564cf7-92b3-4078-a0b4-9e66dbe523b4
+          id: string
           systemName: string
           name: string
           description: string
@@ -1577,7 +1577,7 @@ components:
       description: Формат ответа на задания с типом typing
       x-examples:
         example-1:
-          id: f6989c2f-64b1-454d-93a7-e0ea16bd04b7
+          id: string
           systemName: string
           name: string
           description: string
@@ -1608,7 +1608,7 @@ components:
       description: Способ выбора ответа на задания с типом choose
       x-examples:
         example-1:
-          id: a719360b-e4c1-4dbb-b7ce-9a283a9a1232
+          id: string
           systemName: string
           name: string
           description: string
@@ -1639,7 +1639,7 @@ components:
       description: Цвет выбора ответа на задания с типом choose
       x-examples:
         example-1:
-          id: aa80130b-f296-4131-89b1-6ef3008b081d
+          id: string
           systemName: string
           name: string
           description: string
@@ -1670,7 +1670,7 @@ components:
       description: Тип отображения задания
       x-examples:
         example-1:
-          id: ed9b32be-1c36-4ae6-a4cc-c9494d53fca0
+          id: string
           systemName: string
           name: string
           description: string
@@ -1701,9 +1701,9 @@ components:
       description: Входящий объект с информацией по школьному тесту
       x-examples:
         example-1:
-          id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
-          schoolClassId: b06e7544-a62a-42a3-b937-73508dae48c7
-          subjectId: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+          id: string
+          schoolClassId: string
+          subjectId: string
           displayName: string
       properties:
         id:
@@ -1732,14 +1732,54 @@ components:
       description: Исходящий объект с информацией по школьному тесту
       x-examples:
         example-1:
-          id: 7dafaf2b-3fd8-45d4-b658-84493ed622aa
+          id: string
           schoolClass:
-            id: b06e7544-a62a-42a3-b937-73508dae48c7
+            id: string
             systemName: string
             name: string
             description: string
           subject:
-            id: c9e86aa4-dea3-4cec-885f-a601c9ad21dd
+            id: string
+            systemName: string
+            name: string
+            description: string
+          displayName: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        schoolClass:
+          $ref: '#/components/schemas/SchoolClassDTO'
+        subject:
+          $ref: '#/components/schemas/SubjectDTO'
+        displayName:
+          type: string
+          description: Отображаемое название
+          maxLength: 255
+    TaskDTO:
+      title: TaskDTO
+      type: object
+      additionalProperties: false
+      description: Задание теста
+      x-examples:
+        example-1:
+          id: string
+          schoolTest:
+            id: string
+            schoolClass:
+              id: string
+              systemName: string
+              name: string
+              description: string
+            subject:
+              id: string
+              systemName: string
+              name: string
+              description: string
+            displayName: string
+          subject:
+            id: string
             systemName: string
             name: string
             description: string
