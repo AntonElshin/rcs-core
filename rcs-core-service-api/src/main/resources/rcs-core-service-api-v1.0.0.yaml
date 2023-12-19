@@ -319,14 +319,14 @@ paths:
         '422':
           description: Unprocessable Entity (WebDAV)
   #  Типы ответов
-  /answer-type:
+  /task-type:
     parameters: []
     get:
-      summary: Получение списка типов ответов по параметрам
-      operationId: findAnswerType
-      description: Получение списка типов ответов по параметрам
+      summary: Получение списка типов заданий по параметрам
+      operationId: findTaskType
+      description: Получение списка типов заданий по параметрам
       tags:
-        - answer-type
+        - task-type
       parameters:
         - $ref: '#/components/parameters/search'
       responses:
@@ -338,7 +338,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/AnswerTypeDTO'
+                  $ref: '#/components/schemas/TaskTypeDTO'
               examples:
                 example-1:
                   value:
@@ -347,17 +347,17 @@ paths:
                       name: string
                       description: string
     post:
-      summary: Создание типа ответа
-      operationId: addAnswerType
-      description: Создание типа ответа
+      summary: Создание типа задания
+      operationId: addTaskType
+      description: Создание типа задания
       tags:
-        - answer-type
+        - task-type
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AnswerTypeDTO'
+              $ref: '#/components/schemas/TaskTypeDTO'
             examples:
               example-1:
                 value:
@@ -370,7 +370,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AnswerTypeDTO'
+                $ref: '#/components/schemas/TaskTypeDTO'
               examples:
                 example-1:
                   value:
@@ -386,22 +386,22 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
         '422':
           description: Unprocessable Entity (WebDAV)
-  '/answer-type/{answerTypeId}':
+  '/task-type/{taskTypeId}':
     parameters:
-      - $ref: '#/components/parameters/answerTypeId'
+      - $ref: '#/components/parameters/taskTypeId'
     get:
-      summary: Получение типа ответа по идентификатору
-      operationId: findAnswerTypeById
-      description: Получение типа ответа по идентификатору
+      summary: Получение типа задания по идентификатору
+      operationId: findTaskTypeById
+      description: Получение типа задания по идентификатору
       tags:
-        - answer-type
+        - task-type
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AnswerTypeDTO'
+                $ref: '#/components/schemas/TaskTypeDTO'
               examples:
                 example-1:
                   value:
@@ -418,17 +418,17 @@ paths:
         '422':
           description: Unprocessable Entity (WebDAV)
     put:
-      summary: Изменение типа ответа
-      operationId: modifyAnswerType
-      description: Изменение типа ответа
+      summary: Изменение типа задания
+      operationId: modifyTaskType
+      description: Изменение типа задания
       tags:
-        - answer-type
+        - task-type
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AnswerTypeDTO'
+              $ref: '#/components/schemas/TaskTypeDTO'
             examples:
               example-1:
                 value:
@@ -442,7 +442,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AnswerTypeDTO'
+                $ref: '#/components/schemas/TaskTypeDTO'
               examples:
                 example-1:
                   value:
@@ -455,11 +455,11 @@ paths:
         '422':
           description: Unprocessable Entity (WebDAV)
     delete:
-      summary: Удаление типа ответа по идентификатору
-      operationId: removeAnswerType
-      description: Удаление типа ответа по идентификатору
+      summary: Удаление типа задания по идентификатору
+      operationId: removeTaskType
+      description: Удаление типа задания по идентификатору
       tags:
-        - answer-type
+        - task-type
       responses:
         '200':
           description: OK
@@ -1508,8 +1508,8 @@ components:
       required:
         - systemName
         - name
-    AnswerTypeDTO:
-      title: AnswerTypeDTO
+    TaskTypeDTO:
+      title: TaskTypeDTO
       type: object
       additionalProperties: false
       description: Тип ответа
@@ -1781,14 +1781,14 @@ components:
         type: string
         format: uuid
       description: Идентификатор предмета
-    searchAnswerTypeId:
-      name: searchAnswerTypeId
+    searchTaskTypeId:
+      name: searchTaskTypeId
       in: query
       required: true
       schema:
         type: string
         format: uuid
-      description: Идентификатор типа ответа
+      description: Идентификатор типа задания
     searchAnswerPositionId:
       name: searchAnswerPositionId
       in: query
@@ -1845,14 +1845,14 @@ components:
         type: string
         format: uuid
       description: Идентификатор предмета
-    answerTypeId:
-      name: answerTypeId
+    taskTypeId:
+      name: taskTypeId
       in: path
       required: true
       schema:
         type: string
         format: uuid
-      description: Идентификатор типа ответа
+      description: Идентификатор типа задания
     answerPositionId:
       name: answerPositionId
       in: path
@@ -1904,7 +1904,7 @@ components:
 tags:
   - name: school-class
   - name: subject
-  - name: answer-type
+  - name: task-type
   - name: answer-position
   - name: answer-typing-format
   - name: answer-choose-type

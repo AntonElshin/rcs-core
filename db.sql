@@ -43,12 +43,12 @@ insert into image values ('4b10dd8b-3738-448b-8446-5b52a7ac9819', '\src\shared\a
 insert into image values ('ee036ce6-c8ee-4cf5-912e-8943f05b26a9', '\src\shared\assets\images\flag_2.jpg');
 insert into image values ('d9b07c5a-1aab-4204-8140-6c6c2831d8a6', '\src\shared\assets\images\flag_3.jpg');
 
--- Доступные типы ответов
-select * from answer_type;
+-- Типы заданий
+select * from task_type;
 
-insert into answer_type values ('c98d26b4-2f09-4b40-a020-72f2e3f877d8', 'read', 'Чтение', 'Чтение текста для последующих вопросов по нему');
-insert into answer_type values ('c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'typing', 'Ввод с клавиатуры', 'Напечатать ответ на вопрос');
-insert into answer_type values ('402375b9-ffa6-42dd-ac57-8e5415f0b821', 'choose', 'Выбор из вариантов', 'Выбрать ответ или ответы из предложенных вариантов');
+insert into task_type values ('c98d26b4-2f09-4b40-a020-72f2e3f877d8', 'read', 'Чтение', 'Чтение текста для последующих вопросов по нему');
+insert into task_type values ('c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'typing', 'Ввод с клавиатуры', 'Напечатать ответ на вопрос');
+insert into task_type values ('402375b9-ffa6-42dd-ac57-8e5415f0b821', 'choose', 'Выбор из вариантов', 'Выбрать ответ или ответы из предложенных вариантов');
 
 -- Доступные позиции ответов
 select * from answer_position;
@@ -379,7 +379,7 @@ select
   t.task_hint as task_hint,
   i.path as task_image_path,
   ap.system_name as answer_position_name,
-  at.system_name as answer_type_name,
+  tt.system_name as task_type_name,
   atf.system_name as answer_typing_format_name,
   act.system_name as answer_choose_type_name,
   vt.system_name as task_view_type,
@@ -392,8 +392,8 @@ inner join school_class sc on
   sc.id = st.school_class_id
 inner join subject s on
   s.id = st.subject_id
-left join answer_type at on
-  at.id = t.answer_type_id
+left join task_type tt on
+  tt.id = t.task_type_id
 left join task_answer_typing_format tatf on
   tatf.task_id = t.id
 left join answer_typing_format atf on

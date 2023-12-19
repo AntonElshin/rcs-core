@@ -8,7 +8,7 @@ databaseChangeLog:
   - include:
       file: liquibase/changes/addImage.yaml
   - include:
-      file: liquibase/changes/addAnswerType.yaml
+      file: liquibase/changes/addTaskType.yaml
   - include:
       file: liquibase/changes/addAnswerPosition.yaml
   - include:
