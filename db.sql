@@ -16,12 +16,6 @@ insert into subject values ('1e007201-4f33-43c2-8e8c-af1e2f7e6f45', 'environment
 insert into subject values ('e715108b-3ae8-4ef2-b6e6-5ffd1ed0e200', 'mathematics', 'Математика', null);
 insert into subject values ('4a635509-225f-481d-98bc-774127a7d23a', 'russian_language', 'Русский язык', null);
 
--- Тесты
-select * from school_test;
-
-insert into school_test values ('65824e36-8d65-475f-a3d7-bc47ee1a97c1', 'a9d78ff9-1169-4105-a597-c0a0b9520b9e', 'b5269894-9697-43e0-8cf1-fdbba2ca27d2', null);
-insert into school_test values ('9d565bdd-b1fb-44eb-af50-7490555b5708', 'a9d78ff9-1169-4105-a597-c0a0b9520b9e', '1e007201-4f33-43c2-8e8c-af1e2f7e6f45', null);
-
 -- Картинки
 select * from image;
 
@@ -82,6 +76,12 @@ select * from view_type;
 insert into view_type values ('cc3efb92-7149-473b-b6d6-618fb380a584', 'rows', 'Строки', null);
 insert into view_type values ('a6871068-80db-4cd6-9f2c-d526e5edcc03', 'table', 'Таблица', null);
 insert into view_type values ('549d06a4-b2e2-4db0-ba56-c590e103fd83', 'columns', 'Колонки', null);
+
+-- Тесты
+select * from school_test;
+
+insert into school_test values ('65824e36-8d65-475f-a3d7-bc47ee1a97c1', 'a9d78ff9-1169-4105-a597-c0a0b9520b9e', 'b5269894-9697-43e0-8cf1-fdbba2ca27d2', null);
+insert into school_test values ('9d565bdd-b1fb-44eb-af50-7490555b5708', 'a9d78ff9-1169-4105-a597-c0a0b9520b9e', '1e007201-4f33-43c2-8e8c-af1e2f7e6f45', null);
 
 -- Задания тестов
 select * from task;
