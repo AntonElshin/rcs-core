@@ -1694,42 +1694,11 @@ components:
       required:
         - systemName
         - name
-    SchoolTestReqDTO:
-      title: SchoolTestReqDTO
+    SchoolTestDTO:
+      title: SchoolTestDTO
       type: object
       additionalProperties: false
-      description: Входящий объект с информацией по школьному тесту
-      x-examples:
-        example-1:
-          id: string
-          schoolClassId: string
-          subjectId: string
-          displayName: string
-      properties:
-        id:
-          type: string
-          description: Уникальный идентификатор теста
-          format: uuid
-        schoolClassId:
-          type: string
-          description: Уникальный идентификатор класса
-          format: uuid
-        subjectId:
-          type: string
-          description: Уникальный идентификатор предмет
-          format: uuid
-        displayName:
-          type: string
-          description: Отображаемое имя
-          maxLength: 255
-      required:
-        - schoolClassId
-        - subjectId
-    SchoolTestResDTO:
-      title: SchoolTestResDTO
-      type: object
-      additionalProperties: false
-      description: Исходящий объект с информацией по школьному тесту
+      description: Школьный тест
       x-examples:
         example-1:
           id: string
@@ -1757,6 +1726,29 @@ components:
           type: string
           description: Отображаемое название
           maxLength: 255
+    TaskTextDTO:
+      title: TaskDTO
+      type: object
+      additionalProperties: false
+      description: Текст для задания с типом read
+      x-examples:
+        example-1:
+          id: string
+          header: string
+          text: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        header:
+          type: string
+          description: Заголовок задания
+          maxLength: 255
+        text:
+          type: string
+          description: Текст задания
+          maxLength: 1024
     TaskDTO:
       title: TaskDTO
       type: object
@@ -1778,25 +1770,50 @@ components:
               name: string
               description: string
             displayName: string
-          subject:
+          number: 1
+          taskType:
             id: string
             systemName: string
             name: string
             description: string
-          displayName: string
+          taskStatement: string
+          taskHint: string
+          taskQuestionAnswerQuantity: 1
+          taskText:
+            id: string
+            header: string
+            text: string
       properties:
         id:
           type: string
           description: Уникальный идентификатор
           format: uuid
-        schoolClass:
-          $ref: '#/components/schemas/SchoolClassDTO'
-        subject:
-          $ref: '#/components/schemas/SubjectDTO'
-        displayName:
+        schoolTest:
+          $ref: '#/components/schemas/SchoolTestDTO'
+        number:
+          type: integer
+          format: int64
+          description: Код ошибки
+          minimum: 0
+          maximum: 2147483647
+        taskType:
+          $ref: '#/components/schemas/TaskTypeDTO'
+        taskStatement:
           type: string
-          description: Отображаемое название
-          maxLength: 255
+          description: Формулировка задания
+          maxLength: 1024
+        taskHint:
+          type: string
+          description: Подсказка задания
+          maxLength: 1024
+        taskQuestionAnswerQuantity:
+          type: integer
+          format: int64
+          description: Код ошибки
+          minimum: 0
+          maximum: 9
+        taskText:
+          $ref: '#/components/schemas/TaskTextDTO'
   parameters:
     search:
       name: search
