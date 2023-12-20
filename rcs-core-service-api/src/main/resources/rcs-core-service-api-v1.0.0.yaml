@@ -1508,6 +1508,24 @@ components:
       required:
         - systemName
         - name
+    ImageDTO:
+      title: ImageDTO
+      type: object
+      additionalProperties: false
+      description: Картинка
+      x-examples:
+        example-1:
+          id: string
+          path: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        path:
+          type: string
+          description: Путь до файла на сервере
+          maxLength: 512
     TaskTypeDTO:
       title: TaskTypeDTO
       type: object
@@ -1726,6 +1744,24 @@ components:
           type: string
           description: Отображаемое название
           maxLength: 255
+    TaskImageDTO:
+      title: TaskImageDTO
+      type: object
+      additionalProperties: false
+      description: Картинка задания
+      x-examples:
+        example-1:
+          id: string
+          image:
+            id: string
+            path: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        image:
+          $ref: '#/components/schemas/ImageDTO'
     TaskTextDTO:
       title: TaskDTO
       type: object
@@ -1749,6 +1785,86 @@ components:
           type: string
           description: Текст задания
           maxLength: 1024
+    TaskAnswerPositionDTO:
+      title: TaskAnswerPositionDTO
+      type: object
+      additionalProperties: false
+      description: Позиция ответа задания
+      x-examples:
+        example-1:
+          id: string
+          answerPosition:
+            id: string
+            systemName: string
+            name: string
+            description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        answerPosition:
+          $ref: '#/components/schemas/AnswerPositionDTO'
+    TaskAnswerTypingFormatDTO:
+      title: TaskAnswerTypingFormatDTO
+      type: object
+      additionalProperties: false
+      description: Формат ответа на задания с типом typing
+      x-examples:
+        example-1:
+          id: string
+          answerTypingFormat:
+            id: string
+            systemName: string
+            name: string
+            description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        answerTypingFormat:
+          $ref: '#/components/schemas/AnswerTypingFormatDTO'
+    TaskAnswerChooseTypeDTO:
+      title: TaskAnswerChooseTypeDTO
+      type: object
+      additionalProperties: false
+      description: Способ выбора ответа на задания с типом choose
+      x-examples:
+        example-1:
+          id: string
+          answerChooseType:
+            id: string
+            systemName: string
+            name: string
+            description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        answerChooseType:
+          $ref: '#/components/schemas/AnswerChooseTypeDTO'
+    TaskViewTypeDTO:
+      title: TaskViewTypeDTO
+      type: object
+      additionalProperties: false
+      description: Доступные варианты отображения задания
+      x-examples:
+        example-1:
+          id: string
+          viewType:
+            id: string
+            systemName: string
+            name: string
+            description: string
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор
+          format: uuid
+        viewType:
+          $ref: '#/components/schemas/ViewTypeDTO'
     TaskDTO:
       title: TaskDTO
       type: object
@@ -1771,18 +1887,51 @@ components:
               description: string
             displayName: string
           number: 1
+          taskStatement: string
+          taskHint: string
+          taskQuestionAnswerQuantity: 1
+          taskImage:
+            id: string
+            image:
+              id: string
+              path: string
           taskType:
             id: string
             systemName: string
             name: string
             description: string
-          taskStatement: string
-          taskHint: string
-          taskQuestionAnswerQuantity: 1
           taskText:
             id: string
             header: string
             text: string
+          taskAnswerPosition:
+            id: string
+            answerPosition:
+              id: string
+              systemName: string
+              name: string
+              description: string
+          taskAnswerTypingFormat:
+            id: string
+            answerTypingFormat:
+              id: string
+              systemName: string
+              name: string
+              description: string
+          taskAnswerChooseType:
+            id: string
+            answerChooseType:
+              id: string
+              systemName: string
+              name: string
+              description: string
+          taskViewType:
+            id: string
+            viewType:
+              id: string
+              systemName: string
+              name: string
+              description: string
       properties:
         id:
           type: string
@@ -1796,8 +1945,6 @@ components:
           description: Код ошибки
           minimum: 0
           maximum: 2147483647
-        taskType:
-          $ref: '#/components/schemas/TaskTypeDTO'
         taskStatement:
           type: string
           description: Формулировка задания
@@ -1812,8 +1959,20 @@ components:
           description: Код ошибки
           minimum: 0
           maximum: 9
+        taskImage:
+          $ref: '#/components/schemas/TaskImageDTO'
+        taskType:
+          $ref: '#/components/schemas/TaskTypeDTO'
         taskText:
           $ref: '#/components/schemas/TaskTextDTO'
+        taskAnswerPosition:
+          $ref: '#/components/schemas/TaskAnswerPositionDTO'
+        taskAnswerTypingFormat:
+          $ref: '#/components/schemas/TaskAnswerTypingFormatDTO'
+        taskAnswerChooseType:
+          $ref: '#/components/schemas/TaskAnswerChooseTypeDTO'
+        taskViewType:
+          $ref: '#/components/schemas/TaskViewTypeDTO'
   parameters:
     search:
       name: search

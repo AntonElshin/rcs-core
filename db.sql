@@ -377,13 +377,13 @@ select
   t.number as task_number,
   t.task_statement as task_statement,
   t.task_hint as task_hint,
+  t.task_question_answer_quantity,
   i.path as task_image_path,
-  ap.system_name as answer_position_name,
   tt.system_name as task_type_name,
+  ap.system_name as answer_position_name,
   atf.system_name as answer_typing_format_name,
   act.system_name as answer_choose_type_name,
-  vt.system_name as task_view_type,
-  t.task_question_answer_quantity
+  vt.system_name as task_view_type
 from
   task t
 inner join school_test st on
