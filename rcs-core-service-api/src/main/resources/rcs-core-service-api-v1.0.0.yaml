@@ -1423,7 +1423,6 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
         '422':
           description: Unprocessable Entity (WebDAV)
-
 components:
   schemas:
     ErrorDTO:
@@ -1744,24 +1743,6 @@ components:
           type: string
           description: Отображаемое название
           maxLength: 255
-    TaskImageDTO:
-      title: TaskImageDTO
-      type: object
-      additionalProperties: false
-      description: Картинка задания
-      x-examples:
-        example-1:
-          id: string
-          image:
-            id: string
-            path: string
-      properties:
-        id:
-          type: string
-          description: Уникальный идентификатор
-          format: uuid
-        image:
-          $ref: '#/components/schemas/ImageDTO'
     TaskTextDTO:
       title: TaskTextDTO
       type: object
@@ -1785,106 +1766,6 @@ components:
           type: string
           description: Текст задания
           maxLength: 1024
-    TaskAnswerPositionDTO:
-      title: TaskAnswerPositionDTO
-      type: object
-      additionalProperties: false
-      description: Позиция ответа задания
-      x-examples:
-        example-1:
-          id: string
-          answerPosition:
-            id: string
-            systemName: string
-            name: string
-            description: string
-      properties:
-        id:
-          type: string
-          description: Уникальный идентификатор
-          format: uuid
-        answerPosition:
-          $ref: '#/components/schemas/AnswerPositionDTO'
-    TaskAnswerTypingFormatDTO:
-      title: TaskAnswerTypingFormatDTO
-      type: object
-      additionalProperties: false
-      description: Формат ответа на задания с типом typing
-      x-examples:
-        example-1:
-          id: string
-          answerTypingFormat:
-            id: string
-            systemName: string
-            name: string
-            description: string
-      properties:
-        id:
-          type: string
-          description: Уникальный идентификатор
-          format: uuid
-        answerTypingFormat:
-          $ref: '#/components/schemas/AnswerTypingFormatDTO'
-    TaskAnswerChooseTypeDTO:
-      title: TaskAnswerChooseTypeDTO
-      type: object
-      additionalProperties: false
-      description: Способ выбора ответа на задания с типом choose
-      x-examples:
-        example-1:
-          id: string
-          answerChooseType:
-            id: string
-            systemName: string
-            name: string
-            description: string
-      properties:
-        id:
-          type: string
-          description: Уникальный идентификатор
-          format: uuid
-        answerChooseType:
-          $ref: '#/components/schemas/AnswerChooseTypeDTO'
-    TaskAnswerChooseColorDTO:
-      title: TaskAnswerChooseColorDTO
-      type: object
-      additionalProperties: false
-      description: Доступные цвета для ответа на задания с типом choose
-      x-examples:
-        example-1:
-          id: string
-          answerChooseColor:
-            id: string
-            systemName: string
-            name: string
-            description: string
-      properties:
-        id:
-          type: string
-          description: Уникальный идентификатор
-          format: uuid
-        answerChooseColor:
-          $ref: '#/components/schemas/AnswerChooseColorDTO'
-    TaskViewTypeDTO:
-      title: TaskViewTypeDTO
-      type: object
-      additionalProperties: false
-      description: Доступные варианты отображения задания
-      x-examples:
-        example-1:
-          id: string
-          viewType:
-            id: string
-            systemName: string
-            name: string
-            description: string
-      properties:
-        id:
-          type: string
-          description: Уникальный идентификатор
-          format: uuid
-        viewType:
-          $ref: '#/components/schemas/ViewTypeDTO'
     TaskCorrectTypingAnswerDTO:
       title: TaskCorrectTypingAnswerDTO
       type: object
@@ -1903,24 +1784,6 @@ components:
           type: string
           description: Правильный текстовый ответ
           maxLength: 255
-    TaskQuestionImageDTO:
-      title: TaskQuestionImageDTO
-      type: object
-      additionalProperties: false
-      description: Картинка вопроса задания
-      x-examples:
-        example-1:
-          id: string
-          image:
-            id: string
-            path: string
-      properties:
-        id:
-          type: string
-          description: Уникальный идентификатор
-          format: uuid
-        image:
-          $ref: '#/components/schemas/ImageDTO'
     TaskQuestionCorrectTypingAnswerDTO:
       title: TaskQuestionCorrectTypingAnswerDTO
       type: object
@@ -1978,7 +1841,7 @@ components:
           description: Предзаполненный ответ
           maxLength: 1024
         taskQuestionImage:
-          $ref: '#/components/schemas/TaskQuestionImageDTO'
+          $ref: '#/components/schemas/ImageDTO'
         taskQuestionCorrectTypingAnswer:
           $ref: '#/components/schemas/TaskQuestionCorrectTypingAnswerDTO'
     TaskProposedAnswerDTO:
@@ -2016,24 +1879,6 @@ components:
         correctAnswerChooseColor:
           $ref: '#/components/schemas/AnswerChooseColorDTO'
         taskProposedAnswerImage:
-          $ref: '#/components/schemas/TaskProposedAnswerImageDTO'
-    TaskProposedAnswerImageDTO:
-      title: TaskProposedAnswerImageDTO
-      type: object
-      additionalProperties: false
-      description: Изображение для предложенного ответа задания
-      x-examples:
-        example-1:
-          id: string
-          image:
-            id: string
-            path: string
-      properties:
-        id:
-          type: string
-          description: Уникальный идентификатор
-          format: uuid
-        image:
           $ref: '#/components/schemas/ImageDTO'
     TaskDTO:
       title: TaskDTO
@@ -2047,55 +1892,43 @@ components:
           taskStatement: string
           taskHint: string
           taskQuestionAnswerQuantity: 1
-          taskImage:
-            id: string
-            image:
-              id: string
-              path: string
           taskType:
             id: string
             systemName: string
             name: string
             description: string
+          taskImage:
+            id: string
+            path: string
           taskText:
             id: string
             header: string
             text: string
           taskAnswerPosition:
             id: string
-            answerPosition:
-              id: string
-              systemName: string
-              name: string
-              description: string
+            systemName: string
+            name: string
+            description: string
           taskAnswerTypingFormat:
             id: string
-            answerTypingFormat:
-              id: string
-              systemName: string
-              name: string
-              description: string
+            systemName: string
+            name: string
+            description: string
           taskAnswerChooseType:
             id: string
-            answerChooseType:
-              id: string
+            systemName: string
+            name: string
+            description: string
+          taskAnswerChooseColors:
+            - id: string
               systemName: string
               name: string
               description: string
-          taskAnswerChooseColor:
-            - id: string
-              answerChooseColor:
-                id: string
-                systemName: string
-                name: string
-                description: string
           taskViewType:
             id: string
-            viewType:
-              id: string
-              systemName: string
-              name: string
-              description: string
+            systemName: string
+            name: string
+            description: string
           taskCorrectTypingAnswer:
             id: string
             correctTypingAnswer: string
@@ -2106,9 +1939,7 @@ components:
               prefilledAnswer: string
               taskQuestionImage:
                 id: string
-                image:
-                  id: string
-                  path: string
+                path: string
               taskQuestionCorrectTypingAnswer:
                 id: string
                 correctTypingAnswer: string
@@ -2118,9 +1949,7 @@ components:
               prefilledAnswer: string
               taskQuestionImage:
                 id: string
-                image:
-                  id: string
-                  path: string
+                path: string
               taskQuestionCorrectTypingAnswer:
                 id: string
                 correctTypingAnswer: string
@@ -2135,9 +1964,7 @@ components:
                 description: string
               taskProposedAnswerImage:
                 id: string
-                image:
-                  id: string
-                  path: string
+                path: string
             - id: string
               proposedAnswer: string
               isCorrect: boolean
@@ -2148,9 +1975,7 @@ components:
                 description: string
               taskProposedAnswerImage:
                 id: string
-                image:
-                  id: string
-                  path: string
+                path: string
       properties:
         id:
           type: string
@@ -2176,26 +2001,26 @@ components:
           description: Количество ответов на вопрос
           minimum: 0
           maximum: 9
-        taskImage:
-          $ref: '#/components/schemas/TaskImageDTO'
         taskType:
           $ref: '#/components/schemas/TaskTypeDTO'
+        taskImage:
+          $ref: '#/components/schemas/ImageDTO'
         taskText:
           $ref: '#/components/schemas/TaskTextDTO'
         taskAnswerPosition:
-          $ref: '#/components/schemas/TaskAnswerPositionDTO'
+          $ref: '#/components/schemas/AnswerPositionDTO'
         taskAnswerTypingFormat:
-          $ref: '#/components/schemas/TaskAnswerTypingFormatDTO'
+          $ref: '#/components/schemas/AnswerTypingFormatDTO'
         taskAnswerChooseType:
-          $ref: '#/components/schemas/TaskAnswerChooseTypeDTO'
-        taskAnswerChooseColor:
+          $ref: '#/components/schemas/AnswerChooseTypeDTO'
+        taskAnswerChooseColors:
           type: array
           minItems: 0
-          description: Список вопросов
+          description: Цвета для ответа на задания с типом choose
           items:
-            $ref: '#/components/schemas/TaskAnswerChooseColorDTO'
+            $ref: '#/components/schemas/AnswerChooseColorDTO'
         taskViewType:
-          $ref: '#/components/schemas/TaskViewTypeDTO'
+          $ref: '#/components/schemas/ViewTypeDTO'
         taskCorrectTypingAnswer:
           $ref: '#/components/schemas/TaskCorrectTypingAnswerDTO'
         taskQuestions:

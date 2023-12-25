@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: image
-            remarks: Изображения для вопросов и ответов
+            remarks: Изображение для вопросов и ответов
             columns:
               - column:
                   constraints:

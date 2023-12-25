@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: school_test
-            remarks: Тест
+            remarks: Школьный тест
             columns:
               - column:
                   constraints:

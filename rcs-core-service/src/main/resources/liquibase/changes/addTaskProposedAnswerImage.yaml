@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: task_proposed_answer_image
-            remarks: Изображение для предложенного ответа задания
+            remarks: Изображение для предложенного ответа задания с типом choose
             columns:
               - column:
                   constraints:

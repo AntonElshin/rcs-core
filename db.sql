@@ -92,21 +92,21 @@ select * from task;
 '402375b9-ffa6-42dd-ac57-8e5415f0b821', 'choose'
  */
 
-insert into task values ('6c552069-874a-4335-94b7-62cb7fb32a75', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 1, 'c98d26b4-2f09-4b40-a020-72f2e3f877d8', 'Прочитай внимательно текст', null, null);
-insert into task values ('c5638830-dd2c-49b0-8fb1-8b06b1ae97b2', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 2, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Ответь на вопросы', null, 1);
-insert into task values ('de18553e-2002-416e-9b93-b57bcb830007', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 3, '402375b9-ffa6-42dd-ac57-8e5415f0b821', 'Найди предложения к картинке и подчеркни его', null, null);
-insert into task values ('75ac4db2-52d5-40dd-ab5c-d7ae8edf5a96', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 4, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Пронумеруй по порядку предложения', null, 1);
-insert into task values ('3e47544f-b9bb-4d63-b1b3-b4910b4c550d', '9d565bdd-b1fb-44eb-af50-7490555b5708', 1, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Подпиши части тела мальчика.', null, 1);
-insert into task values ('2a035365-566a-45d5-b3e9-524758d2ca94', '9d565bdd-b1fb-44eb-af50-7490555b5708', 2, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Прочитай слова. Запиши ответы в таблицу цифрой.', '1) осязание 2) обоняние 3) вкус 4) слух 5) зрение', 1);
-insert into task values ('7a8bf3f0-9f84-4b07-a5d0-58c8404af5ef', '9d565bdd-b1fb-44eb-af50-7490555b5708', 3, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Раздели птиц на две группы:', 'курица, голубь, ворона, петух, воробей, индюк, дрозды.', 7);
-insert into task values ('a6ceda33-3f0c-454a-bf22-be8ec81ea554', '9d565bdd-b1fb-44eb-af50-7490555b5708', 4, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Расставь по порядку.', 'цифра 1 уже стоит.', 1);
-insert into task values ('1452ed08-a73d-4c20-975a-bb6f5839a907', '9d565bdd-b1fb-44eb-af50-7490555b5708', 5, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Подпиши времена года нарисованные на картинках.', null, 1);
-insert into task values ('6fa0d664-ff68-4ac1-8c7c-6a10d8acc775', '9d565bdd-b1fb-44eb-af50-7490555b5708', 6, '402375b9-ffa6-42dd-ac57-8e5415f0b821', 'На каком рисунке изображен лист дуба?', null, null);
-insert into task values ('16c59680-dcc8-46de-ae41-9f1728346c06', '9d565bdd-b1fb-44eb-af50-7490555b5708', 7, '402375b9-ffa6-42dd-ac57-8e5415f0b821', 'Подчеркни лишнее растение.', null, null);
-insert into task values ('ca9303c5-ae4e-4926-a6ce-d391b3e2d84b', '9d565bdd-b1fb-44eb-af50-7490555b5708', 8, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Подпиши названия птиц.', null, null);
-insert into task values ('383e7536-c178-4542-9b32-5105a70a0221', '9d565bdd-b1fb-44eb-af50-7490555b5708', 9, '402375b9-ffa6-42dd-ac57-8e5415f0b821', 'Подчеркни домашних животных красным карандашом, диких – синим.', null, null);
-insert into task values ('b69f0d84-cc53-4cd7-af1a-afb8bfe5a643', '9d565bdd-b1fb-44eb-af50-7490555b5708', 10, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f', 'Ответь на вопросы', null, null);
-insert into task values ('f35c48b2-66cb-49e8-ae13-f4c5e9a6cc0c', '9d565bdd-b1fb-44eb-af50-7490555b5708', 11, '402375b9-ffa6-42dd-ac57-8e5415f0b821', 'Какой из нарисованных флагов является флагом нашей страны? Подчеркни.', null, null);
+insert into task values ('6c552069-874a-4335-94b7-62cb7fb32a75', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 1, 'Прочитай внимательно текст', null, null, 'c98d26b4-2f09-4b40-a020-72f2e3f877d8');
+insert into task values ('c5638830-dd2c-49b0-8fb1-8b06b1ae97b2', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 2, 'Ответь на вопросы', null, 1, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f');
+insert into task values ('de18553e-2002-416e-9b93-b57bcb830007', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 3, 'Найди предложения к картинке и подчеркни его', null, null, '402375b9-ffa6-42dd-ac57-8e5415f0b821');
+insert into task values ('75ac4db2-52d5-40dd-ab5c-d7ae8edf5a96', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 4, 'Пронумеруй по порядку предложения', null, 1, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f');
+insert into task values ('3e47544f-b9bb-4d63-b1b3-b4910b4c550d', '9d565bdd-b1fb-44eb-af50-7490555b5708', 1, 'Подпиши части тела мальчика.', null, 1, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f');
+insert into task values ('2a035365-566a-45d5-b3e9-524758d2ca94', '9d565bdd-b1fb-44eb-af50-7490555b5708', 2, 'Прочитай слова. Запиши ответы в таблицу цифрой.', '1) осязание 2) обоняние 3) вкус 4) слух 5) зрение', 1, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f');
+insert into task values ('7a8bf3f0-9f84-4b07-a5d0-58c8404af5ef', '9d565bdd-b1fb-44eb-af50-7490555b5708', 3, 'Раздели птиц на две группы:', 'курица, голубь, ворона, петух, воробей, индюк, дрозды.', 7, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f');
+insert into task values ('a6ceda33-3f0c-454a-bf22-be8ec81ea554', '9d565bdd-b1fb-44eb-af50-7490555b5708', 4, 'Расставь по порядку.', 'цифра 1 уже стоит.', 1, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f');
+insert into task values ('1452ed08-a73d-4c20-975a-bb6f5839a907', '9d565bdd-b1fb-44eb-af50-7490555b5708', 5, 'Подпиши времена года нарисованные на картинках.', null, 1, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f');
+insert into task values ('6fa0d664-ff68-4ac1-8c7c-6a10d8acc775', '9d565bdd-b1fb-44eb-af50-7490555b5708', 6, 'На каком рисунке изображен лист дуба?', null, null, '402375b9-ffa6-42dd-ac57-8e5415f0b821');
+insert into task values ('16c59680-dcc8-46de-ae41-9f1728346c06', '9d565bdd-b1fb-44eb-af50-7490555b5708', 7, 'Подчеркни лишнее растение.', null, null, '402375b9-ffa6-42dd-ac57-8e5415f0b821');
+insert into task values ('ca9303c5-ae4e-4926-a6ce-d391b3e2d84b', '9d565bdd-b1fb-44eb-af50-7490555b5708', 8, 'Подпиши названия птиц.', null, null, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f');
+insert into task values ('383e7536-c178-4542-9b32-5105a70a0221', '9d565bdd-b1fb-44eb-af50-7490555b5708', 9, 'Подчеркни домашних животных красным карандашом, диких – синим.', null, null, '402375b9-ffa6-42dd-ac57-8e5415f0b821');
+insert into task values ('b69f0d84-cc53-4cd7-af1a-afb8bfe5a643', '9d565bdd-b1fb-44eb-af50-7490555b5708', 10, 'Ответь на вопросы', null, null, 'c601fc92-e680-4bb7-b6b3-b97fcb09a90f');
+insert into task values ('f35c48b2-66cb-49e8-ae13-f4c5e9a6cc0c', '9d565bdd-b1fb-44eb-af50-7490555b5708', 11, 'Какой из нарисованных флагов является флагом нашей страны? Подчеркни.', null, null, '402375b9-ffa6-42dd-ac57-8e5415f0b821');
 
 -- Тексты заданий с типом ответа read
 select * from task_text;

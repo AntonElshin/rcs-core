@@ -37,7 +37,7 @@ public class SchoolTest {
   private String id;
 
   /**
-   * ID Школьного класса
+   * Школьный класс
    */
   @NotNull
   @OneToOne
@@ -45,7 +45,7 @@ public class SchoolTest {
   private SchoolClass schoolClass;
 
   /**
-   * ID Предмета
+   * Предмет
    */
   @NotNull
   @OneToOne

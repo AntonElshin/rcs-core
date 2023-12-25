@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: task_answer_choose_color
-            remarks: Доступные цвета для ответа на задания с типом choose
+            remarks: Цвет для ответа на задания с типом choose
             columns:
               - column:
                   constraints:

@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: task_correct_typing_answer
-            remarks:
+            remarks: Правильный ответ для задания с типом typing
             columns:
               - column:
                   constraints:
