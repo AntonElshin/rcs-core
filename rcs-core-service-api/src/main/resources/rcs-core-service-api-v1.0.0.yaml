@@ -1423,6 +1423,670 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
         '422':
           description: Unprocessable Entity (WebDAV)
+  #  Задания
+  /task:
+    parameters: []
+    get:
+      summary: Получение списка заданий по параметрам
+      operationId: findTasks
+      description: Получение списка заданий по параметрам
+      tags:
+        - task
+      parameters:
+        - $ref: '#/components/parameters/searchSchoolTestId'
+      responses:
+        '200':
+          description: OK
+          headers: { }
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: string
+                      number: 1
+                      taskStatement: string
+                      taskHint: string
+                      taskQuestionAnswerQuantity: 1
+                      taskType:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      taskImage:
+                        id: string
+                        path: string
+                      taskText:
+                        id: string
+                        header: string
+                        text: string
+                      taskAnswerPosition:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      taskAnswerTypingFormat:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      taskAnswerChooseType:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      taskAnswerChooseColors:
+                        - id: string
+                          systemName: string
+                          name: string
+                          description: string
+                      taskViewType:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      taskCorrectTypingAnswer:
+                        id: string
+                        correctTypingAnswer: string
+                      taskQuestions:
+                        - id: string
+                          number: 1
+                          text: string
+                          prefilledAnswer: string
+                          taskQuestionImage:
+                            id: string
+                            path: string
+                          taskQuestionCorrectTypingAnswer:
+                            id: string
+                            correctTypingAnswer: string
+                        - id: string
+                          number: 2
+                          text: string
+                          prefilledAnswer: string
+                          taskQuestionImage:
+                            id: string
+                            path: string
+                          taskQuestionCorrectTypingAnswer:
+                            id: string
+                            correctTypingAnswer: string
+                      taskProposedAnswers:
+                        - id: string
+                          proposedAnswer: string
+                          isCorrect: boolean
+                          correctAnswerChooseColor:
+                            id: string
+                            systemName: string
+                            name: string
+                            description: string
+                          taskProposedAnswerImage:
+                            id: string
+                            path: string
+                        - id: string
+                          proposedAnswer: string
+                          isCorrect: boolean
+                          correctAnswerChooseColor:
+                            id: string
+                            systemName: string
+                            name: string
+                            description: string
+                          taskProposedAnswerImage:
+                            id: string
+                            path: string
+    post:
+      summary: Создание задания
+      operationId: addTask
+      description: Создание задания
+      tags:
+        - task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskDTO'
+            examples:
+              example-1:
+                value:
+                  id: string
+                  number: 1
+                  taskStatement: string
+                  taskHint: string
+                  taskQuestionAnswerQuantity: 1
+                  taskType:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  taskImage:
+                    id: string
+                    path: string
+                  taskText:
+                    id: string
+                    header: string
+                    text: string
+                  taskAnswerPosition:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  taskAnswerTypingFormat:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  taskAnswerChooseType:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  taskAnswerChooseColors:
+                    - id: string
+                      systemName: string
+                      name: string
+                      description: string
+                  taskViewType:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  taskCorrectTypingAnswer:
+                    id: string
+                    correctTypingAnswer: string
+                  taskQuestions:
+                    - id: string
+                      number: 1
+                      text: string
+                      prefilledAnswer: string
+                      taskQuestionImage:
+                        id: string
+                        path: string
+                      taskQuestionCorrectTypingAnswer:
+                        id: string
+                        correctTypingAnswer: string
+                    - id: string
+                      number: 2
+                      text: string
+                      prefilledAnswer: string
+                      taskQuestionImage:
+                        id: string
+                        path: string
+                      taskQuestionCorrectTypingAnswer:
+                        id: string
+                        correctTypingAnswer: string
+                  taskProposedAnswers:
+                    - id: string
+                      proposedAnswer: string
+                      isCorrect: boolean
+                      correctAnswerChooseColor:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      taskProposedAnswerImage:
+                        id: string
+                        path: string
+                    - id: string
+                      proposedAnswer: string
+                      isCorrect: boolean
+                      correctAnswerChooseColor:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      taskProposedAnswerImage:
+                        id: string
+                        path: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDTO'
+              examples:
+                example-1:
+                  value:
+                    id: string
+                    number: 1
+                    taskStatement: string
+                    taskHint: string
+                    taskQuestionAnswerQuantity: 1
+                    taskType:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskImage:
+                      id: string
+                      path: string
+                    taskText:
+                      id: string
+                      header: string
+                      text: string
+                    taskAnswerPosition:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskAnswerTypingFormat:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskAnswerChooseType:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskAnswerChooseColors:
+                      - id: string
+                        systemName: string
+                        name: string
+                        description: string
+                    taskViewType:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskCorrectTypingAnswer:
+                      id: string
+                      correctTypingAnswer: string
+                    taskQuestions:
+                      - id: string
+                        number: 1
+                        text: string
+                        prefilledAnswer: string
+                        taskQuestionImage:
+                          id: string
+                          path: string
+                        taskQuestionCorrectTypingAnswer:
+                          id: string
+                          correctTypingAnswer: string
+                      - id: string
+                        number: 2
+                        text: string
+                        prefilledAnswer: string
+                        taskQuestionImage:
+                          id: string
+                          path: string
+                        taskQuestionCorrectTypingAnswer:
+                          id: string
+                          correctTypingAnswer: string
+                    taskProposedAnswers:
+                      - id: string
+                        proposedAnswer: string
+                        isCorrect: boolean
+                        correctAnswerChooseColor:
+                          id: string
+                          systemName: string
+                          name: string
+                          description: string
+                        taskProposedAnswerImage:
+                          id: string
+                          path: string
+                      - id: string
+                        proposedAnswer: string
+                        isCorrect: boolean
+                        correctAnswerChooseColor:
+                          id: string
+                          systemName: string
+                          name: string
+                          description: string
+                        taskProposedAnswerImage:
+                          id: string
+                          path: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+  '/task/{taskId}':
+    parameters:
+      - $ref: '#/components/parameters/taskId'
+    get:
+      summary: Получение задания по идентификатору
+      operationId: findTaskById
+      description: Получение задания по идентификатору
+      tags:
+        - task
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDTO'
+              examples:
+                example-1:
+                  value:
+                    id: string
+                    number: 1
+                    taskStatement: string
+                    taskHint: string
+                    taskQuestionAnswerQuantity: 1
+                    taskType:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskImage:
+                      id: string
+                      path: string
+                    taskText:
+                      id: string
+                      header: string
+                      text: string
+                    taskAnswerPosition:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskAnswerTypingFormat:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskAnswerChooseType:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskAnswerChooseColors:
+                      - id: string
+                        systemName: string
+                        name: string
+                        description: string
+                    taskViewType:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskCorrectTypingAnswer:
+                      id: string
+                      correctTypingAnswer: string
+                    taskQuestions:
+                      - id: string
+                        number: 1
+                        text: string
+                        prefilledAnswer: string
+                        taskQuestionImage:
+                          id: string
+                          path: string
+                        taskQuestionCorrectTypingAnswer:
+                          id: string
+                          correctTypingAnswer: string
+                      - id: string
+                        number: 2
+                        text: string
+                        prefilledAnswer: string
+                        taskQuestionImage:
+                          id: string
+                          path: string
+                        taskQuestionCorrectTypingAnswer:
+                          id: string
+                          correctTypingAnswer: string
+                    taskProposedAnswers:
+                      - id: string
+                        proposedAnswer: string
+                        isCorrect: boolean
+                        correctAnswerChooseColor:
+                          id: string
+                          systemName: string
+                          name: string
+                          description: string
+                        taskProposedAnswerImage:
+                          id: string
+                          path: string
+                      - id: string
+                        proposedAnswer: string
+                        isCorrect: boolean
+                        correctAnswerChooseColor:
+                          id: string
+                          systemName: string
+                          name: string
+                          description: string
+                        taskProposedAnswerImage:
+                          id: string
+                          path: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    put:
+      summary: Метод изменяет задание
+      operationId: modifyTask
+      description: Метод изменяет задание
+      tags:
+        - task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskDTO'
+            examples:
+              example-1:
+                value:
+                  id: string
+                  number: 1
+                  taskStatement: string
+                  taskHint: string
+                  taskQuestionAnswerQuantity: 1
+                  taskType:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  taskImage:
+                    id: string
+                    path: string
+                  taskText:
+                    id: string
+                    header: string
+                    text: string
+                  taskAnswerPosition:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  taskAnswerTypingFormat:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  taskAnswerChooseType:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  taskAnswerChooseColors:
+                    - id: string
+                      systemName: string
+                      name: string
+                      description: string
+                  taskViewType:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  taskCorrectTypingAnswer:
+                    id: string
+                    correctTypingAnswer: string
+                  taskQuestions:
+                    - id: string
+                      number: 1
+                      text: string
+                      prefilledAnswer: string
+                      taskQuestionImage:
+                        id: string
+                        path: string
+                      taskQuestionCorrectTypingAnswer:
+                        id: string
+                        correctTypingAnswer: string
+                    - id: string
+                      number: 2
+                      text: string
+                      prefilledAnswer: string
+                      taskQuestionImage:
+                        id: string
+                        path: string
+                      taskQuestionCorrectTypingAnswer:
+                        id: string
+                        correctTypingAnswer: string
+                  taskProposedAnswers:
+                    - id: string
+                      proposedAnswer: string
+                      isCorrect: boolean
+                      correctAnswerChooseColor:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      taskProposedAnswerImage:
+                        id: string
+                        path: string
+                    - id: string
+                      proposedAnswer: string
+                      isCorrect: boolean
+                      correctAnswerChooseColor:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      taskProposedAnswerImage:
+                        id: string
+                        path: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDTO'
+              examples:
+                example-1:
+                  value:
+                    id: string
+                    number: 1
+                    taskStatement: string
+                    taskHint: string
+                    taskQuestionAnswerQuantity: 1
+                    taskType:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskImage:
+                      id: string
+                      path: string
+                    taskText:
+                      id: string
+                      header: string
+                      text: string
+                    taskAnswerPosition:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskAnswerTypingFormat:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskAnswerChooseType:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskAnswerChooseColors:
+                      - id: string
+                        systemName: string
+                        name: string
+                        description: string
+                    taskViewType:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    taskCorrectTypingAnswer:
+                      id: string
+                      correctTypingAnswer: string
+                    taskQuestions:
+                      - id: string
+                        number: 1
+                        text: string
+                        prefilledAnswer: string
+                        taskQuestionImage:
+                          id: string
+                          path: string
+                        taskQuestionCorrectTypingAnswer:
+                          id: string
+                          correctTypingAnswer: string
+                      - id: string
+                        number: 2
+                        text: string
+                        prefilledAnswer: string
+                        taskQuestionImage:
+                          id: string
+                          path: string
+                        taskQuestionCorrectTypingAnswer:
+                          id: string
+                          correctTypingAnswer: string
+                    taskProposedAnswers:
+                      - id: string
+                        proposedAnswer: string
+                        isCorrect: boolean
+                        correctAnswerChooseColor:
+                          id: string
+                          systemName: string
+                          name: string
+                          description: string
+                        taskProposedAnswerImage:
+                          id: string
+                          path: string
+                      - id: string
+                        proposedAnswer: string
+                        isCorrect: boolean
+                        correctAnswerChooseColor:
+                          id: string
+                          systemName: string
+                          name: string
+                          description: string
+                        taskProposedAnswerImage:
+                          id: string
+                          path: string
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Entity (WebDAV)
+    delete:
+      summary: Удаление задания по идентификатору
+      operationId: removeTask
+      description: Удаление задания по идентификатору
+      tags:
+        - task
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '422':
+          description: Unprocessable Entity (WebDAV)
 components:
   schemas:
     ErrorDTO:
@@ -2059,6 +2723,14 @@ components:
         type: string
         format: uuid
       description: Идентификатор предмета
+    searchSchoolTestId:
+      name: searchSchoolTestId
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор школьного теста
     searchTaskTypeId:
       name: searchTaskTypeId
       in: query
@@ -2179,6 +2851,14 @@ components:
         type: string
         format: uuid
       description: Идентификатор теста
+    taskId:
+      name: taskId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Идентификатор задания
 tags:
   - name: school-class
   - name: subject
@@ -2189,3 +2869,4 @@ tags:
   - name: answer-choose-color
   - name: view-type
   - name: school-test
+  - name: task
