@@ -2,13 +2,13 @@ package ru.rcs.service;
 
 import java.util.List;
 import java.util.UUID;
-import ru.rcs.dto.SchoolTestReqDTO;
-import ru.rcs.dto.SchoolTestResDTO;
+
+import ru.rcs.dto.SchoolTestDTO;
 
 public interface SchoolTestService {
-  List<SchoolTestResDTO> find(UUID searchSchoolClassId, UUID searchSubjectId);
-  SchoolTestResDTO findById(UUID schoolTestId);
-  SchoolTestResDTO add(SchoolTestReqDTO schoolTestReqDTO);
-  SchoolTestResDTO modify(UUID schoolTestId, SchoolTestReqDTO schoolTestReqDTO);
+  List<SchoolTestDTO> find(UUID searchSchoolClassId, UUID searchSubjectId);
+  SchoolTestDTO findById(UUID schoolTestId);
+  SchoolTestDTO add(SchoolTestDTO schoolTestReqDTO);
+  SchoolTestDTO modify(UUID schoolTestId, SchoolTestDTO schoolTestReqDTO);
   void remove(UUID schoolTestId);
 }

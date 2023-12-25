@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.rcs.dto.SchoolTestReqDTO;
-import ru.rcs.dto.SchoolTestResDTO;
+import ru.rcs.dto.SchoolTestDTO;
 import ru.rcs.entity.QSchoolTest;
 import ru.rcs.entity.SchoolClass;
 import ru.rcs.entity.SchoolTest;
@@ -31,7 +30,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   private final SchoolTestMapper schoolTestMapper;
 
   @Override
-  public List<SchoolTestResDTO> find(UUID searchSchoolClassId, UUID searchSubjectId) {
+  public List<SchoolTestDTO> find(UUID searchSchoolClassId, UUID searchSubjectId) {
 
     List<BooleanExpression> predicates = new ArrayList<>();
 
@@ -66,7 +65,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   }
 
   @Override
-  public SchoolTestResDTO findById(UUID schoolTestId) {
+  public SchoolTestDTO findById(UUID schoolTestId) {
 
     if(schoolTestId == null) {
       throw new BusinessException(Errors.MISSING_REQUIRED_PARAM_SCHOOL_TEST_ID);
@@ -79,7 +78,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   }
 
   @Override
-  public SchoolTestResDTO add(SchoolTestReqDTO schoolTestReqDTO) {
+  public SchoolTestDTO add(SchoolTestDTO schoolTestReqDTO) {
 
     SchoolTest schoolTest = fillSchoolTest(null, schoolTestReqDTO);
     schoolTest = schoolTestRepository.save(schoolTest);
@@ -89,7 +88,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   }
 
   @Override
-  public SchoolTestResDTO modify(UUID schoolTestId, SchoolTestReqDTO schoolTestReqDTO) {
+  public SchoolTestDTO modify(UUID schoolTestId, SchoolTestDTO schoolTestReqDTO) {
 
     SchoolTest schoolTest = fillSchoolTest(schoolTestId, schoolTestReqDTO);
     schoolTest = schoolTestRepository.save(schoolTest);
@@ -110,7 +109,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
     schoolTestRepository.delete(schoolTest);
   }
 
-  private SchoolTest fillSchoolTest(UUID schoolTestId, SchoolTestReqDTO schoolTestReqDTO) {
+  private SchoolTest fillSchoolTest(UUID schoolTestId, SchoolTestDTO schoolTestDTO) {
 
     SchoolTest schoolTest;
 
@@ -121,21 +120,21 @@ public class SchoolTestServiceImpl implements SchoolTestService {
       schoolTest = new SchoolTest();
     }
 
-    UUID schoolClassId = schoolTestReqDTO.getSchoolClassId();
+    UUID schoolClassId = schoolTestDTO.getSchoolClass().getId();
     if(schoolClassId == null) {
       throw new BusinessException(Errors.MISSING_REQUIRED_PARAM_SCHOOL_CLASS_ID);
     }
     SchoolClass schoolClass = schoolClassRepository.findById(String.valueOf(schoolClassId)).orElseThrow(() -> new BusinessException(Errors.SCHOOL_CLASS_NOT_FOUND_BY_ID, schoolClassId));
     schoolTest.setSchoolClass(schoolClass);
 
-    UUID subjectId = schoolTestReqDTO.getSubjectId();
+    UUID subjectId = schoolTestDTO.getSubject().getId();
     if(subjectId == null) {
       throw new BusinessException(Errors.MISSING_REQUIRED_PARAM_SUBJECT_ID);
     }
     Subject subject = subjectRepository.findById(String.valueOf(subjectId)).orElseThrow(() -> new BusinessException(Errors.SUBJECT_NOT_FOUND_BY_ID, subjectId));
     schoolTest.setSubject(subject);
 
-    String displayName = schoolTestReqDTO.getDisplayName();
+    String displayName = schoolTestDTO.getDisplayName();
     if(displayName != null) {
       schoolTest.setDisplayName(displayName);
     }

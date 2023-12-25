@@ -1068,7 +1068,7 @@ paths:
           description: Unprocessable Entity (WebDAV)
     delete:
       summary: Удаление цвета выбора ответа по идентификатору
-      operationId: removeAnswerChooseType
+      operationId: removeAnswerChooseColor
       description: Удаление цвета выбора ответа по идентификатору
       tags:
         - answer-choose-color
@@ -1257,7 +1257,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SchoolTestResDTO'
+                  $ref: '#/components/schemas/SchoolTestDTO'
               examples:
                 example-1:
                   value:
@@ -1284,13 +1284,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SchoolTestReqDTO'
+              $ref: '#/components/schemas/SchoolTestDTO'
             examples:
               example-1:
                 value:
-                  id: string
-                  schoolClassId: string
-                  subjectId: string
+                  schoolClass:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  subject:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
                   displayName: string
       responses:
         '200':
@@ -1298,22 +1305,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SchoolTestResDTO'
+                $ref: '#/components/schemas/SchoolTestDTO'
               examples:
                 example-1:
                   value:
-                    - id: string
-                      schoolClass:
-                        id: string
-                        systemName: string
-                        name: string
-                        description: string
-                      subject:
-                        id: string
-                        systemName: string
-                        name: string
-                        description: string
-                      displayName: string
+                    id: string
+                    schoolClass:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    subject:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    displayName: string
         '400':
           description: Bad Request
           content:
@@ -1337,22 +1344,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SchoolTestResDTO'
+                $ref: '#/components/schemas/SchoolTestDTO'
               examples:
                 example-1:
                   value:
-                    - id: string
-                      schoolClass:
-                        id: string
-                        systemName: string
-                        name: string
-                        description: string
-                      subject:
-                        id: string
-                        systemName: string
-                        name: string
-                        description: string
-                      displayName: string
+                    id: string
+                    schoolClass:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    subject:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    displayName: string
         '400':
           description: Bad Request
           content:
@@ -1372,13 +1379,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SchoolTestReqDTO'
+              $ref: '#/components/schemas/SchoolTestDTO'
             examples:
               example-1:
                 value:
                   id: string
-                  schoolClassId: string
-                  subjectId: string
+                  schoolClass:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
+                  subject:
+                    id: string
+                    systemName: string
+                    name: string
+                    description: string
                   displayName: string
       responses:
         '200':
@@ -1386,22 +1401,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SchoolTestResDTO'
+                $ref: '#/components/schemas/SchoolTestDTO'
               examples:
                 example-1:
                   value:
-                    - id: string
-                      schoolClass:
-                        id: string
-                        systemName: string
-                        name: string
-                        description: string
-                      subject:
-                        id: string
-                        systemName: string
-                        name: string
-                        description: string
-                      displayName: string
+                    id: string
+                    schoolClass:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    subject:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    displayName: string
         '400':
           description: Bad Request
         '422':
