@@ -64,7 +64,7 @@ public class TaskProposedAnswer {
      * Изображение для предложенного ответа задания с типом choose
      */
     @OneToOne(targetEntity = Image.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_proposed_answer_image", joinColumns = @JoinColumn(name = "task_proposed_answer_id"))
+    @JoinTable(name = "task_proposed_answer_image", joinColumns = @JoinColumn(name = "task_proposed_answer_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "image_id", referencedColumnName = "id"))
     private Image taskImage;
 
 }

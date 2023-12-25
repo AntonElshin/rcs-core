@@ -84,35 +84,34 @@ public class Task {
      * Изображение для задания
      */
     @OneToOne(targetEntity = Image.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_image", joinColumns = @JoinColumn(name = "task_id"))
+    @JoinTable(name = "task_image", joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "image_id", referencedColumnName = "id"))
     private Image taskImage;
 
     /**
      * Текст задания
      */
-    @OneToOne(targetEntity = TaskText.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_text", joinColumns = @JoinColumn(name = "task_id"))
+    @OneToOne(mappedBy = "task")
     private TaskText taskText;
 
     /**
      * Позиция для ответа на задание
      */
     @OneToOne(targetEntity = AnswerPosition.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_answer_position", joinColumns = @JoinColumn(name = "task_id"))
+    @JoinTable(name = "task_answer_position", joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "answer_position_id", referencedColumnName = "id"))
     private AnswerPosition taskAnswerPosition;
 
     /**
      * Формат ответа на задание с типом typing
      */
     @OneToOne(targetEntity = AnswerTypingFormat.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_answer_typing_format", joinColumns = @JoinColumn(name = "task_id"))
+    @JoinTable(name = "task_answer_typing_format", joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "answer_typing_format_id", referencedColumnName = "id"))
     private AnswerTypingFormat taskAnswerTypingFormat;
 
     /**
      * Способ выбора ответа на задания с типом choose
      */
     @OneToOne(targetEntity = AnswerChooseType.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_answer_choose_type", joinColumns = @JoinColumn(name = "task_id"))
+    @JoinTable(name = "task_answer_choose_type", joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "answer_choose_type_id", referencedColumnName = "id"))
     private AnswerChooseType taskAnswerChooseType;
 
     /**
@@ -120,21 +119,20 @@ public class Task {
      */
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(targetEntity = AnswerChooseColor.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_answer_choose_color", joinColumns = @JoinColumn(name = "task_id"))
+    @JoinTable(name = "task_answer_choose_color", joinColumns = @JoinColumn(name = "task_id"), inverseJoinColumns = @JoinColumn(name = "answer_choose_color_id", referencedColumnName = "id"))
     private List<AnswerChooseColor> taskAnswerChooseColors;
 
     /**
      * Вариант отображения задания
      */
     @OneToOne(targetEntity = ViewType.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_view_type", joinColumns = @JoinColumn(name = "task_id"))
+    @JoinTable(name = "task_view_type", joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "view_type_id", referencedColumnName = "id"))
     private ViewType viewType;
 
     /**
      * Правильный ответ для задания с типом typing
      */
-    @OneToOne(targetEntity = TaskCorrectTypingAnswer.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_correct_typing_answer", joinColumns = @JoinColumn(name = "task_id"))
+    @OneToOne(mappedBy = "task")
     private TaskCorrectTypingAnswer taskCorrectTypingAnswer;
 
     /**

@@ -37,8 +37,8 @@ public class TaskQuestionCorrectTypingAnswer {
      */
     @Exclude
     @NotNull
-    @OneToOne
-    @JoinColumn(name = "task_question_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "task_question_id", referencedColumnName = "id")
     private TaskQuestion taskQuestion;
 
     /**

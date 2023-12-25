@@ -66,14 +66,13 @@ public class TaskQuestion {
      * Изображение для вопроса задания
      */
     @OneToOne(targetEntity = Image.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_question_image", joinColumns = @JoinColumn(name = "task_question_id"))
+    @JoinTable(name = "task_question_image", joinColumns = @JoinColumn(name = "task_question_id"), inverseJoinColumns = @JoinColumn(name = "image_id", referencedColumnName = "id"))
     private Image taskQuestionImage;
 
     /**
      * Правильный ответ на вопрос задания с типом typing
      */
-    @OneToOne(targetEntity = TaskQuestionCorrectTypingAnswer.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "task_question_correct_typing_answer", joinColumns = @JoinColumn(name = "task_question_id"))
+    @OneToOne(mappedBy = "taskQuestion")
     private TaskQuestionCorrectTypingAnswer taskQuestionCorrectTypingAnswer;
 
 }
