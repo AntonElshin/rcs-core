@@ -64,4 +64,6 @@ public interface TaskProposedAnswerMapper {
     }
 
     List<TaskProposedAnswerDTO> toListDto(List<TaskProposedAnswer> taskProposedAnswers);
+
+    List<TaskProposedAnswer> fromListDto(List<TaskProposedAnswerDTO> taskProposedAnswersDTO);
 }

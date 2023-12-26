@@ -26,7 +26,9 @@ public interface TaskQuestionMapper {
         TaskQuestion taskQuestion = new TaskQuestion();
 
         taskQuestion.setId(String.valueOf(taskQuestionDTO.getId()));
-        taskQuestion.setNumber(Math.toIntExact(taskQuestionDTO.getNumber()));
+        if(taskQuestionDTO.getNumber() != null) {
+            taskQuestion.setNumber(Math.toIntExact(taskQuestionDTO.getNumber()));
+        }
         taskQuestion.setText(taskQuestionDTO.getText());
         taskQuestion.setPrefilledAnswer(taskQuestionDTO.getPrefilledAnswer());
 
@@ -50,7 +52,9 @@ public interface TaskQuestionMapper {
         TaskQuestionDTO taskQuestionDTO = new TaskQuestionDTO();
 
         taskQuestionDTO.setId(UUID.fromString(taskQuestion.getId()));
-        taskQuestionDTO.setNumber(Long.valueOf(taskQuestion.getNumber()));
+        if(taskQuestion.getNumber() != null) {
+            taskQuestionDTO.setNumber(Long.valueOf(taskQuestion.getNumber()));
+        }
         taskQuestionDTO.setText(taskQuestion.getText());
         taskQuestionDTO.setPrefilledAnswer(taskQuestion.getPrefilledAnswer());
 
@@ -66,4 +70,6 @@ public interface TaskQuestionMapper {
     }
 
     List<TaskQuestionDTO> toListDto(List<TaskQuestion> taskQuestions);
+
+    List<TaskQuestion> fromListDto(List<TaskQuestionDTO> taskQuestionsDTO);
 }

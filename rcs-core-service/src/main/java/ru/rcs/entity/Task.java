@@ -140,7 +140,7 @@ public class Task {
      */
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TaskQuestion> taskQuestion;
+    private List<TaskQuestion> taskQuestions;
 
     /**
      * Предложенные ответы на задание

@@ -19,4 +19,6 @@ public interface AnswerChooseColorMapper {
     AnswerChooseColorDTO toDto(AnswerChooseColor answerChooseColor);
 
     List<AnswerChooseColorDTO> toListDto(List<AnswerChooseColor> answerChooseColors);
+
+    List<AnswerChooseColor> fromListDto(List<AnswerChooseColorDTO> answerChooseColorsDTO);
 }
