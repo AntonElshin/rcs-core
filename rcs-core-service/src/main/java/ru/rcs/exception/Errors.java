@@ -18,6 +18,8 @@ public enum Errors {
     MISSING_REQUIRED_PARAM_SCHOOL_TEST_ID(160, "Missing required param school test id"),
     SCHOOL_TEST_NOT_FOUND_BY_ID(161, "%s"),
 
+    TASK_NOT_FOUND_BY_ID(171, "%s"),
+
     OBJECT_SERIALIZATION_ERROR(1001, "%s"),
     OBJECT_DESERIALIZATION_ERROR(1002, "%s");
 

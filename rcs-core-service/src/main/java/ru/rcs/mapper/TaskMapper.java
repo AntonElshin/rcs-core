@@ -13,6 +13,7 @@ import java.util.UUID;
 @Mapper(componentModel = "spring", nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL, imports = {LocalDateTime.class})
 public interface TaskMapper {
 
+    SchoolTestMapper schoolTestMapper = Mappers.getMapper(SchoolTestMapper.class);
     TaskTypeMapper taskTypeMapper = Mappers.getMapper(TaskTypeMapper.class);
     ImageMapper imageMapper = Mappers.getMapper(ImageMapper.class);
     TaskTextMapper taskTextMapper = Mappers.getMapper(TaskTextMapper.class);
@@ -34,6 +35,11 @@ public interface TaskMapper {
         Task task = new Task();
 
         task.setId(String.valueOf(taskDTO.getId()));
+
+        if(taskDTO.getSchoolTest() != null) {
+            task.setSchoolTest(schoolTestMapper.fromDto(taskDTO.getSchoolTest()));
+        }
+
         task.setNumber(Math.toIntExact(taskDTO.getNumber()));
         task.setTaskStatement(taskDTO.getTaskStatement());
         task.setTaskHint(taskDTO.getTaskHint());
@@ -98,6 +104,11 @@ public interface TaskMapper {
         TaskDTO taskDTO = new TaskDTO();
 
         taskDTO.setId(UUID.fromString(task.getId()));
+
+        if(task.getSchoolTest() != null) {
+            taskDTO.setSchoolTest(schoolTestMapper.toDto(task.getSchoolTest()));
+        }
+
         taskDTO.setNumber(Long.valueOf(task.getNumber()));
         taskDTO.setTaskStatement(task.getTaskStatement());
         taskDTO.setTaskHint(task.getTaskHint());

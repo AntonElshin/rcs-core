@@ -23,21 +23,22 @@ public class TaskController implements TaskApi {
 
     @Override
     public ResponseEntity<TaskDTO> addTask(TaskDTO taskDTO) {
-        return null;
+        return ResponseEntity.ok(taskService.add(taskDTO));
     }
 
     @Override
     public ResponseEntity<TaskDTO> findTaskById(UUID taskId) {
-        return null;
+        return ResponseEntity.ok(taskService.findById(taskId));
     }
 
     @Override
     public ResponseEntity<TaskDTO> modifyTask(UUID taskId, TaskDTO taskDTO) {
-        return null;
+        return ResponseEntity.ok(taskService.modify(taskId, taskDTO));
     }
 
     @Override
     public ResponseEntity<Void> removeTask(UUID taskId) {
-        return null;
+        taskService.remove(taskId);
+        return ResponseEntity.ok(null);
     }
 }

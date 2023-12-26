@@ -11,6 +11,11 @@ import ru.rcs.entity.SchoolTest;
 @Mapper(componentModel = "spring", nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL, imports = {LocalDateTime.class})
 public interface SchoolTestMapper {
 
+  @Mapping(target = "id", expression = "java(java.lang.String.valueOf(schoolTestDTO.getId()))")
+  @Mapping(target = "schoolClass.id", expression = "java(java.lang.String.valueOf(schoolClassDTO.getId()))")
+  @Mapping(target = "subject.id", expression = "java(java.lang.String.valueOf(subjectDTO.getId()))")
+  SchoolTest fromDto(SchoolTestDTO schoolTestDTO);
+
   @Mapping(target = "id", expression = "java(java.util.UUID.fromString(schoolTest.getId()))")
   @Mapping(target = "schoolClass.id", expression = "java(java.util.UUID.fromString(schoolClass.getId()))")
   @Mapping(target = "subject.id", expression = "java(java.util.UUID.fromString(subject.getId()))")

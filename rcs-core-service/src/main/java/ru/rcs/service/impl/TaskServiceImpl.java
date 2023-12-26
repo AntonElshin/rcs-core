@@ -3,9 +3,12 @@ package ru.rcs.service.impl;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.rcs.dto.TaskDTO;
 import ru.rcs.entity.QTask;
 import ru.rcs.entity.Task;
+import ru.rcs.exception.BusinessException;
+import ru.rcs.exception.Errors;
 import ru.rcs.mapper.TaskMapper;
 import ru.rcs.repository.TaskRepository;
 import ru.rcs.service.TaskService;
@@ -23,6 +26,7 @@ public class TaskServiceImpl implements TaskService {
     private final TaskMapper taskMapper;
 
     @Override
+    @Transactional(readOnly = true)
     public List<TaskDTO> find(UUID searchSchoolTestId) {
 
         List<BooleanExpression> predicates = new ArrayList<>();
@@ -55,22 +59,35 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public TaskDTO findById(UUID taskId) {
-        return null;
+        Task task = taskRepository.findById(String.valueOf(taskId))
+                .orElseThrow(() -> new BusinessException(Errors.SUBJECT_NOT_FOUND_BY_ID, taskId));
+        return taskMapper.toDto(task);
     }
 
     @Override
+    @Transactional
     public TaskDTO add(TaskDTO taskDTO) {
-        return null;
+        Task task = taskMapper.fromDto(taskDTO);
+        Task addedTask = taskRepository.save(task);
+        return taskMapper.toDto(addedTask);
     }
 
     @Override
+    @Transactional
     public TaskDTO modify(UUID taskId, TaskDTO taskDTO) {
-        return null;
+        Task foundTask = taskRepository.getById(String.valueOf(taskId));
+        Task modifiedTask = taskRepository.save(foundTask);
+        return taskMapper.toDto(modifiedTask);
     }
 
     @Override
     public void remove(UUID taskId) {
 
+        Task task = taskRepository.findById(String.valueOf(taskId))
+                .orElseThrow(() -> new BusinessException(Errors.TASK_NOT_FOUND_BY_ID, taskId));
+
+        taskRepository.delete(task);
     }
 }

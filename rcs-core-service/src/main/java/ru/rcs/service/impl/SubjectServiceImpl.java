@@ -41,7 +41,7 @@ public class SubjectServiceImpl implements SubjectService {
   @Transactional(readOnly = true)
   public SubjectDTO findById(UUID subjectId) {
     Subject subject = subjectRepository.findById(String.valueOf(subjectId))
-        .orElseThrow(() -> new BusinessException(Errors.SUBJECT_NOT_FOUND_BY_ID, subjectId));;
+        .orElseThrow(() -> new BusinessException(Errors.SUBJECT_NOT_FOUND_BY_ID, subjectId));
     return subjectMapper.toDto(subject);
   }
 

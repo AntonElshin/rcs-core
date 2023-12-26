@@ -418,40 +418,6 @@ order by
   t.number
 ;
 
-select
-    task0_.id as id1_8_,
-    task0_.number as number2_8_,
-    task0_.school_test_id as school_t6_8_,
-    task0_.task_hint as task_hin3_8_,
-    task0_.task_question_answer_quantity as task_que4_8_,
-    task0_.task_statement as task_sta5_8_,
-    task0_.task_type_id as task_typ7_8_,
-    task0_1_.task_correct_typing_answer_id as task_cor3_13_,
-    task0_2_.task_answer_position_id as task_ans1_11_,
-    task0_3_.task_answer_choose_type_id as task_ans1_10_,
-    task0_4_.task_answer_typing_format_id as task_ans1_12_,
-    task0_5_.view_type_id as view_typ1_22_,
-    task0_6_.task_image_id as task_ima1_14_,
-    task0_7_.task_text_id as task_tex4_20_
-from
-    task task0_
-left outer join task_correct_typing_answer task0_1_ on
-    task0_.id=task0_1_.task_id
-left outer join task_answer_position task0_2_ on
-    task0_.id=task0_2_.task_id
-left outer join task_answer_choose_type task0_3_ on
-    task0_.id=task0_3_.task_id
-left outer join task_answer_typing_format task0_4_ on
-    task0_.id=task0_4_.task_id
-left outer join task_view_type task0_5_ on
-    task0_.id=task0_5_.task_id
-left outer join task_image task0_6_ on
-    task0_.id=task0_6_.task_id
-left outer join task_text task0_7_ on
-    task0_.id=task0_7_.task_id
-where
-    task0_.school_test_id=?
-
 -- Вопросы заданий тестов
 select
   t.number as task_number,

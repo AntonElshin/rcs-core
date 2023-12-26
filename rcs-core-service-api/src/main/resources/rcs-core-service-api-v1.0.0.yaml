@@ -1159,7 +1159,7 @@ paths:
       operationId: findViewTypeById
       description: Получение типа отображения по идентификатору
       tags:
-        - answer-type
+        - view-type
       responses:
         '200':
           description: OK
@@ -1187,7 +1187,7 @@ paths:
       operationId: modifyViewType
       description: Изменение типа отображения
       tags:
-        - answer-type
+        - view-type
       requestBody:
         required: true
         content:
@@ -1224,7 +1224,7 @@ paths:
       operationId: removeViewType
       description: Удаление типа отображения по идентификатору
       tags:
-        - answer-type
+        - view-type
       responses:
         '200':
           description: OK
@@ -1463,6 +1463,19 @@ paths:
                 example-1:
                   value:
                     - id: string
+                      schoolTest:
+                        id: string
+                        schoolClass:
+                          id: string
+                          systemName: string
+                          name: string
+                          description: string
+                        subject:
+                          id: string
+                          systemName: string
+                          name: string
+                          description: string
+                        displayName: string
                       number: 1
                       taskStatement: string
                       taskHint: string
@@ -1567,6 +1580,19 @@ paths:
               example-1:
                 value:
                   id: string
+                  schoolTest:
+                    id: string
+                    schoolClass:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    subject:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    displayName: string
                   number: 1
                   taskStatement: string
                   taskHint: string
@@ -1666,6 +1692,19 @@ paths:
                 example-1:
                   value:
                     id: string
+                    schoolTest:
+                      id: string
+                      schoolClass:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      subject:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      displayName: string
                     number: 1
                     taskStatement: string
                     taskHint: string
@@ -1782,6 +1821,19 @@ paths:
                 example-1:
                   value:
                     id: string
+                    schoolTest:
+                      id: string
+                      schoolClass:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      subject:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      displayName: string
                     number: 1
                     taskStatement: string
                     taskHint: string
@@ -1894,6 +1946,19 @@ paths:
               example-1:
                 value:
                   id: string
+                  schoolTest:
+                    id: string
+                    schoolClass:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    subject:
+                      id: string
+                      systemName: string
+                      name: string
+                      description: string
+                    displayName: string
                   number: 1
                   taskStatement: string
                   taskHint: string
@@ -1993,6 +2058,19 @@ paths:
                 example-1:
                   value:
                     id: string
+                    schoolTest:
+                      id: string
+                      schoolClass:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      subject:
+                        id: string
+                        systemName: string
+                        name: string
+                        description: string
+                      displayName: string
                     number: 1
                     taskStatement: string
                     taskHint: string
@@ -2567,6 +2645,19 @@ components:
       x-examples:
         example-1:
           id: string
+          schoolTest:
+            id: string
+            schoolClass:
+              id: string
+              systemName: string
+              name: string
+              description: string
+            subject:
+              id: string
+              systemName: string
+              name: string
+              description: string
+            displayName: string
           number: 1
           taskStatement: string
           taskHint: string
@@ -2660,6 +2751,8 @@ components:
           type: string
           description: Уникальный идентификатор
           format: uuid
+        schoolTest:
+          $ref: '#/components/schemas/SchoolTestDTO'
         number:
           type: integer
           format: int64
