@@ -21,6 +21,11 @@ public class SchoolClassController implements SchoolClassApi {
   }
 
   @Override
+  public ResponseEntity<SchoolClassDTO> addSchoolClass(SchoolClassDTO schoolClassDTO) {
+    return ResponseEntity.ok(schoolClassService.add(schoolClassDTO));
+  }
+
+  @Override
   public ResponseEntity<SchoolClassDTO> findSchoolClassById(UUID schoolClassId) {
     return ResponseEntity.ok(schoolClassService.findById(schoolClassId));
   }
@@ -35,10 +40,5 @@ public class SchoolClassController implements SchoolClassApi {
   public ResponseEntity<Void> removeSchoolClass(UUID schoolClassId) {
     schoolClassService.remove(schoolClassId);
     return ResponseEntity.ok(null);
-  }
-
-  @Override
-  public ResponseEntity<SchoolClassDTO> addSchoolClass(SchoolClassDTO schoolClassDTO) {
-    return ResponseEntity.ok(schoolClassService.add(schoolClassDTO));
   }
 }

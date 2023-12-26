@@ -17,19 +17,17 @@ public class TaskController implements TaskApi {
     private final TaskService taskService;
 
     @Override
+    public ResponseEntity<List<TaskDTO>> findTasks(UUID searchSchoolTestId) {
+        return ResponseEntity.ok(taskService.find(searchSchoolTestId));
+    }
+
+    @Override
     public ResponseEntity<TaskDTO> addTask(TaskDTO taskDTO) {
         return null;
     }
 
     @Override
     public ResponseEntity<TaskDTO> findTaskById(UUID taskId) {
-        return null;
-    }
-
-    @Override
-    public ResponseEntity<List<TaskDTO>> findTasks(UUID searchSchoolTestId) {
-
-        taskService.find(searchSchoolTestId);
         return null;
     }
 

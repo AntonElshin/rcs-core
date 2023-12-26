@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.rcs.dto.TaskDTO;
 import ru.rcs.entity.QTask;
-import ru.rcs.entity.SchoolTest;
 import ru.rcs.entity.Task;
+import ru.rcs.mapper.TaskMapper;
 import ru.rcs.repository.TaskRepository;
 import ru.rcs.service.TaskService;
 
@@ -19,6 +19,8 @@ import java.util.UUID;
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
+
+    private final TaskMapper taskMapper;
 
     @Override
     public List<TaskDTO> find(UUID searchSchoolTestId) {
@@ -49,13 +51,7 @@ public class TaskServiceImpl implements TaskService {
             tasks = taskRepository.findAll(fullPredicate);
         }
 
-
-
-        for(Task task : tasks) {
-            System.out.print(task);
-        }
-
-        return null;
+        return taskMapper.toListDto(tasks);
     }
 
     @Override

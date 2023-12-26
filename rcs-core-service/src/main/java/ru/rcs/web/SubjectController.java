@@ -21,6 +21,11 @@ public class SubjectController implements SubjectApi {
   }
 
   @Override
+  public ResponseEntity<SubjectDTO> addSubject(SubjectDTO subjectDTO) {
+    return ResponseEntity.ok(subjectService.add(subjectDTO));
+  }
+
+  @Override
   public ResponseEntity<SubjectDTO> findSubjectById(UUID subjectId) {
     return ResponseEntity.ok(subjectService.findById(subjectId));
   }
@@ -34,10 +39,5 @@ public class SubjectController implements SubjectApi {
   public ResponseEntity<Void> removeSubject(UUID subjectId) {
     subjectService.remove(subjectId);
     return ResponseEntity.ok(null);
-  }
-
-  @Override
-  public ResponseEntity<SubjectDTO> addSubject(SubjectDTO subjectDTO) {
-    return ResponseEntity.ok(subjectService.add(subjectDTO));
   }
 }
