@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.rcs.dto.SchoolTestDTO;
 import ru.rcs.entity.QSchoolTest;
 import ru.rcs.entity.SchoolClass;
@@ -30,6 +31,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   private final SchoolTestMapper schoolTestMapper;
 
   @Override
+  @Transactional(readOnly = true)
   public List<SchoolTestDTO> find(UUID searchSchoolClassId, UUID searchSubjectId) {
 
     List<BooleanExpression> predicates = new ArrayList<>();
@@ -65,6 +67,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public SchoolTestDTO findById(UUID schoolTestId) {
 
     if(schoolTestId == null) {
@@ -78,6 +81,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   }
 
   @Override
+  @Transactional
   public SchoolTestDTO add(SchoolTestDTO schoolTestReqDTO) {
 
     SchoolTest schoolTest = fillSchoolTest(null, schoolTestReqDTO);
@@ -88,6 +92,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   }
 
   @Override
+  @Transactional
   public SchoolTestDTO modify(UUID schoolTestId, SchoolTestDTO schoolTestReqDTO) {
 
     SchoolTest schoolTest = fillSchoolTest(schoolTestId, schoolTestReqDTO);
@@ -98,6 +103,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   }
 
   @Override
+  @Transactional
   public void remove(UUID schoolTestId) {
 
     if(schoolTestId == null) {

@@ -27,7 +27,6 @@ public class TaskText {
      * Идентификатор текста задания
      */
     @Id
-    @NotNull
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;

@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL, imports = {LocalDateTime.class})
 public interface TaskTypeMapper {
 
-    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "id", expression = "java(java.lang.String.valueOf(taskTypeDTO.getId()))")
     TaskType fromDto(TaskTypeDTO taskTypeDTO);
 
     @Mapping(target = "id", expression = "java(java.util.UUID.fromString(taskType.getId()))")

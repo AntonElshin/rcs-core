@@ -55,7 +55,6 @@ public class SchoolTest {
   /**
    * Отображаемое имя
    */
-  @NotNull
   @Column(name = "display_name")
   private String displayName;
 

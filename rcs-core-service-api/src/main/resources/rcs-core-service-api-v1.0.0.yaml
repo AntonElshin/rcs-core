@@ -2522,7 +2522,7 @@ components:
         text:
           type: string
           description: Текст задания
-          maxLength: 1024
+          maxLength: 65535
     TaskCorrectTypingAnswerDTO:
       title: TaskCorrectTypingAnswerDTO
       type: object
@@ -2818,7 +2818,7 @@ components:
     searchSchoolClassId:
       name: searchSchoolClassId
       in: query
-      required: true
+      required: false
       schema:
         type: string
         format: uuid
@@ -2826,7 +2826,7 @@ components:
     searchSubjectId:
       name: searchSubjectId
       in: query
-      required: true
+      required: false
       schema:
         type: string
         format: uuid

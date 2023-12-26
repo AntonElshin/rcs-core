@@ -31,7 +31,7 @@ databaseChangeLog:
                   remarks: Заголовок задания
               - column:
                   constraints:
-                    nullable: true
+                    nullable: false
                   name: text
-                  type: VARCHAR(1024)
+                  type: VARCHAR(65535)
                   remarks: Текст задания
