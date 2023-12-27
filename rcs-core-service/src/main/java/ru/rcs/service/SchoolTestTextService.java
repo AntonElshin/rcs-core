@@ -1,10 +1,12 @@
 package ru.rcs.service;
 
 import ru.rcs.dto.SchoolTestTextDTO;
-import ru.rcs.entity.SchoolTestText;
+
+import java.util.UUID;
 
 public interface SchoolTestTextService {
 
-    SchoolTestText add(SchoolTestTextDTO schoolTestTextDTO);
-
+    SchoolTestTextDTO add(SchoolTestTextDTO schoolTestTextDTO);
+    SchoolTestTextDTO modify(UUID schoolTestTextId, SchoolTestTextDTO schoolTestTextDTO);
+    void remove(UUID schoolTestTextId);
 }

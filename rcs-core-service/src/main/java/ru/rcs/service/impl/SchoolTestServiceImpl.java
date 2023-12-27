@@ -11,14 +11,17 @@ import ru.rcs.dto.SchoolTestDTO;
 import ru.rcs.entity.QSchoolTest;
 import ru.rcs.entity.SchoolClass;
 import ru.rcs.entity.SchoolTest;
+import ru.rcs.entity.SchoolTestText;
 import ru.rcs.entity.Subject;
 import ru.rcs.exception.BusinessException;
 import ru.rcs.exception.Errors;
 import ru.rcs.mapper.SchoolTestMapper;
 import ru.rcs.repository.SchoolClassRepository;
 import ru.rcs.repository.SchoolTestRepository;
+import ru.rcs.repository.SchoolTestTextRepository;
 import ru.rcs.repository.SubjectRepository;
 import ru.rcs.service.SchoolTestService;
+import ru.rcs.service.SchoolTestTextService;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +30,7 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   private final SchoolTestRepository schoolTestRepository;
   private final SchoolClassRepository schoolClassRepository;
   private final SubjectRepository subjectRepository;
+  private SchoolTestTextService schoolTestTextService;
 
   private final SchoolTestMapper schoolTestMapper;
 
@@ -87,8 +91,12 @@ public class SchoolTestServiceImpl implements SchoolTestService {
     SchoolTest schoolTest = fillSchoolTest(null, schoolTestReqDTO);
     schoolTest = schoolTestRepository.save(schoolTest);
 
-    return schoolTestMapper.toDto(schoolTest);
+    if(schoolTestReqDTO.getSchoolTestText() != null) {
+      SchoolTestText schoolTestText = schoolTestTextService.add(schoolTestReqDTO.getSchoolTestText());
+      schoolTest.setSchoolTestText(schoolTestText);
+    }
 
+    return schoolTestMapper.toDto(schoolTest);
   }
 
   @Override
@@ -97,6 +105,15 @@ public class SchoolTestServiceImpl implements SchoolTestService {
 
     SchoolTest schoolTest = fillSchoolTest(schoolTestId, schoolTestReqDTO);
     schoolTest = schoolTestRepository.save(schoolTest);
+
+    if(schoolTest.getSchoolTestText() != null) {
+      if(schoolTestReqDTO.getSchoolTestText() == null) {
+        schoolTestTextService.remove(UUID.fromString(schoolTest.getSchoolTestText().getId()));
+      }
+      else {
+
+      }
+    }
 
     return schoolTestMapper.toDto(schoolTest);
 
