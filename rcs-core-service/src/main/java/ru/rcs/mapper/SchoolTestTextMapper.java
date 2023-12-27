@@ -15,7 +15,7 @@ public interface SchoolTestTextMapper {
     @Mapping(target = "id", expression = "java(java.lang.String.valueOf(schoolTestTextDTO.getId()))")
     SchoolTestText fromDto(SchoolTestTextDTO schoolTestTextDTO);
 
-    @Mapping(target = "id", expression = "java(java.util.UUID.fromString(schoolTestText.getId()))")
+    @Mapping(target = "id", ignore = true)
     SchoolTestTextDTO toDto(SchoolTestText schoolTestText);
 
     List<SchoolTestTextDTO> toListDto(List<SchoolTestText> schoolTestTexts);

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.rcs.dto.SchoolTestDTO;
+import ru.rcs.dto.SchoolTestTextDTO;
 import ru.rcs.entity.QSchoolTest;
 import ru.rcs.entity.SchoolClass;
 import ru.rcs.entity.SchoolTest;
@@ -16,6 +17,7 @@ import ru.rcs.entity.Subject;
 import ru.rcs.exception.BusinessException;
 import ru.rcs.exception.Errors;
 import ru.rcs.mapper.SchoolTestMapper;
+import ru.rcs.mapper.SchoolTestTextMapper;
 import ru.rcs.repository.SchoolClassRepository;
 import ru.rcs.repository.SchoolTestRepository;
 import ru.rcs.repository.SchoolTestTextRepository;
@@ -30,9 +32,10 @@ public class SchoolTestServiceImpl implements SchoolTestService {
   private final SchoolTestRepository schoolTestRepository;
   private final SchoolClassRepository schoolClassRepository;
   private final SubjectRepository subjectRepository;
-  private SchoolTestTextService schoolTestTextService;
+  private final SchoolTestTextService schoolTestTextService;
 
   private final SchoolTestMapper schoolTestMapper;
+  private final SchoolTestTextMapper schoolTestTextMapper;
 
   @Override
   @Transactional(readOnly = true)
@@ -86,14 +89,14 @@ public class SchoolTestServiceImpl implements SchoolTestService {
 
   @Override
   @Transactional
-  public SchoolTestDTO add(SchoolTestDTO schoolTestReqDTO) {
+  public SchoolTestDTO add(SchoolTestDTO schoolTestDTO) {
 
-    SchoolTest schoolTest = fillSchoolTest(null, schoolTestReqDTO);
+    SchoolTest schoolTest = fillSchoolTest(null, schoolTestDTO);
     schoolTest = schoolTestRepository.save(schoolTest);
 
-    if(schoolTestReqDTO.getSchoolTestText() != null) {
-      SchoolTestText schoolTestText = schoolTestTextService.add(schoolTestReqDTO.getSchoolTestText());
-      schoolTest.setSchoolTestText(schoolTestText);
+    if(schoolTestDTO.getSchoolTestText() != null) {
+      SchoolTestTextDTO schoolTestTextDTO = schoolTestTextService.create(schoolTest, schoolTestDTO.getSchoolTestText());
+      schoolTest.setSchoolTestText(schoolTestTextMapper.fromDto(schoolTestTextDTO));
     }
 
     return schoolTestMapper.toDto(schoolTest);
@@ -101,18 +104,26 @@ public class SchoolTestServiceImpl implements SchoolTestService {
 
   @Override
   @Transactional
-  public SchoolTestDTO modify(UUID schoolTestId, SchoolTestDTO schoolTestReqDTO) {
+  public SchoolTestDTO modify(UUID schoolTestId, SchoolTestDTO schoolTestDTO) {
 
-    SchoolTest schoolTest = fillSchoolTest(schoolTestId, schoolTestReqDTO);
+    SchoolTest schoolTest = fillSchoolTest(schoolTestId, schoolTestDTO);
     schoolTest = schoolTestRepository.save(schoolTest);
 
-    if(schoolTest.getSchoolTestText() != null) {
-      if(schoolTestReqDTO.getSchoolTestText() == null) {
-        schoolTestTextService.remove(UUID.fromString(schoolTest.getSchoolTestText().getId()));
+    // Текст для школьного теста
+    SchoolTestText schoolTestText = schoolTest.getSchoolTestText();
+    SchoolTestTextDTO schoolTestTextDTO = schoolTestDTO.getSchoolTestText();
+
+    if(schoolTestText != null) {
+      if(schoolTestTextDTO == null) {
+        schoolTestTextService.remove(UUID.fromString(schoolTestText.getId()));
+        schoolTest.setSchoolTestText(null);
       }
       else {
-
+        schoolTestTextService.modify(UUID.fromString(schoolTestText.getId()), schoolTestTextDTO);
       }
+    }
+    else if(schoolTestTextDTO != null) {
+      schoolTestTextService.create(schoolTest, schoolTestTextDTO);
     }
 
     return schoolTestMapper.toDto(schoolTest);

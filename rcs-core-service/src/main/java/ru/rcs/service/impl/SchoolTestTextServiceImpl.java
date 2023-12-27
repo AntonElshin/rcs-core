@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.rcs.dto.SchoolTestTextDTO;
+import ru.rcs.entity.SchoolTest;
 import ru.rcs.entity.SchoolTestText;
-import ru.rcs.entity.Subject;
 import ru.rcs.exception.BusinessException;
 import ru.rcs.exception.Errors;
 import ru.rcs.mapper.SchoolTestTextMapper;
@@ -24,25 +24,26 @@ public class SchoolTestTextServiceImpl implements SchoolTestTextService {
 
     @Override
     @Transactional
-    public SchoolTestTextDTO add(SchoolTestTextDTO schoolTestTextDTO) {
+    public SchoolTestTextDTO create(SchoolTest schoolTest, SchoolTestTextDTO schoolTestTextDTO) {
         SchoolTestText schoolTestText = schoolTestTextMapper.fromDto(schoolTestTextDTO);
-        SchoolTestText addedSchoolTestText = schoolTestTextRepository.save(schoolTestText);
-        return schoolTestTextMapper.toDto(addedSchoolTestText);
+        schoolTestText.setSchoolTest(schoolTest);
+        schoolTestText = schoolTestTextRepository.save(schoolTestText);
+        SchoolTestTextDTO createdSchoolTestTextDTO = schoolTestTextMapper.toDto(schoolTestText);
+        createdSchoolTestTextDTO.setId(UUID.fromString(schoolTestText.getId()));
+        return createdSchoolTestTextDTO;
     }
 
     @Override
     public SchoolTestTextDTO modify(UUID schoolTestTextId, SchoolTestTextDTO schoolTestTextDTO) {
-        SchoolTestText foundSchoolTestText = schoolTestTextRepository.getById(String.valueOf(schoolTestTextId));
+        SchoolTestText schoolTestText = schoolTestTextRepository.getById(String.valueOf(schoolTestTextId));
 
-        if(schoolTestTextDTO.getHeader() != null) {
-            foundSchoolTestText.setHeader(schoolTestTextDTO.getHeader());
-        }
-        if(schoolTestTextDTO.getText() != null) {
-            foundSchoolTestText.setText(schoolTestTextDTO.getText());
-        }
+        schoolTestText.setHeader(schoolTestTextDTO.getHeader());
+        schoolTestText.setText(schoolTestTextDTO.getText());
 
-        SchoolTestText modifiedSchoolTestText = schoolTestTextRepository.save(foundSchoolTestText);
-        return schoolTestTextMapper.toDto(modifiedSchoolTestText);
+        schoolTestText = schoolTestTextRepository.save(schoolTestText);
+        SchoolTestTextDTO modifiedSchoolTestTextDTO = schoolTestTextMapper.toDto(schoolTestText);
+        modifiedSchoolTestTextDTO.setId(UUID.fromString(schoolTestText.getId()));
+        return modifiedSchoolTestTextDTO;
     }
 
     @Override
@@ -53,7 +54,7 @@ public class SchoolTestTextServiceImpl implements SchoolTestTextService {
             throw new BusinessException(Errors.MISSING_REQUIRED_PARAM_SCHOOL_TEST_TEXT_ID);
         }
 
-        SchoolTestText schoolTestText = subjectRepository.findById(String.valueOf(schoolTestTextId))
+        schoolTestTextRepository.findById(String.valueOf(schoolTestTextId))
                 .orElseThrow(() -> new BusinessException(Errors.SCHOOL_TEST_TEXT_NOT_FOUND_BY_ID, schoolTestTextId));
 
         schoolTestTextRepository.deleteById(String.valueOf(schoolTestTextId));

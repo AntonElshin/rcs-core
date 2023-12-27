@@ -61,7 +61,7 @@ public class SchoolTest {
   /**
    * Текст школьного текста
    */
-  @OneToOne(mappedBy = "schoolTest")
+  @OneToOne(mappedBy = "schoolTest", orphanRemoval = true)
   private SchoolTestText schoolTestText;
 
 }

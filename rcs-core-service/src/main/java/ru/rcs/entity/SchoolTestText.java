@@ -35,7 +35,7 @@ public class SchoolTestText {
      * Школьный текст
      */
     @Exclude
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "school_test_id", referencedColumnName = "id")
     private SchoolTest schoolTest;
 

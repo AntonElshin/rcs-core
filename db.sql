@@ -83,6 +83,7 @@ insert into school_test values ('65824e36-8d65-475f-a3d7-bc47ee1a97c1', 'a9d78ff
 insert into school_test values ('9d565bdd-b1fb-44eb-af50-7490555b5708', 'a9d78ff9-1169-4105-a597-c0a0b9520b9e', '1e007201-4f33-43c2-8e8c-af1e2f7e6f45', null);
 
 -- Общие текст для теста
+select * from school_test_text;
 select * from school_test;
 
 insert into school_test_text values ('93d41e1e-ef67-435a-87a0-2394b7cbef0d', '65824e36-8d65-475f-a3d7-bc47ee1a97c1', 'Встреча', 'Илья катался на лыжах. Он заехал далеко в лес. Тут мальчик заметил большую рыжую кошку. Она лежала на дереве. У кошки были зелёные глаза и кисточки на ушах. Сильные лапы впились в ствол. Это была рысь. Рысь прыгнула в снег. Илья затих. Рысь удалилась в лес.');
