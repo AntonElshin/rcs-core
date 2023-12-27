@@ -1273,6 +1273,10 @@ paths:
                         name: string
                         description: string
                       displayName: string
+                      schoolTestText:
+                        id: string
+                        header: string
+                        text: string
     post:
       summary: Создание школьного теста
       operationId: addSchoolTest
@@ -1299,6 +1303,10 @@ paths:
                     name: string
                     description: string
                   displayName: string
+                  schoolTestText:
+                    id: string
+                    header: string
+                    text: string
       responses:
         '200':
           description: OK
@@ -1321,6 +1329,10 @@ paths:
                       name: string
                       description: string
                     displayName: string
+                    schoolTestText:
+                      id: string
+                      header: string
+                      text: string
         '400':
           description: Bad Request
           content:
@@ -1360,6 +1372,10 @@ paths:
                       name: string
                       description: string
                     displayName: string
+                    schoolTestText:
+                      id: string
+                      header: string
+                      text: string
         '400':
           description: Bad Request
           content:
@@ -1395,6 +1411,10 @@ paths:
                     name: string
                     description: string
                   displayName: string
+                  schoolTestText:
+                    id: string
+                    header: string
+                    text: string
       responses:
         '200':
           description: OK
@@ -1417,6 +1437,10 @@ paths:
                       name: string
                       description: string
                     displayName: string
+                    schoolTestText:
+                      id: string
+                      header: string
+                      text: string
         '400':
           description: Bad Request
         '422':
@@ -1476,6 +1500,10 @@ paths:
                           name: string
                           description: string
                         displayName: string
+                        schoolTestText:
+                          id: string
+                          header: string
+                          text: string
                       number: 1
                       taskStatement: string
                       taskHint: string
@@ -1488,10 +1516,6 @@ paths:
                       taskImage:
                         id: string
                         path: string
-                      taskText:
-                        id: string
-                        header: string
-                        text: string
                       taskAnswerPosition:
                         id: string
                         systemName: string
@@ -1593,6 +1617,10 @@ paths:
                       name: string
                       description: string
                     displayName: string
+                    schoolTestText:
+                      id: string
+                      header: string
+                      text: string
                   number: 1
                   taskStatement: string
                   taskHint: string
@@ -1605,10 +1633,6 @@ paths:
                   taskImage:
                     id: string
                     path: string
-                  taskText:
-                    id: string
-                    header: string
-                    text: string
                   taskAnswerPosition:
                     id: string
                     systemName: string
@@ -1705,6 +1729,10 @@ paths:
                         name: string
                         description: string
                       displayName: string
+                      schoolTestText:
+                        id: string
+                        header: string
+                        text: string
                     number: 1
                     taskStatement: string
                     taskHint: string
@@ -1717,10 +1745,6 @@ paths:
                     taskImage:
                       id: string
                       path: string
-                    taskText:
-                      id: string
-                      header: string
-                      text: string
                     taskAnswerPosition:
                       id: string
                       systemName: string
@@ -1834,6 +1858,10 @@ paths:
                         name: string
                         description: string
                       displayName: string
+                      schoolTestText:
+                        id: string
+                        header: string
+                        text: string
                     number: 1
                     taskStatement: string
                     taskHint: string
@@ -1846,10 +1874,6 @@ paths:
                     taskImage:
                       id: string
                       path: string
-                    taskText:
-                      id: string
-                      header: string
-                      text: string
                     taskAnswerPosition:
                       id: string
                       systemName: string
@@ -1959,6 +1983,10 @@ paths:
                       name: string
                       description: string
                     displayName: string
+                    schoolTestText:
+                      id: string
+                      header: string
+                      text: string
                   number: 1
                   taskStatement: string
                   taskHint: string
@@ -1971,10 +1999,6 @@ paths:
                   taskImage:
                     id: string
                     path: string
-                  taskText:
-                    id: string
-                    header: string
-                    text: string
                   taskAnswerPosition:
                     id: string
                     systemName: string
@@ -2070,7 +2094,11 @@ paths:
                         systemName: string
                         name: string
                         description: string
-                      displayName: string
+                      displayName:
+                      schoolTestText:
+                        id: string
+                        header: string
+                        text: string
                     number: 1
                     taskStatement: string
                     taskHint: string
@@ -2083,10 +2111,6 @@ paths:
                     taskImage:
                       id: string
                       path: string
-                    taskText:
-                      id: string
-                      header: string
-                      text: string
                     taskAnswerPosition:
                       id: string
                       systemName: string
@@ -2487,6 +2511,10 @@ components:
             name: string
             description: string
           displayName: string
+          schoolTestText:
+            id: string
+            header: string
+            text: string
       properties:
         id:
           type: string
@@ -2500,11 +2528,13 @@ components:
           type: string
           description: Отображаемое название
           maxLength: 255
-    TaskTextDTO:
-      title: TaskTextDTO
+        schoolTestText:
+          $ref: '#/components/schemas/SchoolTestTextDTO'
+    SchoolTestTextDTO:
+      title: SchoolTestTextDTO
       type: object
       additionalProperties: false
-      description: Текст для задания с типом read
+      description: Текст для школьного теста
       x-examples:
         example-1:
           id: string
@@ -2658,6 +2688,10 @@ components:
               name: string
               description: string
             displayName: string
+            schoolTestText:
+              id: string
+              header: string
+              text: string
           number: 1
           taskStatement: string
           taskHint: string
@@ -2670,10 +2704,6 @@ components:
           taskImage:
             id: string
             path: string
-          taskText:
-            id: string
-            header: string
-            text: string
           taskAnswerPosition:
             id: string
             systemName: string
@@ -2777,8 +2807,6 @@ components:
           $ref: '#/components/schemas/TaskTypeDTO'
         taskImage:
           $ref: '#/components/schemas/ImageDTO'
-        taskText:
-          $ref: '#/components/schemas/TaskTextDTO'
         taskAnswerPosition:
           $ref: '#/components/schemas/AnswerPositionDTO'
         taskAnswerTypingFormat:

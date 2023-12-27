@@ -4,8 +4,8 @@ databaseChangeLog:
       author: aelshin
       changes:
         - createTable:
-            tableName: task_text
-            remarks: Текст задания
+            tableName: school_test_text
+            remarks: Текст для школьного теста
             columns:
               - column:
                   constraints:
@@ -18,11 +18,11 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                    foreignKeyName: task_id_fk
-                    references: task(id)
-                  name: task_id
+                    foreignKeyName: school_test_id_fk
+                    references: school_test(id)
+                  name: school_test_id
                   type: VARCHAR(36)
-                  remarks: Задание
+                  remarks: Школьный тест
               - column:
                   constraints:
                     nullable: true

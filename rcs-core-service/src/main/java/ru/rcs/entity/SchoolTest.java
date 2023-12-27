@@ -58,4 +58,10 @@ public class SchoolTest {
   @Column(name = "display_name")
   private String displayName;
 
+  /**
+   * Текст школьного текста
+   */
+  @OneToOne(mappedBy = "schoolTest")
+  private SchoolTestText schoolTestText;
+
 }

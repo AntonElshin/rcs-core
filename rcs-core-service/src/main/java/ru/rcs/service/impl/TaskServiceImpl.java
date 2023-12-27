@@ -7,15 +7,12 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.rcs.dto.TaskDTO;
 import ru.rcs.entity.QTask;
 import ru.rcs.entity.Task;
-import ru.rcs.entity.TaskText;
 import ru.rcs.exception.BusinessException;
 import ru.rcs.exception.Errors;
 import ru.rcs.mapper.TaskMapper;
-import ru.rcs.mapper.TaskTextMapper;
 import ru.rcs.repository.TaskRepository;
-import ru.rcs.repository.TaskTextRepository;
 import ru.rcs.service.TaskService;
-import ru.rcs.service.TaskTextService;
+import ru.rcs.service.SchoolTestTextService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +24,7 @@ public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
     private final TaskMapper taskMapper;
-    private final TaskTextService taskTextService;
+    private final SchoolTestTextService schoolTestTextService;
 
     @Override
     @Transactional(readOnly = true)
@@ -74,11 +71,6 @@ public class TaskServiceImpl implements TaskService {
     @Transactional
     public TaskDTO add(TaskDTO taskDTO) {
         Task task = taskMapper.fromDto(taskDTO);
-
-        if(taskDTO.getTaskText() != null) {
-            task.setTaskText(taskTextService.add(taskDTO.getTaskText()));
-        }
-
         Task addedTask = taskRepository.save(task);
         return taskMapper.toDto(addedTask);
     }

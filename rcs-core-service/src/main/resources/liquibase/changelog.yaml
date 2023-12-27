@@ -6,6 +6,8 @@ databaseChangeLog:
   - include:
       file: liquibase/changes/addSchoolTest.yaml
   - include:
+      file: liquibase/changes/addSchoolTestText.yaml
+  - include:
       file: liquibase/changes/addImage.yaml
   - include:
       file: liquibase/changes/addTaskType.yaml
@@ -21,8 +23,6 @@ databaseChangeLog:
       file: liquibase/changes/addViewType.yaml
   - include:
       file: liquibase/changes/addTask.yaml
-  - include:
-      file: liquibase/changes/addTaskText.yaml
   - include:
       file: liquibase/changes/addTaskAnswerPosition.yaml
   - include:

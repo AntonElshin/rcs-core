@@ -20,8 +20,8 @@ import javax.validation.constraints.NotNull;
 @ToString
 @Accessors(chain = true)
 @RequiredArgsConstructor
-@Table(name = "task_text")
-public class TaskText {
+@Table(name = "school_test_text")
+public class SchoolTestText {
 
     /**
      * Идентификатор текста задания
@@ -32,18 +32,16 @@ public class TaskText {
     private String id;
 
     /**
-     * Задание
+     * Школьный текст
      */
     @Exclude
-    @NotNull
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "task_id", referencedColumnName = "id")
-    private Task task;
+    @JoinColumn(name = "school_test_id", referencedColumnName = "id")
+    private SchoolTest schoolTest;
 
     /**
      * Заголовок задания
      */
-    @NotNull
     @Column(name = "header")
     private String header;
 

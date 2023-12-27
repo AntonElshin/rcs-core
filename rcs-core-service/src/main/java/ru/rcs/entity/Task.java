@@ -88,12 +88,6 @@ public class Task {
     private Image taskImage;
 
     /**
-     * Текст задания
-     */
-    @OneToOne(mappedBy = "task")
-    private TaskText taskText;
-
-    /**
      * Позиция для ответа на задание
      */
     @OneToOne(targetEntity = AnswerPosition.class, fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})

@@ -16,7 +16,6 @@ public interface TaskMapper {
     SchoolTestMapper schoolTestMapper = Mappers.getMapper(SchoolTestMapper.class);
     TaskTypeMapper taskTypeMapper = Mappers.getMapper(TaskTypeMapper.class);
     ImageMapper imageMapper = Mappers.getMapper(ImageMapper.class);
-    TaskTextMapper taskTextMapper = Mappers.getMapper(TaskTextMapper.class);
     AnswerPositionMapper answerPositionMapper = Mappers.getMapper(AnswerPositionMapper.class);
     AnswerTypingFormatMapper answerTypingFormatMapper = Mappers.getMapper(AnswerTypingFormatMapper.class);
     AnswerChooseTypeMapper answerChooseTypeMapper = Mappers.getMapper(AnswerChooseTypeMapper.class);
@@ -54,10 +53,6 @@ public interface TaskMapper {
 
         if(taskDTO.getTaskImage() != null) {
             task.setTaskImage(imageMapper.fromDto(taskDTO.getTaskImage()));
-        }
-
-        if(taskDTO.getTaskText() != null) {
-            task.setTaskText(taskTextMapper.fromDto(taskDTO.getTaskText()));
         }
 
         if(taskDTO.getTaskAnswerPosition() != null) {
@@ -123,10 +118,6 @@ public interface TaskMapper {
 
         if(task.getTaskImage() != null) {
             taskDTO.setTaskImage(imageMapper.toDto(task.getTaskImage()));
-        }
-
-        if(task.getTaskText() != null) {
-            taskDTO.setTaskText(taskTextMapper.toDto(task.getTaskText()));
         }
 
         if(task.getTaskAnswerPosition() != null) {
